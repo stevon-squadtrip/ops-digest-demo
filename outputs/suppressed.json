@@ -1,0 +1,926 @@
+{
+  "latest_week": "2026-04-27",
+  "count": 106,
+  "suppressed": [
+    {
+      "center": "Clinic 01",
+      "metric": "membership_conversion_pct",
+      "reason": "definition change: definition changed on 2026-02-09",
+      "latest": 29.9,
+      "denominator": 490.0,
+      "denominator_4wk": 1956.0,
+      "value_4wk_weighted": 30.21,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 02",
+      "metric": "membership_conversion_pct",
+      "reason": "definition change: definition changed on 2026-02-09",
+      "latest": 30.9,
+      "denominator": 409.0,
+      "denominator_4wk": 1668.0,
+      "value_4wk_weighted": 29.366,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 03",
+      "metric": "membership_conversion_pct",
+      "reason": "definition change: definition changed on 2026-02-09",
+      "latest": 28.9,
+      "denominator": 496.0,
+      "denominator_4wk": 1972.0,
+      "value_4wk_weighted": 28.192,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 04",
+      "metric": "membership_conversion_pct",
+      "reason": "definition change: definition changed on 2026-02-09",
+      "latest": 31.3,
+      "denominator": 292.0,
+      "denominator_4wk": 1168.0,
+      "value_4wk_weighted": 31.028,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 05",
+      "metric": "membership_conversion_pct",
+      "reason": "definition change: definition changed on 2026-02-09",
+      "latest": 27.9,
+      "denominator": 421.0,
+      "denominator_4wk": 1746.0,
+      "value_4wk_weighted": 26.182,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 30
+    },
+    {
+      "center": "Clinic 06",
+      "metric": "membership_conversion_pct",
+      "reason": "definition change: definition changed on 2026-02-09",
+      "latest": 28.6,
+      "denominator": 348.0,
+      "denominator_4wk": 1407.0,
+      "value_4wk_weighted": 28.987,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 07",
+      "metric": "client_csat",
+      "reason": "watch: 7 responses this week, 39 over the trailing 4 weeks, need 10 a week. 4 week weighted CSAT 4.31 on 39 responses, long run 4.46, would score 3.46: clears the supporting line",
+      "latest": 3.54,
+      "denominator": 7.0,
+      "denominator_4wk": 39.0,
+      "value_4wk_weighted": 4.308,
+      "watch_4wk_score": 3.464,
+      "watch_robust": true,
+      "weeks_available": 22
+    },
+    {
+      "center": "Clinic 07",
+      "metric": "appts_per_doctor_hour",
+      "reason": "ramp: 22 weeks of history, need 26 for volume and commercial metrics",
+      "latest": 2.285,
+      "denominator": 175.0,
+      "denominator_4wk": 725.0,
+      "value_4wk_weighted": 2.281,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 22
+    },
+    {
+      "center": "Clinic 07",
+      "metric": "revenue_per_appt",
+      "reason": "ramp: 22 weeks of history, need 26 for volume and commercial metrics",
+      "latest": 242.47,
+      "denominator": 175.0,
+      "denominator_4wk": 725.0,
+      "value_4wk_weighted": 245.386,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 22
+    },
+    {
+      "center": "Clinic 07",
+      "metric": "appts_no_show",
+      "reason": "ramp: 22 weeks of history, need 26 for volume and commercial metrics",
+      "latest": 14.0,
+      "denominator": null,
+      "denominator_4wk": null,
+      "value_4wk_weighted": null,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 22
+    },
+    {
+      "center": "Clinic 07",
+      "metric": "membership_conversion_pct",
+      "reason": "definition change: definition changed on 2026-02-09",
+      "latest": 25.1,
+      "denominator": 175.0,
+      "denominator_4wk": 725.0,
+      "value_4wk_weighted": 24.777,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 22
+    },
+    {
+      "center": "Clinic 08",
+      "metric": "membership_conversion_pct",
+      "reason": "definition change: definition changed on 2026-02-09",
+      "latest": 32.9,
+      "denominator": 422.0,
+      "denominator_4wk": 1673.0,
+      "value_4wk_weighted": 31.975,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 09",
+      "metric": "membership_conversion_pct",
+      "reason": "definition change: definition changed on 2026-02-09",
+      "latest": 26.6,
+      "denominator": 342.0,
+      "denominator_4wk": 1293.0,
+      "value_4wk_weighted": 27.988,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 36
+    },
+    {
+      "center": "Clinic 10",
+      "metric": "appts_per_doctor_hour",
+      "reason": "ramp: 18 weeks of history, need 26 for volume and commercial metrics",
+      "latest": 2.583,
+      "denominator": 333.0,
+      "denominator_4wk": 1311.0,
+      "value_4wk_weighted": 2.56,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 18
+    },
+    {
+      "center": "Clinic 10",
+      "metric": "revenue_per_appt",
+      "reason": "ramp: 18 weeks of history, need 26 for volume and commercial metrics",
+      "latest": 250.63,
+      "denominator": 333.0,
+      "denominator_4wk": 1311.0,
+      "value_4wk_weighted": 247.85,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 18
+    },
+    {
+      "center": "Clinic 10",
+      "metric": "appts_no_show",
+      "reason": "ramp: 18 weeks of history, need 26 for volume and commercial metrics",
+      "latest": 22.0,
+      "denominator": null,
+      "denominator_4wk": null,
+      "value_4wk_weighted": null,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 18
+    },
+    {
+      "center": "Clinic 10",
+      "metric": "membership_conversion_pct",
+      "reason": "definition change: definition changed on 2026-02-09",
+      "latest": 27.6,
+      "denominator": 333.0,
+      "denominator_4wk": 1311.0,
+      "value_4wk_weighted": 28.42,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 18
+    },
+    {
+      "center": "Clinic 11",
+      "metric": "membership_conversion_pct",
+      "reason": "definition change: definition changed on 2026-02-09",
+      "latest": 29.9,
+      "denominator": 441.0,
+      "denominator_4wk": 1770.0,
+      "value_4wk_weighted": 30.841,
+      "watch_4wk_score": null,
+      "watch_robust": true,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 01",
+      "metric": "record_completion_24h_pct",
+      "reason": "below threshold: score 0.6, item line 3.0, other movements need 1.5 sd",
+      "latest": 91.1,
+      "denominator": 490.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 01",
+      "metric": "callback_compliance_pct",
+      "reason": "favorable: 0.9 sd in the good direction, not the opportunity pick",
+      "latest": 87.1,
+      "denominator": 490.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 01",
+      "metric": "avg_wait_time_min",
+      "reason": "below threshold: score 1.5, item line 3.0, other movements need 1.5 sd",
+      "latest": 11.1,
+      "denominator": 490.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 01",
+      "metric": "client_csat",
+      "reason": "below threshold: score 1.4, item line 3.0, other movements need 1.5 sd",
+      "latest": 4.56,
+      "denominator": 42.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 01",
+      "metric": "appts_per_doctor_hour",
+      "reason": "below threshold: score 0.6, item line 3.0, other movements need 1.5 sd",
+      "latest": 2.568,
+      "denominator": 490.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 01",
+      "metric": "revenue_per_appt",
+      "reason": "below threshold: score 0.2, item line 3.0, other movements need 1.5 sd",
+      "latest": 259.1,
+      "denominator": 490.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 01",
+      "metric": "appts_no_show",
+      "reason": "favorable: 0.6 sd in the good direction, not the opportunity pick",
+      "latest": 34.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 01",
+      "metric": "staff_call_outs",
+      "reason": "below threshold: score 1.8, item line 3.0, other movements need 1.5 sd",
+      "latest": 2.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 01",
+      "metric": "open_dvm_requisitions",
+      "reason": "favorable: 0.5 sd in the good direction, not the opportunity pick",
+      "latest": 0.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 02",
+      "metric": "recheck_compliance_pct",
+      "reason": "favorable: 1.0 sd in the good direction, not the opportunity pick",
+      "latest": 82.2,
+      "denominator": 409.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 02",
+      "metric": "record_completion_24h_pct",
+      "reason": "favorable: 0.8 sd in the good direction, not the opportunity pick",
+      "latest": 90.4,
+      "denominator": 409.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 02",
+      "metric": "avg_wait_time_min",
+      "reason": "favorable: 0.4 sd in the good direction, not the opportunity pick",
+      "latest": 11.4,
+      "denominator": 409.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 02",
+      "metric": "client_csat",
+      "reason": "favorable: 0.3 sd in the good direction, not the opportunity pick",
+      "latest": 4.82,
+      "denominator": 31.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 02",
+      "metric": "revenue_per_appt",
+      "reason": "below threshold: score 0.3, item line 3.0, other movements need 1.5 sd",
+      "latest": 252.28,
+      "denominator": 409.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 02",
+      "metric": "appts_no_show",
+      "reason": "below threshold: score 0.6, item line 3.0, other movements need 1.5 sd",
+      "latest": 33.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 02",
+      "metric": "staff_call_outs",
+      "reason": "favorable: 0.3 sd in the good direction, not the opportunity pick",
+      "latest": 1.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 02",
+      "metric": "open_dvm_requisitions",
+      "reason": "favorable: 1.5 sd in the good direction, not the opportunity pick",
+      "latest": 0.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 03",
+      "metric": "recheck_compliance_pct",
+      "reason": "favorable: 0.4 sd in the good direction, not the opportunity pick",
+      "latest": 77.0,
+      "denominator": 496.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 03",
+      "metric": "record_completion_24h_pct",
+      "reason": "below threshold: score 0.4, item line 3.0, other movements need 1.5 sd",
+      "latest": 88.7,
+      "denominator": 496.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 03",
+      "metric": "callback_compliance_pct",
+      "reason": "other movements cap: 4 lines shown, this one scored 2.2 (adverse)",
+      "latest": 82.9,
+      "denominator": 496.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 03",
+      "metric": "avg_wait_time_min",
+      "reason": "below threshold: score 1.7, item line 3.0, other movements need 1.5 sd",
+      "latest": 13.0,
+      "denominator": 496.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 03",
+      "metric": "client_csat",
+      "reason": "favorable: 0.8 sd in the good direction, not the opportunity pick",
+      "latest": 4.56,
+      "denominator": 37.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 03",
+      "metric": "appts_per_doctor_hour",
+      "reason": "below threshold: score 0.2, item line 3.0, other movements need 1.5 sd",
+      "latest": 2.468,
+      "denominator": 496.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 03",
+      "metric": "revenue_per_appt",
+      "reason": "below threshold: score 0.4, item line 3.0, other movements need 1.5 sd",
+      "latest": 247.16,
+      "denominator": 496.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 03",
+      "metric": "staff_call_outs",
+      "reason": "favorable: 0.5 sd in the good direction, not the opportunity pick",
+      "latest": 1.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 03",
+      "metric": "open_dvm_requisitions",
+      "reason": "favorable: 0.4 sd in the good direction, not the opportunity pick",
+      "latest": 1.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 04",
+      "metric": "record_completion_24h_pct",
+      "reason": "favorable: 0.6 sd in the good direction, not the opportunity pick",
+      "latest": 90.7,
+      "denominator": 292.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 04",
+      "metric": "callback_compliance_pct",
+      "reason": "favorable: 0.4 sd in the good direction, not the opportunity pick",
+      "latest": 87.4,
+      "denominator": 292.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 04",
+      "metric": "avg_wait_time_min",
+      "reason": "favorable: 1.5 sd in the good direction, not the opportunity pick",
+      "latest": 10.6,
+      "denominator": 292.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 04",
+      "metric": "client_csat",
+      "reason": "below threshold: score 0.7, item line 3.0, other movements need 1.5 sd",
+      "latest": 4.54,
+      "denominator": 24.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 04",
+      "metric": "appts_per_doctor_hour",
+      "reason": "below threshold: score 0.6, item line 3.0, other movements need 1.5 sd",
+      "latest": 2.423,
+      "denominator": 292.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 04",
+      "metric": "revenue_per_appt",
+      "reason": "below threshold: score 1.6, item line 3.0, other movements need 1.5 sd",
+      "latest": 254.5,
+      "denominator": 292.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 04",
+      "metric": "appts_no_show",
+      "reason": "below threshold: score 0.2, item line 3.0, other movements need 1.5 sd",
+      "latest": 23.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 04",
+      "metric": "staff_call_outs",
+      "reason": "other movements cap: 4 lines shown, this one scored 2.0 (adverse)",
+      "latest": 2.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 04",
+      "metric": "open_dvm_requisitions",
+      "reason": "favorable: 0.2 sd in the good direction, not the opportunity pick",
+      "latest": 0.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 05",
+      "metric": "record_completion_24h_pct",
+      "reason": "bundled: Clinic 05 already has an item; this line scored 0.8 (adverse) or 0.7 (favorable), below the lines for a supporting or context line",
+      "latest": 88.2,
+      "denominator": 421.0,
+      "weeks_available": 30
+    },
+    {
+      "center": "Clinic 05",
+      "metric": "callback_compliance_pct",
+      "reason": "bundled: Clinic 05 already has an item; this line scored 0.7 (adverse) or 0.3 (favorable), below the lines for a supporting or context line",
+      "latest": 84.1,
+      "denominator": 421.0,
+      "weeks_available": 30
+    },
+    {
+      "center": "Clinic 05",
+      "metric": "avg_wait_time_min",
+      "reason": "bundled: Clinic 05 already has an item; this line scored 1.6 (adverse) or 0.0 (favorable), below the lines for a supporting or context line",
+      "latest": 12.6,
+      "denominator": 421.0,
+      "weeks_available": 30
+    },
+    {
+      "center": "Clinic 05",
+      "metric": "client_csat",
+      "reason": "bundled: Clinic 05 already has an item; this line scored 0.8 (adverse) or 0.4 (favorable), below the lines for a supporting or context line",
+      "latest": 4.53,
+      "denominator": 30.0,
+      "weeks_available": 30
+    },
+    {
+      "center": "Clinic 05",
+      "metric": "appts_per_doctor_hour",
+      "reason": "bundled: Clinic 05 already has an item; this line scored 0.0 (adverse) or 0.5 (favorable), below the lines for a supporting or context line",
+      "latest": 2.583,
+      "denominator": 421.0,
+      "weeks_available": 30
+    },
+    {
+      "center": "Clinic 05",
+      "metric": "revenue_per_appt",
+      "reason": "bundled: Clinic 05 already has an item; this line scored 0.1 (adverse) or 0.0 (favorable), below the lines for a supporting or context line",
+      "latest": 251.5,
+      "denominator": 421.0,
+      "weeks_available": 30
+    },
+    {
+      "center": "Clinic 05",
+      "metric": "appts_no_show",
+      "reason": "bundled: Clinic 05 already has an item; this line scored 0.7 (adverse) or 0.2 (favorable), below the lines for a supporting or context line",
+      "latest": 30.0,
+      "denominator": null,
+      "weeks_available": 30
+    },
+    {
+      "center": "Clinic 05",
+      "metric": "staff_call_outs",
+      "reason": "bundled: Clinic 05 already has an item; this line scored 0.0 (adverse) or 0.9 (favorable), below the lines for a supporting or context line",
+      "latest": 0.0,
+      "denominator": null,
+      "weeks_available": 30
+    },
+    {
+      "center": "Clinic 05",
+      "metric": "open_dvm_requisitions",
+      "reason": "bundled: Clinic 05 already has an item; this line scored 1.6 (adverse) or 0.0 (favorable), below the lines for a supporting or context line",
+      "latest": 1.0,
+      "denominator": null,
+      "weeks_available": 30
+    },
+    {
+      "center": "Clinic 06",
+      "metric": "record_completion_24h_pct",
+      "reason": "bundled: Clinic 06 already has an item; this line scored 0.8 (adverse) or 0.0 (favorable), below the lines for a supporting or context line",
+      "latest": 87.6,
+      "denominator": 348.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 06",
+      "metric": "callback_compliance_pct",
+      "reason": "bundled: Clinic 06 already has an item; this line scored 0.4 (adverse) or 0.1 (favorable), below the lines for a supporting or context line",
+      "latest": 85.0,
+      "denominator": 348.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 06",
+      "metric": "client_csat",
+      "reason": "bundled: Clinic 06 already has an item; this line scored 0.1 (adverse) or 0.1 (favorable), below the lines for a supporting or context line",
+      "latest": 4.59,
+      "denominator": 34.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 06",
+      "metric": "appts_per_doctor_hour",
+      "reason": "bundled: Clinic 06 already has an item; this line scored 0.1 (adverse) or 0.0 (favorable), below the lines for a supporting or context line",
+      "latest": 2.486,
+      "denominator": 348.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 06",
+      "metric": "revenue_per_appt",
+      "reason": "bundled: Clinic 06 already has an item; this line scored 0.5 (adverse) or 0.0 (favorable), below the lines for a supporting or context line",
+      "latest": 248.5,
+      "denominator": 348.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 06",
+      "metric": "appts_no_show",
+      "reason": "bundled: Clinic 06 already has an item; this line scored 0.1 (adverse) or 0.3 (favorable), below the lines for a supporting or context line",
+      "latest": 25.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 06",
+      "metric": "open_dvm_requisitions",
+      "reason": "bundled: Clinic 06 already has an item; this line scored 1.9 (adverse) or 0.5 (favorable), below the lines for a supporting or context line",
+      "latest": 1.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 07",
+      "metric": "recheck_compliance_pct",
+      "reason": "bundled: Clinic 07 already has an item; this line scored 0.7 (adverse) or 0.4 (favorable), below the lines for a supporting or context line",
+      "latest": 79.9,
+      "denominator": 175.0,
+      "weeks_available": 22
+    },
+    {
+      "center": "Clinic 07",
+      "metric": "record_completion_24h_pct",
+      "reason": "bundled: Clinic 07 already has an item; this line scored 0.5 (adverse) or 0.0 (favorable), below the lines for a supporting or context line",
+      "latest": 89.3,
+      "denominator": 175.0,
+      "weeks_available": 22
+    },
+    {
+      "center": "Clinic 07",
+      "metric": "callback_compliance_pct",
+      "reason": "bundled: Clinic 07 already has an item; this line scored 0.6 (adverse) or 0.4 (favorable), below the lines for a supporting or context line",
+      "latest": 84.6,
+      "denominator": 175.0,
+      "weeks_available": 22
+    },
+    {
+      "center": "Clinic 07",
+      "metric": "avg_wait_time_min",
+      "reason": "bundled: Clinic 07 already has an item; this line scored 0.7 (adverse) or 0.0 (favorable), below the lines for a supporting or context line",
+      "latest": 11.0,
+      "denominator": 175.0,
+      "weeks_available": 22
+    },
+    {
+      "center": "Clinic 08",
+      "metric": "recheck_compliance_pct",
+      "reason": "below threshold: score 0.8, item line 3.0, other movements need 1.5 sd",
+      "latest": 83.6,
+      "denominator": 422.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 08",
+      "metric": "record_completion_24h_pct",
+      "reason": "favorable: 0.3 sd in the good direction, not the opportunity pick",
+      "latest": 91.9,
+      "denominator": 422.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 08",
+      "metric": "callback_compliance_pct",
+      "reason": "below threshold: score 0.6, item line 3.0, other movements need 1.5 sd",
+      "latest": 86.9,
+      "denominator": 422.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 08",
+      "metric": "avg_wait_time_min",
+      "reason": "favorable: 1.9 sd in the good direction, not the opportunity pick",
+      "latest": 8.6,
+      "denominator": 422.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 08",
+      "metric": "client_csat",
+      "reason": "below threshold: score 0.9, item line 3.0, other movements need 1.5 sd",
+      "latest": 4.58,
+      "denominator": 32.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 08",
+      "metric": "appts_per_doctor_hour",
+      "reason": "below threshold: score 0.5, item line 3.0, other movements need 1.5 sd",
+      "latest": 2.623,
+      "denominator": 422.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 08",
+      "metric": "revenue_per_appt",
+      "reason": "favorable: 0.4 sd in the good direction, not the opportunity pick",
+      "latest": 268.5,
+      "denominator": 422.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 08",
+      "metric": "appts_no_show",
+      "reason": "below threshold: score 1.6, item line 3.0, other movements need 1.5 sd",
+      "latest": 36.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 08",
+      "metric": "staff_call_outs",
+      "reason": "favorable: 0.5 sd in the good direction, not the opportunity pick",
+      "latest": 1.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 08",
+      "metric": "open_dvm_requisitions",
+      "reason": "favorable: 0.5 sd in the good direction, not the opportunity pick",
+      "latest": 0.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 09",
+      "metric": "record_completion_24h_pct",
+      "reason": "bundled: Clinic 09 already has an item; this line scored 1.5 (adverse) or 0.4 (favorable), below the lines for a supporting or context line",
+      "latest": 86.3,
+      "denominator": 342.0,
+      "weeks_available": 36
+    },
+    {
+      "center": "Clinic 09",
+      "metric": "avg_wait_time_min",
+      "reason": "bundled: Clinic 09 already has an item; this line scored 0.6 (adverse) or 0.0 (favorable), below the lines for a supporting or context line",
+      "latest": 11.7,
+      "denominator": 342.0,
+      "weeks_available": 36
+    },
+    {
+      "center": "Clinic 09",
+      "metric": "client_csat",
+      "reason": "bundled: Clinic 09 already has an item; this line scored 1.0 (adverse) or 0.8 (favorable), below the lines for a supporting or context line",
+      "latest": 4.54,
+      "denominator": 34.0,
+      "weeks_available": 36
+    },
+    {
+      "center": "Clinic 09",
+      "metric": "appts_per_doctor_hour",
+      "reason": "bundled: Clinic 09 already has an item; this line scored 0.5 (adverse) or 0.3 (favorable), below the lines for a supporting or context line",
+      "latest": 2.431,
+      "denominator": 342.0,
+      "weeks_available": 36
+    },
+    {
+      "center": "Clinic 09",
+      "metric": "revenue_per_appt",
+      "reason": "bundled: Clinic 09 already has an item; this line scored 0.9 (adverse) or 0.1 (favorable), below the lines for a supporting or context line",
+      "latest": 241.5,
+      "denominator": 342.0,
+      "weeks_available": 36
+    },
+    {
+      "center": "Clinic 09",
+      "metric": "appts_no_show",
+      "reason": "bundled: Clinic 09 already has an item; this line scored 0.1 (adverse) or 0.1 (favorable), below the lines for a supporting or context line",
+      "latest": 23.0,
+      "denominator": null,
+      "weeks_available": 36
+    },
+    {
+      "center": "Clinic 09",
+      "metric": "staff_call_outs",
+      "reason": "bundled: Clinic 09 already has an item; this line scored 1.7 (adverse) or 0.0 (favorable), below the lines for a supporting or context line",
+      "latest": 2.0,
+      "denominator": null,
+      "weeks_available": 36
+    },
+    {
+      "center": "Clinic 09",
+      "metric": "open_dvm_requisitions",
+      "reason": "bundled: Clinic 09 already has an item; this line scored 1.9 (adverse) or 0.6 (favorable), below the lines for a supporting or context line",
+      "latest": 1.0,
+      "denominator": null,
+      "weeks_available": 36
+    },
+    {
+      "center": "Clinic 10",
+      "metric": "recheck_compliance_pct",
+      "reason": "favorable: 0.2 sd in the good direction, not the opportunity pick",
+      "latest": 79.9,
+      "denominator": 333.0,
+      "weeks_available": 18
+    },
+    {
+      "center": "Clinic 10",
+      "metric": "record_completion_24h_pct",
+      "reason": "below threshold: score 0.5, item line 3.0, other movements need 1.5 sd",
+      "latest": 90.0,
+      "denominator": 333.0,
+      "weeks_available": 18
+    },
+    {
+      "center": "Clinic 10",
+      "metric": "callback_compliance_pct",
+      "reason": "favorable: 1.2 sd in the good direction, not the opportunity pick",
+      "latest": 90.4,
+      "denominator": 333.0,
+      "weeks_available": 18
+    },
+    {
+      "center": "Clinic 10",
+      "metric": "avg_wait_time_min",
+      "reason": "favorable: 1.4 sd in the good direction, not the opportunity pick",
+      "latest": 11.6,
+      "denominator": 333.0,
+      "weeks_available": 18
+    },
+    {
+      "center": "Clinic 10",
+      "metric": "client_csat",
+      "reason": "favorable: 0.1 sd in the good direction, not the opportunity pick",
+      "latest": 4.59,
+      "denominator": 24.0,
+      "weeks_available": 18
+    },
+    {
+      "center": "Clinic 10",
+      "metric": "staff_call_outs",
+      "reason": "below threshold: score 1.0, item line 3.0, other movements need 1.5 sd",
+      "latest": 2.0,
+      "denominator": null,
+      "weeks_available": 18
+    },
+    {
+      "center": "Clinic 10",
+      "metric": "open_dvm_requisitions",
+      "reason": "below threshold: score 0.0, item line 3.0, other movements need 1.5 sd",
+      "latest": 0.0,
+      "denominator": null,
+      "weeks_available": 18
+    },
+    {
+      "center": "Clinic 11",
+      "metric": "recheck_compliance_pct",
+      "reason": "bundled: Clinic 11 already has an item; this line scored 0.1 (adverse) or 0.6 (favorable), below the lines for a supporting or context line",
+      "latest": 82.6,
+      "denominator": 441.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 11",
+      "metric": "callback_compliance_pct",
+      "reason": "bundled: Clinic 11 already has an item; this line scored 0.0 (adverse) or 0.8 (favorable), below the lines for a supporting or context line",
+      "latest": 87.6,
+      "denominator": 441.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 11",
+      "metric": "avg_wait_time_min",
+      "reason": "bundled: Clinic 11 already has an item; this line scored 0.3 (adverse) or 0.6 (favorable), below the lines for a supporting or context line",
+      "latest": 10.4,
+      "denominator": 441.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 11",
+      "metric": "client_csat",
+      "reason": "bundled: Clinic 11 already has an item; this line scored 0.0 (adverse) or 0.2 (favorable), below the lines for a supporting or context line",
+      "latest": 4.64,
+      "denominator": 48.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 11",
+      "metric": "revenue_per_appt",
+      "reason": "bundled: Clinic 11 already has an item; this line scored 0.4 (adverse) or 0.3 (favorable), below the lines for a supporting or context line",
+      "latest": 256.5,
+      "denominator": 441.0,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 11",
+      "metric": "appts_no_show",
+      "reason": "bundled: Clinic 11 already has an item; this line scored 0.4 (adverse) or 0.0 (favorable), below the lines for a supporting or context line",
+      "latest": 30.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 11",
+      "metric": "staff_call_outs",
+      "reason": "bundled: Clinic 11 already has an item; this line scored 1.7 (adverse) or 0.0 (favorable), below the lines for a supporting or context line",
+      "latest": 2.0,
+      "denominator": null,
+      "weeks_available": 52
+    },
+    {
+      "center": "Clinic 11",
+      "metric": "open_dvm_requisitions",
+      "reason": "bundled: Clinic 11 already has an item; this line scored 0.0 (adverse) or 0.4 (favorable), below the lines for a supporting or context line",
+      "latest": 0.0,
+      "denominator": null,
+      "weeks_available": 52
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+ "slots": {
+  "item1_what_happened": "Record completion fell from {c11_rc_20260209} to {c11_rc_20260427}. [c11_rc_20260209] [c11_rc_20260427] Its long run average is {c11_rc_long_mean}. [c11_rc_long_mean] At the same time, throughput rose from {ap_009_baseline_panel} to {c11_throughput_last}. [ap_009_baseline_panel] [c11_throughput_last] Visits did not get shorter: {c11_duration_before} before the plan, {c11_duration_after} in the last {window_8wk} weeks, {c11_duration_change}. [c11_duration_before] [c11_duration_after] [window_8wk] [c11_duration_change] All {c11_doctors_fell} of {c11_doctors} doctors fell. [c11_doctors_fell] [c11_doctors]",
+  "item1_why_it_matters": "Last week, {c11_records_late_last_week} of {c11_appts_last} records were not closed within {record_window_hours} hours. [c11_records_late_last_week] [c11_appts_last] [record_window_hours]",
+  "item1_what_to_do": "Hold one conversation with {item1_center} about what changed, not per doctor reviews. [item1_center]",
+  "item2_what_happened": "Call outs over the last {window_4wk} weeks ran {c06_callouts_last4}. [window_4wk] [c06_callouts_last4] Before March, the median week had {c06_callouts_before_march_median}. [c06_callouts_before_march_median] Scheduled doctor hours went from {c06_hours_start} to {c06_hours_last}, {c06_hours_change_pct}. [c06_hours_start] [c06_hours_last] [c06_hours_change_pct] Open doctor requisitions stood at {c06_open_reqs_last}. [c06_open_reqs_last]",
+  "item2_why_it_matters": "Completed appointments went from {c06_appts_start} to {c06_appts_last}, {c06_appts_change_pct}. [c06_appts_start] [c06_appts_last] [c06_appts_change_pct]",
+  "item2_what_to_do": "Get a revised staffing plan for {item2_center} with a new due date. [item2_center]",
+  "item3_what_happened": "DVM_0024 sits {dvm0024_gap} points below the other {item3_center} doctors on recheck. [dvm0024_gap] [item3_center] Record completion for DVM_0024 is {dvm0024_record_hw}, above the other doctors at {dvm0024_record_peers_hw}. [dvm0024_record_hw] [dvm0024_record_peers_hw] Only recheck is low. [dvm0024_gap] DVM_0024 was scheduled in {dvm0024_weeks} of the last {window_8wk} weeks. [dvm0024_weeks] [window_8wk]",
+  "item3_what_to_do": "Coach DVM_0024 on recheck booking. The clinic wide session is in Opportunity.",
+  "item4_what_happened": "Callback compliance was {c09_cb_last} last week. [c09_cb_last] It sat at or above {integrity_level} in {c09_cb_weeks_at_ceiling_all} of {c09_weeks_available} weeks. [integrity_level] [c09_cb_weeks_at_ceiling_all] [c09_weeks_available] Treat this as a number to verify. The count of required callbacks is {c09_cb_required_count}. [c09_cb_required_count]",
+  "item4_why_it_matters": "A ceiling rate cannot be checked from the panel, and a small center can reach it. [c09_cb_required_count]",
+  "item4_what_to_do": "Pull one week of the {item4_center} callback log. [item4_center]",
+  "item5_what_happened": "{item5_center} opened on {c07_opened} and has {c07_weeks} weeks of data. [c07_opened] [c07_weeks] Call outs were {c07_callouts_prior} the week before. [c07_callouts_prior] Their long run average is {c07_callouts_long_mean}. [c07_callouts_long_mean] Record completion was {c07_record_last} last week, with a long run average of {c07_record_long_mean}. [c07_record_last] [c07_record_long_mean] Scheduled doctor hours went from {c07_hours_start} to {c07_hours_last}. [c07_hours_start] [c07_hours_last]",
+  "item5_why_it_matters": "Nothing downstream has moved yet: appointments were {c07_appts_last} against {c07_appts_avg8}, wait time {c07_wait_last} against {c07_wait_avg8}. [c07_appts_last] [c07_appts_avg8] [c07_wait_last] [c07_wait_avg8]",
+  "item5_what_to_do": "Ask {item5_center} to explain last week's call outs. [item5_center]",
+  "one_thing_today_why": "Scheduled doctor hours are {c06_hours_change_pct}. [c06_hours_change_pct] Completed appointments are {c06_appts_change_pct}. [c06_appts_change_pct]",
+  "opportunity": "Propose one peer session between the Clinic 05 and {opp_center} medical leads. [opp_center] The topic is how rechecks get booked, meaning a {metric_def_recheck}. [metric_def_recheck]"
+ }
+}

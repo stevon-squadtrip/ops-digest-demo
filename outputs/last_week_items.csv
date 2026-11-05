@@ -1,0 +1,5 @@
+digest_date,as_of_week,latest_week,rank,center,metric,metric_label,score_then,still_above_line
+2026-04-27,2026-04-20,2026-04-27,1,Clinic 11,record_completion_24h_pct,Record completion within 24h,15.0,True
+2026-04-27,2026-04-20,2026-04-27,2,Clinic 06,staff_call_outs,Staff call outs,8.16,True
+2026-04-27,2026-04-20,2026-04-27,3,Clinic 05,recheck_compliance_pct,Recheck compliance,8.13,True
+2026-04-27,2026-04-20,2026-04-27,4,Clinic 09,callback_compliance_pct,Callback compliance,6.0,True

@@ -1,0 +1,6 @@
+item,center,metric,latest_week,first_monday_ever,mondays_above_line_before_latest_week,first_monday,mondays_before_latest_week
+1,Clinic 11,record_completion_24h_pct,2026-04-27,2025-09-01,14,2026-02-16,10
+2,Clinic 06,staff_call_outs,2026-04-27,2026-03-23,5,2026-03-23,5
+3,Clinic 05,recheck_compliance_pct,2026-04-27,2025-12-22,18,2025-12-22,18
+4,Clinic 09,callback_compliance_pct,2026-04-27,2025-11-10,24,2025-11-10,24
+5,Clinic 07,staff_call_outs,2026-04-27,this week,0,this week,0

@@ -1,0 +1,37 @@
+{
+  "latest_week": "2026-04-27",
+  "plans": 28,
+  "mistargeted": 10,
+  "met_at_open": 10,
+  "at_open_denominator": 26,
+  "no_data_at_open": [
+    "AP_016",
+    "AP_019"
+  ],
+  "at_open_window": "last_week_on_or_before_open",
+  "baseline_mismatch_flags": 14,
+  "baseline_mismatch_denominator": 26,
+  "plans_tracking_as_reported": 3,
+  "plans_tracking_as_reported_ids": [
+    "AP_012",
+    "AP_018",
+    "AP_025"
+  ],
+  "per_label": {
+    "mistargeted": 10,
+    "achieved": 2,
+    "contradicted": 1,
+    "stalled": 10,
+    "early": 3,
+    "confirmed": 2
+  },
+  "per_flag": {
+    "stale": 9,
+    "past due": 16,
+    "baseline mismatch": 14,
+    "no panel row": 2,
+    "linked metric slipped": 2
+  },
+  "in_span": 10,
+  "ramp_suppressed_in_ranking": 2
+}

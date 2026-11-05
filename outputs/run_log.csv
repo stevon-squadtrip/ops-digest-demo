@@ -1,0 +1,5 @@
+timestamp_utc,tag,model,effort,attempts,tokens_in,tokens_out,wall_seconds,cost_usd,ok
+2026-11-05T17:28:24+00:00,,claude-opus-5-5,low,2,43256,7926,73.4,0.3315,False
+2026-11-05T17:30:29+00:00,,claude-opus-5-5,low,2,43168,2852,22.9,0.2297,False
+2026-11-05T17:44:02+00:00,,claude-opus-5-5,medium,2,43197,16872,144.6,0.5102,False
+2026-11-05T17:45:44+00:00,,claude-opus-5-5,medium,1,21599,8879,75.3,0.264,True

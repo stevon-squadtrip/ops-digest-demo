@@ -1,0 +1,57 @@
+[
+  {
+    "center": "Clinic 01",
+    "in_top_five": false,
+    "why": "Best adverse movement is Staff call outs at 1.8, below the 3.0 line. 1 metric suppressed."
+  },
+  {
+    "center": "Clinic 02",
+    "in_top_five": false,
+    "why": "Best adverse movement is Throughput per doctor hour at 2.3, below the 3.0 line. 1 metric suppressed."
+  },
+  {
+    "center": "Clinic 03",
+    "in_top_five": false,
+    "why": "Best adverse movement is No shows at 2.7, below the 3.0 line. 1 metric suppressed."
+  },
+  {
+    "center": "Clinic 04",
+    "in_top_five": false,
+    "why": "Best adverse movement is Recheck compliance at 2.8, below the 3.0 line. 1 metric suppressed."
+  },
+  {
+    "center": "Clinic 05",
+    "in_top_five": true,
+    "why": "Item 3: Recheck compliance scored 7.9, above the 3.0 line."
+  },
+  {
+    "center": "Clinic 06",
+    "in_top_five": true,
+    "why": "Item 2: Staff call outs scored 8.6, above the 3.0 line."
+  },
+  {
+    "center": "Clinic 07",
+    "in_top_five": true,
+    "why": "Item 5: Staff call outs scored 5.8, above the 3.0 line."
+  },
+  {
+    "center": "Clinic 08",
+    "in_top_five": false,
+    "why": "Best adverse movement is No shows at 1.6, below the 3.0 line. 1 metric suppressed."
+  },
+  {
+    "center": "Clinic 09",
+    "in_top_five": true,
+    "why": "Item 4: Callback compliance scored 6.0, above the 3.0 line."
+  },
+  {
+    "center": "Clinic 10",
+    "in_top_five": false,
+    "why": "Best adverse movement is Staff call outs at 1.0, below the 3.0 line. 4 metrics suppressed."
+  },
+  {
+    "center": "Clinic 11",
+    "in_top_five": true,
+    "why": "Item 1: Record completion within 24h scored 15.0, above the 3.0 line."
+  }
+]

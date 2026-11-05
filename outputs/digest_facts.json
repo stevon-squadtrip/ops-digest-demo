@@ -1,0 +1,4908 @@
+{
+ "meta": {
+  "generated_for": "2026-05-04",
+  "latest_week": "2026-04-27",
+  "leader": "Medical Director, North",
+  "source_format": "file | column | scope | window",
+  "fact_count": 565,
+  "slot_count": 16
+ },
+ "facts": {
+  "leader": {
+   "value": "Medical Director, North",
+   "display": "Medical Director, North",
+   "kind": "text",
+   "source": "data/raw/locations.csv | rmp_name | span"
+  },
+  "rop_name": {
+   "value": "Regional Ops Partner, North",
+   "display": "Regional Ops Partner, North",
+   "kind": "text",
+   "source": "data/raw/locations.csv | rop_name | all centers in span"
+  },
+  "digest_date": {
+   "value": "2026-05-04",
+   "display": "2026-05-04",
+   "kind": "date",
+   "source": "src/run.py | --date | today"
+  },
+  "latest_week": {
+   "value": "2026-04-27",
+   "display": "2026-04-27",
+   "kind": "date",
+   "source": "data/raw/clinic_weekly.csv | week_start | max"
+  },
+  "n_centers": {
+   "value": 11,
+   "display": "11",
+   "kind": "count",
+   "source": "data/raw/locations.csv | rmp_name == leader | count"
+  },
+  "n_other_centers": {
+   "value": 10,
+   "display": "10",
+   "kind": "count",
+   "source": "data/raw/locations.csv | rmp_name == leader | count minus one, the peer set for any center"
+  },
+  "next_digest_date": {
+   "value": "2026-05-11",
+   "display": "2026-05-11",
+   "kind": "date",
+   "source": "src/run.py | --date plus 7 days"
+  },
+  "two_week_check_date": {
+   "value": "2026-05-18",
+   "display": "2026-05-18",
+   "kind": "date",
+   "source": "src/run.py | --date plus 14 days"
+  },
+  "one_thing_check_back": {
+   "value": "Monday May 11",
+   "display": "Monday May 11",
+   "kind": "text",
+   "source": "src/run.py | --date plus 7 days | weekday month day"
+  },
+  "n_items": {
+   "value": 5,
+   "display": "5",
+   "kind": "count",
+   "source": "outputs/items.json | items | count"
+  },
+  "window_8wk": {
+   "value": 8,
+   "display": "8",
+   "kind": "auto",
+   "source": "src/rank.py | trailing 8 weeks in score_panel (avg8)",
+   "note": "trailing 8 week average"
+  },
+  "window_4wk": {
+   "value": 4,
+   "display": "4",
+   "kind": "auto",
+   "source": "src/plans.py | ACTUAL_WEEKS",
+   "note": "trailing 4 weeks"
+  },
+  "window_10wk": {
+   "value": 10,
+   "display": "10",
+   "kind": "auto",
+   "source": "src/rank.py | PERSIST_MAX_WEEKS",
+   "note": "integrity and persistence window"
+  },
+  "window_6wk": {
+   "value": 6,
+   "display": "6",
+   "kind": "auto",
+   "source": "src/rank.py | OPP_WINDOW",
+   "note": "opportunity held window"
+  },
+  "window_12wk": {
+   "value": 12,
+   "display": "12",
+   "kind": "auto",
+   "source": "src/rank.py | CONTEXT_WINDOW",
+   "note": "context trend window"
+  },
+  "line_item": {
+   "value": 3.0,
+   "display": "3",
+   "kind": "auto",
+   "source": "src/rank.py | ITEM_THRESHOLD",
+   "note": "item line"
+  },
+  "line_support": {
+   "value": 2.0,
+   "display": "2",
+   "kind": "auto",
+   "source": "src/rank.py | SUPPORT_THRESHOLD",
+   "note": "supporting line"
+  },
+  "integrity_level": {
+   "value": 99.5,
+   "display": "99.5",
+   "kind": "auto",
+   "source": "src/rank.py | INTEGRITY_LEVEL",
+   "note": "integrity ceiling"
+  },
+  "integrity_weeks": {
+   "value": 6,
+   "display": "6",
+   "kind": "auto",
+   "source": "src/rank.py | INTEGRITY_WEEKS",
+   "note": "integrity weeks of 10"
+  },
+  "min_csat_responses": {
+   "value": 10,
+   "display": "10",
+   "kind": "auto",
+   "source": "src/metrics.py | MIN_CSAT_RESPONSES",
+   "note": "watch floor, CSAT responses a week"
+  },
+  "ramp_weeks": {
+   "value": 26,
+   "display": "26",
+   "kind": "auto",
+   "source": "src/rank.py | RAMP_WEEKS",
+   "note": "ramp suppression, weeks of history"
+  },
+  "new_center_min_run": {
+   "value": 2,
+   "display": "2",
+   "kind": "auto",
+   "source": "src/rank.py | NEW_CENTER_MIN_RUN",
+   "note": "spike only rule, minimum run at a new center"
+  },
+  "min_run_linked": {
+   "value": 3,
+   "display": "3",
+   "kind": "auto",
+   "source": "src/plans.py | LINKED_MIN_RUN_WEEKS",
+   "note": "linked metric minimum run"
+  },
+  "stale_days": {
+   "value": 28,
+   "display": "28",
+   "kind": "auto",
+   "source": "src/plans.py | STALE_DAYS",
+   "note": "stale flag, days"
+  },
+  "metric_def_recheck": {
+   "value": "recheck scheduled before the client left",
+   "display": "recheck scheduled before the client left",
+   "kind": "text",
+   "source": "data/README.md | recheck_compliance_pct | definition"
+  },
+  "record_window_hours": {
+   "value": 24,
+   "display": "24",
+   "kind": "count",
+   "source": "data/README.md | record_completion_24h_pct | records closed within this many hours"
+  },
+  "c06_callouts_last": {
+   "value": 9,
+   "display": "9",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | staff_call_outs | Clinic 06 (CL_006) | 2026-04-27"
+  },
+  "c06_callouts_prior": {
+   "value": 9,
+   "display": "9",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | staff_call_outs | Clinic 06 (CL_006) | 2026-04-20"
+  },
+  "c06_callouts_last4": {
+   "value": [
+    4,
+    7,
+    9,
+    9
+   ],
+   "display": "4, 7, 9, 9",
+   "kind": "list",
+   "source": "data/raw/clinic_weekly.csv | staff_call_outs | Clinic 06 (CL_006) | 2026-04-06 to 2026-04-27"
+  },
+  "c06_callouts_weeks_at_latest": {
+   "value": 2,
+   "display": "2",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | staff_call_outs | Clinic 06 (CL_006) | consecutive weeks at or above last week's value"
+  },
+  "c06_callouts_before_march_median": {
+   "value": 1.0,
+   "display": "1",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | staff_call_outs | Clinic 06 (CL_006) | weeks before 2026-03-01, median"
+  },
+  "c06_callouts_before_march_p75": {
+   "value": 2.0,
+   "display": "2",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | staff_call_outs | Clinic 06 (CL_006) | weeks before 2026-03-01, 75th percentile"
+  },
+  "c06_callouts_long_mean": {
+   "value": 1.31,
+   "display": "1.3",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | long_mean | Clinic 06 (CL_006) staff_call_outs"
+  },
+  "c06_callouts_avg8": {
+   "value": 4.875,
+   "display": "4.9",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | avg8 | Clinic 06 (CL_006) staff_call_outs"
+  },
+  "c06_callouts_spike_sd": {
+   "value": 8.938,
+   "display": "8.94",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | spike_sd | Clinic 06 (CL_006) staff_call_outs"
+  },
+  "c06_callouts_score": {
+   "value": 8.64,
+   "display": "8.64",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | score | Clinic 06 (CL_006) staff_call_outs"
+  },
+  "c06_weeks_7_or_more": {
+   "value": 3,
+   "display": "3",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | staff_call_outs | Clinic 06 (CL_006) | last 4 weeks at or above 7"
+  },
+  "c06_hours_start": {
+   "value": 171.1,
+   "display": "171.1",
+   "kind": "hours1",
+   "source": "data/raw/clinic_weekly.csv | doctor_hours_scheduled | Clinic 06 (CL_006) | 2026-02-09"
+  },
+  "c06_hours_last": {
+   "value": 140.0,
+   "display": "140.0",
+   "kind": "hours1",
+   "source": "data/raw/clinic_weekly.csv | doctor_hours_scheduled | Clinic 06 (CL_006) | 2026-04-27"
+  },
+  "c06_hours_change_pct": {
+   "value": -18.177,
+   "display": "down 18 percent",
+   "kind": "pct_change",
+   "source": "data/raw/clinic_weekly.csv | doctor_hours_scheduled | Clinic 06 (CL_006) | 12 week first to last"
+  },
+  "c06_appts_start": {
+   "value": 419,
+   "display": "419",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | appts_completed | Clinic 06 (CL_006) | 2026-02-09"
+  },
+  "c06_appts_last": {
+   "value": 348,
+   "display": "348",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | appts_completed | Clinic 06 (CL_006) | 2026-04-27"
+  },
+  "c06_appts_change_pct": {
+   "value": -16.945,
+   "display": "down 17 percent",
+   "kind": "pct_change",
+   "source": "data/raw/clinic_weekly.csv | appts_completed | Clinic 06 (CL_006) | 12 week first to last"
+  },
+  "c06_open_reqs_last": {
+   "value": 1.0,
+   "display": "1",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | open_dvm_requisitions | Clinic 06 (CL_006) | 2026-04-27"
+  },
+  "c06_open_reqs_avg8": {
+   "value": 1.125,
+   "display": "1.1",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | avg8 | Clinic 06 (CL_006) open_dvm_requisitions"
+  },
+  "c06_wait_last": {
+   "value": 8.8,
+   "display": "8.8",
+   "kind": "min1",
+   "source": "data/raw/clinic_weekly.csv | avg_wait_time_min | Clinic 06 (CL_006) | 2026-04-27"
+  },
+  "c06_wait_avg8": {
+   "value": 9.15,
+   "display": "9.2",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | avg8 | Clinic 06 (CL_006) avg_wait_time_min"
+  },
+  "ap_001_center": {
+   "value": "Clinic 11",
+   "display": "Clinic 11",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | location_id | AP_001"
+  },
+  "ap_001_metric": {
+   "value": "Record completion within 24h",
+   "display": "Record completion within 24h",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | target_metric | AP_001"
+  },
+  "ap_001_status": {
+   "value": "on track",
+   "display": "on track",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | status | AP_001"
+  },
+  "ap_001_owner": {
+   "value": "Medical Director, North",
+   "display": "You",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | owner_name | AP_001"
+  },
+  "ap_001_label": {
+   "value": "contradicted",
+   "display": "data disagrees",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | label | AP_001 | shown as label_display"
+  },
+  "ap_001_flags": {
+   "value": [
+    "none"
+   ],
+   "display": "none",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | flags | AP_001"
+  },
+  "ap_001_action": {
+   "value": "Update the status to match the data, or flag the data as wrong.",
+   "display": "Update the status to match the data, or flag the data as wrong.",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | action | AP_001"
+  },
+  "ap_001_trend": {
+   "value": "falling",
+   "display": "falling",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | trend_word | AP_001 | trailing 4 weeks vs the 4 before"
+  },
+  "ap_001_weeks_open": {
+   "value": 13.7,
+   "display": "14",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_open | AP_001"
+  },
+  "ap_001_baseline_recorded": {
+   "value": 91.8,
+   "display": "91.8",
+   "kind": "pct",
+   "source": "data/raw/action_plans.csv | baseline_value | AP_001"
+  },
+  "ap_001_baseline_panel": {
+   "value": 92.5,
+   "display": "92.5",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | panel_base_1wk | AP_001 | week 2026-01-26"
+  },
+  "ap_001_baseline_panel_4wk": {
+   "value": 91.67,
+   "display": "91.7",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | panel_base_4wk | AP_001"
+  },
+  "ap_001_target": {
+   "value": 94.0,
+   "display": "94.0",
+   "kind": "pct",
+   "source": "data/raw/action_plans.csv | target_value | AP_001"
+  },
+  "ap_001_actual": {
+   "value": 77.28,
+   "display": "77.3",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | actual | AP_001 | trailing 4 weeks to 2026-04-27"
+  },
+  "ap_001_last_week": {
+   "value": 79.7,
+   "display": "79.7",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | record_completion_24h_pct | Clinic 11 (CL_011) | 2026-04-27"
+  },
+  "ap_001_progress_pct": {
+   "value": -1015.0,
+   "display": "minus 1015",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress | AP_001",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_001_progress_abs_pct": {
+   "value": 1015.0,
+   "display": "1015",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress, absolute value | AP_001",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_001_window_elapsed_pct": {
+   "value": 82.1,
+   "display": "82",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | window_elapsed | AP_001",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_001_last_update": {
+   "value": "2026-04-28",
+   "display": "2026-04-28",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | last_status_update | AP_001"
+  },
+  "ap_001_days_since_update": {
+   "value": 6,
+   "display": "6",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | days_since_update | AP_001"
+  },
+  "ap_001_due": {
+   "value": "2026-05-25",
+   "display": "2026-05-25",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | due_date | AP_001"
+  },
+  "ap_001_weeks_past_due": {
+   "value": null,
+   "display": "none",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_past_due | AP_001 | whole weeks from due_date to 2026-05-04",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_001_opened": {
+   "value": "2026-01-28",
+   "display": "2026-01-28",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | opened_date | AP_001"
+  },
+  "ap_001_robust": {
+   "value": true,
+   "display": "yes",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | robust | AP_001"
+  },
+  "ap_001_linked": {
+   "value": [
+    "none"
+   ],
+   "display": "none",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | linked_metrics | AP_001"
+  },
+  "ap_001_ramp_suppressed": {
+   "value": false,
+   "display": "no",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | ramp_suppressed_in_ranking | AP_001"
+  },
+  "ap_002_center": {
+   "value": "Clinic 05",
+   "display": "Clinic 05",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | location_id | AP_002"
+  },
+  "ap_002_metric": {
+   "value": "Recheck compliance",
+   "display": "Recheck compliance",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | target_metric | AP_002"
+  },
+  "ap_002_status": {
+   "value": "on track",
+   "display": "on track",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | status | AP_002"
+  },
+  "ap_002_owner": {
+   "value": "Medical Director, North",
+   "display": "You",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | owner_name | AP_002"
+  },
+  "ap_002_label": {
+   "value": "stalled",
+   "display": "stalled",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | label | AP_002 | shown as label_display"
+  },
+  "ap_002_flags": {
+   "value": [
+    "baseline mismatch"
+   ],
+   "display": "baseline mismatch",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | flags | AP_002"
+  },
+  "ap_002_action": {
+   "value": "Change the approach or close it.",
+   "display": "Change the approach or close it.",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | action | AP_002"
+  },
+  "ap_002_trend": {
+   "value": "recovering",
+   "display": "recovering",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | trend_word | AP_002 | trailing 4 weeks vs the 4 before"
+  },
+  "ap_002_weeks_open": {
+   "value": 10.7,
+   "display": "11",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_open | AP_002"
+  },
+  "ap_002_baseline_recorded": {
+   "value": 74.0,
+   "display": "74.0",
+   "kind": "pct",
+   "source": "data/raw/action_plans.csv | baseline_value | AP_002"
+  },
+  "ap_002_baseline_panel": {
+   "value": 66.1,
+   "display": "66.1",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | panel_base_1wk | AP_002 | week 2026-02-16"
+  },
+  "ap_002_baseline_panel_4wk": {
+   "value": 66.07,
+   "display": "66.1",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | panel_base_4wk | AP_002"
+  },
+  "ap_002_target": {
+   "value": 88.0,
+   "display": "88.0",
+   "kind": "pct",
+   "source": "data/raw/action_plans.csv | target_value | AP_002"
+  },
+  "ap_002_actual": {
+   "value": 68.2,
+   "display": "68.2",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | actual | AP_002 | trailing 4 weeks to 2026-04-27"
+  },
+  "ap_002_last_week": {
+   "value": 66.5,
+   "display": "66.5",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | recheck_compliance_pct | Clinic 05 (CL_005) | 2026-04-27"
+  },
+  "ap_002_progress_pct": {
+   "value": 9.6,
+   "display": "10",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress | AP_002",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_002_progress_abs_pct": {
+   "value": 9.6,
+   "display": "10",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress, absolute value | AP_002",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_002_window_elapsed_pct": {
+   "value": 65.2,
+   "display": "65",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | window_elapsed | AP_002",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_002_last_update": {
+   "value": "2026-04-23",
+   "display": "2026-04-23",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | last_status_update | AP_002"
+  },
+  "ap_002_days_since_update": {
+   "value": 11,
+   "display": "11",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | days_since_update | AP_002"
+  },
+  "ap_002_due": {
+   "value": "2026-06-13",
+   "display": "2026-06-13",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | due_date | AP_002"
+  },
+  "ap_002_weeks_past_due": {
+   "value": null,
+   "display": "none",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_past_due | AP_002 | whole weeks from due_date to 2026-05-04",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_002_opened": {
+   "value": "2026-02-18",
+   "display": "2026-02-18",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | opened_date | AP_002"
+  },
+  "ap_002_robust": {
+   "value": true,
+   "display": "yes",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | robust | AP_002"
+  },
+  "ap_002_linked": {
+   "value": [
+    "none"
+   ],
+   "display": "none",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | linked_metrics | AP_002"
+  },
+  "ap_002_ramp_suppressed": {
+   "value": false,
+   "display": "no",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | ramp_suppressed_in_ranking | AP_002"
+  },
+  "ap_003_center": {
+   "value": "Clinic 06",
+   "display": "Clinic 06",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | location_id | AP_003"
+  },
+  "ap_003_metric": {
+   "value": "Average wait time",
+   "display": "Average wait time",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | target_metric | AP_003"
+  },
+  "ap_003_status": {
+   "value": "at risk",
+   "display": "at risk",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | status | AP_003"
+  },
+  "ap_003_owner": {
+   "value": "Medical Director, North",
+   "display": "You",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | owner_name | AP_003"
+  },
+  "ap_003_label": {
+   "value": "stalled",
+   "display": "stalled",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | label | AP_003 | shown as label_display"
+  },
+  "ap_003_flags": {
+   "value": [
+    "stale",
+    "past due"
+   ],
+   "display": "stale, past due",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | flags | AP_003"
+  },
+  "ap_003_action": {
+   "value": "Change the approach or close it.",
+   "display": "Change the approach or close it.",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | action | AP_003"
+  },
+  "ap_003_trend": {
+   "value": "recovering",
+   "display": "recovering",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | trend_word | AP_003 | trailing 4 weeks vs the 4 before"
+  },
+  "ap_003_weeks_open": {
+   "value": 21.4,
+   "display": "21",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_open | AP_003"
+  },
+  "ap_003_baseline_recorded": {
+   "value": 9.2,
+   "display": "9.2",
+   "kind": "min1",
+   "source": "data/raw/action_plans.csv | baseline_value | AP_003"
+  },
+  "ap_003_baseline_panel": {
+   "value": 8.9,
+   "display": "8.9",
+   "kind": "min1",
+   "source": "outputs/plan_check.csv | panel_base_1wk | AP_003 | week 2025-12-01"
+  },
+  "ap_003_baseline_panel_4wk": {
+   "value": 8.7,
+   "display": "8.7",
+   "kind": "min1",
+   "source": "outputs/plan_check.csv | panel_base_4wk | AP_003"
+  },
+  "ap_003_target": {
+   "value": 7.0,
+   "display": "7.0",
+   "kind": "min1",
+   "source": "data/raw/action_plans.csv | target_value | AP_003"
+  },
+  "ap_003_actual": {
+   "value": 9.08,
+   "display": "9.1",
+   "kind": "min1",
+   "source": "outputs/plan_check.csv | actual | AP_003 | trailing 4 weeks to 2026-04-27"
+  },
+  "ap_003_last_week": {
+   "value": 8.8,
+   "display": "8.8",
+   "kind": "min1",
+   "source": "data/raw/clinic_weekly.csv | avg_wait_time_min | Clinic 06 (CL_006) | 2026-04-27"
+  },
+  "ap_003_progress_pct": {
+   "value": -9.2,
+   "display": "minus 9",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress | AP_003",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_003_progress_abs_pct": {
+   "value": 9.2,
+   "display": "9",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress, absolute value | AP_003",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_003_window_elapsed_pct": {
+   "value": 111.1,
+   "display": "111",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | window_elapsed | AP_003",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_003_last_update": {
+   "value": "2026-02-22",
+   "display": "2026-02-22",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | last_status_update | AP_003"
+  },
+  "ap_003_days_since_update": {
+   "value": 71,
+   "display": "71",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | days_since_update | AP_003"
+  },
+  "ap_003_due": {
+   "value": "2026-04-19",
+   "display": "2026-04-19",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | due_date | AP_003"
+  },
+  "ap_003_weeks_past_due": {
+   "value": 2,
+   "display": "2",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_past_due | AP_003 | whole weeks from due_date to 2026-05-04",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_003_opened": {
+   "value": "2025-12-05",
+   "display": "2025-12-05",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | opened_date | AP_003"
+  },
+  "ap_003_robust": {
+   "value": false,
+   "display": "no",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | robust | AP_003"
+  },
+  "ap_003_linked": {
+   "value": [
+    "none"
+   ],
+   "display": "none",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | linked_metrics | AP_003"
+  },
+  "ap_003_ramp_suppressed": {
+   "value": false,
+   "display": "no",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | ramp_suppressed_in_ranking | AP_003"
+  },
+  "ap_004_center": {
+   "value": "Clinic 10",
+   "display": "Clinic 10",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | location_id | AP_004"
+  },
+  "ap_004_metric": {
+   "value": "Callback compliance",
+   "display": "Callback compliance",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | target_metric | AP_004"
+  },
+  "ap_004_status": {
+   "value": "on track",
+   "display": "on track",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | status | AP_004"
+  },
+  "ap_004_owner": {
+   "value": "Medical Director, North",
+   "display": "You",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | owner_name | AP_004"
+  },
+  "ap_004_label": {
+   "value": "mistargeted",
+   "display": "target met at open",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | label | AP_004 | shown as label_display"
+  },
+  "ap_004_flags": {
+   "value": [
+    "baseline mismatch"
+   ],
+   "display": "baseline mismatch",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | flags | AP_004"
+  },
+  "ap_004_action": {
+   "value": "Close it. If the metric still needs to move, re-open with a target set from the panel.",
+   "display": "Close it. If the metric still needs to move, re-open with a target set from the panel.",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | action | AP_004"
+  },
+  "ap_004_trend": {
+   "value": "recovering",
+   "display": "recovering",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | trend_word | AP_004 | trailing 4 weeks vs the 4 before"
+  },
+  "ap_004_weeks_open": {
+   "value": 11.4,
+   "display": "11",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_open | AP_004"
+  },
+  "ap_004_baseline_recorded": {
+   "value": 79.0,
+   "display": "79.0",
+   "kind": "pct",
+   "source": "data/raw/action_plans.csv | baseline_value | AP_004"
+  },
+  "ap_004_baseline_panel": {
+   "value": 88.5,
+   "display": "88.5",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | panel_base_1wk | AP_004 | week 2026-02-09"
+  },
+  "ap_004_baseline_panel_4wk": {
+   "value": 85.95,
+   "display": "86.0",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | panel_base_4wk | AP_004"
+  },
+  "ap_004_target": {
+   "value": 88.0,
+   "display": "88.0",
+   "kind": "pct",
+   "source": "data/raw/action_plans.csv | target_value | AP_004"
+  },
+  "ap_004_actual": {
+   "value": 90.3,
+   "display": "90.3",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | actual | AP_004 | trailing 4 weeks to 2026-04-27"
+  },
+  "ap_004_last_week": {
+   "value": 90.4,
+   "display": "90.4",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | callback_compliance_pct | Clinic 10 (CL_010) | 2026-04-27"
+  },
+  "ap_004_progress_pct": {
+   "value": -360.0,
+   "display": "minus 360",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress | AP_004",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_004_progress_abs_pct": {
+   "value": 360.0,
+   "display": "360",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress, absolute value | AP_004",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_004_window_elapsed_pct": {
+   "value": 88.9,
+   "display": "89",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | window_elapsed | AP_004",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_004_last_update": {
+   "value": "2026-04-30",
+   "display": "2026-04-30",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | last_status_update | AP_004"
+  },
+  "ap_004_days_since_update": {
+   "value": 4,
+   "display": "4",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | days_since_update | AP_004"
+  },
+  "ap_004_due": {
+   "value": "2026-05-14",
+   "display": "2026-05-14",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | due_date | AP_004"
+  },
+  "ap_004_weeks_past_due": {
+   "value": null,
+   "display": "none",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_past_due | AP_004 | whole weeks from due_date to 2026-05-04",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_004_opened": {
+   "value": "2026-02-13",
+   "display": "2026-02-13",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | opened_date | AP_004"
+  },
+  "ap_004_robust": {
+   "value": false,
+   "display": "no",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | robust | AP_004"
+  },
+  "ap_004_linked": {
+   "value": [
+    "none"
+   ],
+   "display": "none",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | linked_metrics | AP_004"
+  },
+  "ap_004_ramp_suppressed": {
+   "value": false,
+   "display": "no",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | ramp_suppressed_in_ranking | AP_004"
+  },
+  "ap_007_center": {
+   "value": "Clinic 02",
+   "display": "Clinic 02",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | location_id | AP_007"
+  },
+  "ap_007_metric": {
+   "value": "Client satisfaction",
+   "display": "Client satisfaction",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | target_metric | AP_007"
+  },
+  "ap_007_status": {
+   "value": "on track",
+   "display": "on track",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | status | AP_007"
+  },
+  "ap_007_owner": {
+   "value": "Medical Director, North",
+   "display": "You",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | owner_name | AP_007"
+  },
+  "ap_007_label": {
+   "value": "mistargeted",
+   "display": "target met at open",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | label | AP_007 | shown as label_display"
+  },
+  "ap_007_flags": {
+   "value": [
+    "stale",
+    "past due",
+    "baseline mismatch",
+    "linked metric slipped"
+   ],
+   "display": "stale, past due, baseline mismatch, linked metric slipped",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | flags | AP_007"
+  },
+  "ap_007_action": {
+   "value": "Close it. If the metric still needs to move, re-open with a target set from the panel. Check the linked metric first.",
+   "display": "Close it. If the metric still needs to move, re-open with a target set from the panel. Check the linked metric first.",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | action | AP_007"
+  },
+  "ap_007_trend": {
+   "value": "recovering",
+   "display": "recovering",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | trend_word | AP_007 | trailing 4 weeks vs the 4 before"
+  },
+  "ap_007_weeks_open": {
+   "value": 21.4,
+   "display": "21",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_open | AP_007"
+  },
+  "ap_007_baseline_recorded": {
+   "value": 4.3,
+   "display": "4.30",
+   "kind": "csat",
+   "source": "data/raw/action_plans.csv | baseline_value | AP_007"
+  },
+  "ap_007_baseline_panel": {
+   "value": 4.8,
+   "display": "4.80",
+   "kind": "csat",
+   "source": "outputs/plan_check.csv | panel_base_1wk | AP_007 | week 2025-12-01"
+  },
+  "ap_007_baseline_panel_4wk": {
+   "value": 4.7,
+   "display": "4.70",
+   "kind": "csat",
+   "source": "outputs/plan_check.csv | panel_base_4wk | AP_007"
+  },
+  "ap_007_target": {
+   "value": 4.55,
+   "display": "4.55",
+   "kind": "csat",
+   "source": "data/raw/action_plans.csv | target_value | AP_007"
+  },
+  "ap_007_actual": {
+   "value": 4.8,
+   "display": "4.80",
+   "kind": "csat",
+   "source": "outputs/plan_check.csv | actual | AP_007 | trailing 4 weeks to 2026-04-27"
+  },
+  "ap_007_last_week": {
+   "value": 4.82,
+   "display": "4.82",
+   "kind": "csat",
+   "source": "data/raw/clinic_weekly.csv | client_csat | Clinic 02 (CL_002) | 2026-04-27"
+  },
+  "ap_007_progress_pct": {
+   "value": 1.0,
+   "display": "1",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress | AP_007",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_007_progress_abs_pct": {
+   "value": 1.0,
+   "display": "1",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress, absolute value | AP_007",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_007_window_elapsed_pct": {
+   "value": 131.6,
+   "display": "132",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | window_elapsed | AP_007",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_007_last_update": {
+   "value": "2026-03-30",
+   "display": "2026-03-30",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | last_status_update | AP_007"
+  },
+  "ap_007_days_since_update": {
+   "value": 35,
+   "display": "35",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | days_since_update | AP_007"
+  },
+  "ap_007_due": {
+   "value": "2026-03-29",
+   "display": "2026-03-29",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | due_date | AP_007"
+  },
+  "ap_007_weeks_past_due": {
+   "value": 5,
+   "display": "5",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_past_due | AP_007 | whole weeks from due_date to 2026-05-04",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_007_opened": {
+   "value": "2025-12-05",
+   "display": "2025-12-05",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | opened_date | AP_007"
+  },
+  "ap_007_robust": {
+   "value": true,
+   "display": "yes",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | robust | AP_007"
+  },
+  "ap_007_linked": {
+   "value": [
+    "Throughput per doctor hour slid from 2.6 to 2.4, adverse run of 5 weeks since 2026-03-30"
+   ],
+   "display": "Throughput per doctor hour slid from 2.6 to 2.4, adverse run of 5 weeks since 2026-03-30",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | linked_metrics | AP_007"
+  },
+  "ap_007_ramp_suppressed": {
+   "value": false,
+   "display": "no",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | ramp_suppressed_in_ranking | AP_007"
+  },
+  "ap_009_center": {
+   "value": "Clinic 11",
+   "display": "Clinic 11",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | location_id | AP_009"
+  },
+  "ap_009_metric": {
+   "value": "Throughput per doctor hour",
+   "display": "Throughput per doctor hour",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | target_metric | AP_009"
+  },
+  "ap_009_status": {
+   "value": "complete",
+   "display": "complete",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | status | AP_009"
+  },
+  "ap_009_owner": {
+   "value": "Medical Director, North",
+   "display": "You",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | owner_name | AP_009"
+  },
+  "ap_009_label": {
+   "value": "mistargeted",
+   "display": "target met at open",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | label | AP_009 | shown as label_display"
+  },
+  "ap_009_flags": {
+   "value": [
+    "baseline mismatch",
+    "linked metric slipped"
+   ],
+   "display": "baseline mismatch, linked metric slipped",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | flags | AP_009"
+  },
+  "ap_009_action": {
+   "value": "Close it. If the metric still needs to move, re-open with a target set from the panel. Check the linked metric first.",
+   "display": "Close it. If the metric still needs to move, re-open with a target set from the panel. Check the linked metric first.",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | action | AP_009"
+  },
+  "ap_009_trend": {
+   "value": "recovering",
+   "display": "recovering",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | trend_word | AP_009 | trailing 4 weeks vs the 4 before"
+  },
+  "ap_009_weeks_open": {
+   "value": 11.1,
+   "display": "11",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_open | AP_009"
+  },
+  "ap_009_baseline_recorded": {
+   "value": 2.2,
+   "display": "2.20",
+   "kind": "rate2",
+   "source": "data/raw/action_plans.csv | baseline_value | AP_009"
+  },
+  "ap_009_baseline_panel": {
+   "value": 2.66,
+   "display": "2.66",
+   "kind": "rate2",
+   "source": "outputs/plan_check.csv | panel_base_1wk | AP_009 | week 2026-02-09"
+  },
+  "ap_009_baseline_panel_4wk": {
+   "value": 2.59,
+   "display": "2.59",
+   "kind": "rate2",
+   "source": "outputs/plan_check.csv | panel_base_4wk | AP_009"
+  },
+  "ap_009_target": {
+   "value": 2.52,
+   "display": "2.52",
+   "kind": "rate2",
+   "source": "data/raw/action_plans.csv | target_value | AP_009"
+  },
+  "ap_009_actual": {
+   "value": 2.95,
+   "display": "2.95",
+   "kind": "rate2",
+   "source": "outputs/plan_check.csv | actual | AP_009 | trailing 4 weeks to 2026-04-27"
+  },
+  "ap_009_last_week": {
+   "value": 2.98,
+   "display": "2.98",
+   "kind": "rate2",
+   "source": "data/raw/clinic_weekly.csv | appts_per_doctor_hour | Clinic 11 (CL_011) | 2026-04-27"
+  },
+  "ap_009_progress_pct": {
+   "value": -198.8,
+   "display": "minus 199",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress | AP_009",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_009_progress_abs_pct": {
+   "value": 198.8,
+   "display": "199",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress, absolute value | AP_009",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_009_window_elapsed_pct": {
+   "value": 136.8,
+   "display": "137",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | window_elapsed | AP_009",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_009_last_update": {
+   "value": "2026-04-18",
+   "display": "2026-04-18",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | last_status_update | AP_009"
+  },
+  "ap_009_days_since_update": {
+   "value": 16,
+   "display": "16",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | days_since_update | AP_009"
+  },
+  "ap_009_due": {
+   "value": "2026-04-13",
+   "display": "2026-04-13",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | due_date | AP_009"
+  },
+  "ap_009_weeks_past_due": {
+   "value": null,
+   "display": "none",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_past_due | AP_009 | whole weeks from due_date to 2026-05-04",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_009_opened": {
+   "value": "2026-02-15",
+   "display": "2026-02-15",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | opened_date | AP_009"
+  },
+  "ap_009_robust": {
+   "value": true,
+   "display": "yes",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | robust | AP_009"
+  },
+  "ap_009_linked": {
+   "value": [
+    "Record completion within 24h slid from 92.1 to 79.7, adverse run of 11 weeks since 2026-02-16"
+   ],
+   "display": "Record completion within 24h slid from 92.1 to 79.7, adverse run of 11 weeks since 2026-02-16",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | linked_metrics | AP_009"
+  },
+  "ap_009_ramp_suppressed": {
+   "value": false,
+   "display": "no",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | ramp_suppressed_in_ranking | AP_009"
+  },
+  "ap_019_center": {
+   "value": "Clinic 10",
+   "display": "Clinic 10",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | location_id | AP_019"
+  },
+  "ap_019_metric": {
+   "value": "Throughput per doctor hour",
+   "display": "Throughput per doctor hour",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | target_metric | AP_019"
+  },
+  "ap_019_status": {
+   "value": "on track",
+   "display": "on track",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | status | AP_019"
+  },
+  "ap_019_owner": {
+   "value": "Medical Director, North",
+   "display": "You",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | owner_name | AP_019"
+  },
+  "ap_019_label": {
+   "value": "achieved",
+   "display": "done",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | label | AP_019 | shown as label_display"
+  },
+  "ap_019_flags": {
+   "value": [
+    "stale",
+    "past due",
+    "no panel row"
+   ],
+   "display": "stale, past due, no panel row",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | flags | AP_019"
+  },
+  "ap_019_action": {
+   "value": "Close it.",
+   "display": "Close it.",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | action | AP_019"
+  },
+  "ap_019_trend": {
+   "value": "recovering",
+   "display": "recovering",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | trend_word | AP_019 | trailing 4 weeks vs the 4 before"
+  },
+  "ap_019_weeks_open": {
+   "value": 18.3,
+   "display": "18",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_open | AP_019"
+  },
+  "ap_019_baseline_recorded": {
+   "value": 2.07,
+   "display": "2.07",
+   "kind": "rate2",
+   "source": "data/raw/action_plans.csv | baseline_value | AP_019"
+  },
+  "ap_019_baseline_panel": {
+   "value": null,
+   "display": "none",
+   "kind": "rate2",
+   "source": "outputs/plan_check.csv | panel_base_1wk | AP_019 | week 2025-12-22"
+  },
+  "ap_019_baseline_panel_4wk": {
+   "value": null,
+   "display": "none",
+   "kind": "rate2",
+   "source": "outputs/plan_check.csv | panel_base_4wk | AP_019"
+  },
+  "ap_019_target": {
+   "value": 2.33,
+   "display": "2.33",
+   "kind": "rate2",
+   "source": "data/raw/action_plans.csv | target_value | AP_019"
+  },
+  "ap_019_actual": {
+   "value": 2.56,
+   "display": "2.56",
+   "kind": "rate2",
+   "source": "outputs/plan_check.csv | actual | AP_019 | trailing 4 weeks to 2026-04-27"
+  },
+  "ap_019_last_week": {
+   "value": 2.58,
+   "display": "2.58",
+   "kind": "rate2",
+   "source": "data/raw/clinic_weekly.csv | appts_per_doctor_hour | Clinic 10 (CL_010) | 2026-04-27"
+  },
+  "ap_019_progress_pct": {
+   "value": 188.5,
+   "display": "188",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress | AP_019",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_019_progress_abs_pct": {
+   "value": 188.5,
+   "display": "188",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress, absolute value | AP_019",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_019_window_elapsed_pct": {
+   "value": 104.9,
+   "display": "105",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | window_elapsed | AP_019",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_019_last_update": {
+   "value": "2026-03-27",
+   "display": "2026-03-27",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | last_status_update | AP_019"
+  },
+  "ap_019_days_since_update": {
+   "value": 38,
+   "display": "38",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | days_since_update | AP_019"
+  },
+  "ap_019_due": {
+   "value": "2026-04-28",
+   "display": "2026-04-28",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | due_date | AP_019"
+  },
+  "ap_019_weeks_past_due": {
+   "value": 0,
+   "display": "0",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_past_due | AP_019 | whole weeks from due_date to 2026-05-04",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_019_opened": {
+   "value": "2025-12-27",
+   "display": "2025-12-27",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | opened_date | AP_019"
+  },
+  "ap_019_robust": {
+   "value": "no panel row",
+   "display": "no panel row",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | robust | AP_019"
+  },
+  "ap_019_linked": {
+   "value": [
+    "none"
+   ],
+   "display": "none",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | linked_metrics | AP_019"
+  },
+  "ap_019_ramp_suppressed": {
+   "value": true,
+   "display": "yes",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | ramp_suppressed_in_ranking | AP_019"
+  },
+  "ap_020_center": {
+   "value": "Clinic 03",
+   "display": "Clinic 03",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | location_id | AP_020"
+  },
+  "ap_020_metric": {
+   "value": "Recheck compliance",
+   "display": "Recheck compliance",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | target_metric | AP_020"
+  },
+  "ap_020_status": {
+   "value": "on track",
+   "display": "on track",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | status | AP_020"
+  },
+  "ap_020_owner": {
+   "value": "Medical Director, North",
+   "display": "You",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | owner_name | AP_020"
+  },
+  "ap_020_label": {
+   "value": "early",
+   "display": "too soon to judge",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | label | AP_020 | shown as label_display"
+  },
+  "ap_020_flags": {
+   "value": [
+    "baseline mismatch"
+   ],
+   "display": "baseline mismatch",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | flags | AP_020"
+  },
+  "ap_020_action": {
+   "value": "Too soon to judge. Note the direction.",
+   "display": "Too soon to judge. Note the direction.",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | action | AP_020"
+  },
+  "ap_020_trend": {
+   "value": "recovering",
+   "display": "recovering",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | trend_word | AP_020 | trailing 4 weeks vs the 4 before"
+  },
+  "ap_020_weeks_open": {
+   "value": 4.9,
+   "display": "5",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_open | AP_020"
+  },
+  "ap_020_baseline_recorded": {
+   "value": 66.0,
+   "display": "66.0",
+   "kind": "pct",
+   "source": "data/raw/action_plans.csv | baseline_value | AP_020"
+  },
+  "ap_020_baseline_panel": {
+   "value": 76.3,
+   "display": "76.3",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | panel_base_1wk | AP_020 | week 2026-03-30"
+  },
+  "ap_020_baseline_panel_4wk": {
+   "value": 76.33,
+   "display": "76.3",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | panel_base_4wk | AP_020"
+  },
+  "ap_020_target": {
+   "value": 78.6,
+   "display": "78.6",
+   "kind": "pct",
+   "source": "data/raw/action_plans.csv | target_value | AP_020"
+  },
+  "ap_020_actual": {
+   "value": 76.72,
+   "display": "76.7",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | actual | AP_020 | trailing 4 weeks to 2026-04-27"
+  },
+  "ap_020_last_week": {
+   "value": 77.0,
+   "display": "77.0",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | recheck_compliance_pct | Clinic 03 (CL_003) | 2026-04-27"
+  },
+  "ap_020_progress_pct": {
+   "value": 18.5,
+   "display": "18",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress | AP_020",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_020_progress_abs_pct": {
+   "value": 18.5,
+   "display": "18",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress, absolute value | AP_020",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_020_window_elapsed_pct": {
+   "value": 30.4,
+   "display": "30",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | window_elapsed | AP_020",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_020_last_update": {
+   "value": "2026-05-01",
+   "display": "2026-05-01",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | last_status_update | AP_020"
+  },
+  "ap_020_days_since_update": {
+   "value": 3,
+   "display": "3",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | days_since_update | AP_020"
+  },
+  "ap_020_due": {
+   "value": "2026-07-21",
+   "display": "2026-07-21",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | due_date | AP_020"
+  },
+  "ap_020_weeks_past_due": {
+   "value": null,
+   "display": "none",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_past_due | AP_020 | whole weeks from due_date to 2026-05-04",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_020_opened": {
+   "value": "2026-03-31",
+   "display": "2026-03-31",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | opened_date | AP_020"
+  },
+  "ap_020_robust": {
+   "value": true,
+   "display": "yes",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | robust | AP_020"
+  },
+  "ap_020_linked": {
+   "value": [
+    "none"
+   ],
+   "display": "none",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | linked_metrics | AP_020"
+  },
+  "ap_020_ramp_suppressed": {
+   "value": false,
+   "display": "no",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | ramp_suppressed_in_ranking | AP_020"
+  },
+  "ap_024_center": {
+   "value": "Clinic 06",
+   "display": "Clinic 06",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | location_id | AP_024"
+  },
+  "ap_024_metric": {
+   "value": "Recheck compliance",
+   "display": "Recheck compliance",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | target_metric | AP_024"
+  },
+  "ap_024_status": {
+   "value": "on track",
+   "display": "on track",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | status | AP_024"
+  },
+  "ap_024_owner": {
+   "value": "Medical Director, North",
+   "display": "You",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | owner_name | AP_024"
+  },
+  "ap_024_label": {
+   "value": "mistargeted",
+   "display": "target met at open",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | label | AP_024 | shown as label_display"
+  },
+  "ap_024_flags": {
+   "value": [
+    "past due",
+    "baseline mismatch"
+   ],
+   "display": "past due, baseline mismatch",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | flags | AP_024"
+  },
+  "ap_024_action": {
+   "value": "Close it. If the metric still needs to move, re-open with a target set from the panel.",
+   "display": "Close it. If the metric still needs to move, re-open with a target set from the panel.",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | action | AP_024"
+  },
+  "ap_024_trend": {
+   "value": "falling",
+   "display": "falling",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | trend_word | AP_024 | trailing 4 weeks vs the 4 before"
+  },
+  "ap_024_weeks_open": {
+   "value": 16.3,
+   "display": "16",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_open | AP_024"
+  },
+  "ap_024_baseline_recorded": {
+   "value": 65.9,
+   "display": "65.9",
+   "kind": "pct",
+   "source": "data/raw/action_plans.csv | baseline_value | AP_024"
+  },
+  "ap_024_baseline_panel": {
+   "value": 81.6,
+   "display": "81.6",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | panel_base_1wk | AP_024 | week 2026-01-05"
+  },
+  "ap_024_baseline_panel_4wk": {
+   "value": 81.52,
+   "display": "81.5",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | panel_base_4wk | AP_024"
+  },
+  "ap_024_target": {
+   "value": 74.6,
+   "display": "74.6",
+   "kind": "pct",
+   "source": "data/raw/action_plans.csv | target_value | AP_024"
+  },
+  "ap_024_actual": {
+   "value": 82.17,
+   "display": "82.2",
+   "kind": "pct",
+   "source": "outputs/plan_check.csv | actual | AP_024 | trailing 4 weeks to 2026-04-27"
+  },
+  "ap_024_last_week": {
+   "value": 82.4,
+   "display": "82.4",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | recheck_compliance_pct | Clinic 06 (CL_006) | 2026-04-27"
+  },
+  "ap_024_progress_pct": {
+   "value": -8.2,
+   "display": "minus 8",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress | AP_024",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_024_progress_abs_pct": {
+   "value": 8.2,
+   "display": "8",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress, absolute value | AP_024",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_024_window_elapsed_pct": {
+   "value": 118.8,
+   "display": "119",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | window_elapsed | AP_024",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_024_last_update": {
+   "value": "2026-04-25",
+   "display": "2026-04-25",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | last_status_update | AP_024"
+  },
+  "ap_024_days_since_update": {
+   "value": 9,
+   "display": "9",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | days_since_update | AP_024"
+  },
+  "ap_024_due": {
+   "value": "2026-04-16",
+   "display": "2026-04-16",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | due_date | AP_024"
+  },
+  "ap_024_weeks_past_due": {
+   "value": 2,
+   "display": "2",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_past_due | AP_024 | whole weeks from due_date to 2026-05-04",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_024_opened": {
+   "value": "2026-01-10",
+   "display": "2026-01-10",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | opened_date | AP_024"
+  },
+  "ap_024_robust": {
+   "value": true,
+   "display": "yes",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | robust | AP_024"
+  },
+  "ap_024_linked": {
+   "value": [
+    "none"
+   ],
+   "display": "none",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | linked_metrics | AP_024"
+  },
+  "ap_024_ramp_suppressed": {
+   "value": false,
+   "display": "no",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | ramp_suppressed_in_ranking | AP_024"
+  },
+  "ap_027_center": {
+   "value": "Clinic 07",
+   "display": "Clinic 07",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | location_id | AP_027"
+  },
+  "ap_027_metric": {
+   "value": "Throughput per doctor hour",
+   "display": "Throughput per doctor hour",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | target_metric | AP_027"
+  },
+  "ap_027_status": {
+   "value": "on track",
+   "display": "on track",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | status | AP_027"
+  },
+  "ap_027_owner": {
+   "value": "Medical Director, North",
+   "display": "You",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv | owner_name | AP_027"
+  },
+  "ap_027_label": {
+   "value": "early",
+   "display": "too soon to judge",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | label | AP_027 | shown as label_display"
+  },
+  "ap_027_flags": {
+   "value": [
+    "stale",
+    "baseline mismatch"
+   ],
+   "display": "stale, baseline mismatch",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | flags | AP_027"
+  },
+  "ap_027_action": {
+   "value": "Too soon to judge. Note the direction.",
+   "display": "Too soon to judge. Note the direction.",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | action | AP_027"
+  },
+  "ap_027_trend": {
+   "value": "recovering",
+   "display": "recovering",
+   "kind": "text",
+   "source": "outputs/plan_check.csv | trend_word | AP_027 | trailing 4 weeks vs the 4 before"
+  },
+  "ap_027_weeks_open": {
+   "value": 4.7,
+   "display": "5",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_open | AP_027"
+  },
+  "ap_027_baseline_recorded": {
+   "value": 2.5,
+   "display": "2.50",
+   "kind": "rate2",
+   "source": "data/raw/action_plans.csv | baseline_value | AP_027"
+  },
+  "ap_027_baseline_panel": {
+   "value": 2.29,
+   "display": "2.29",
+   "kind": "rate2",
+   "source": "outputs/plan_check.csv | panel_base_1wk | AP_027 | week 2026-03-30"
+  },
+  "ap_027_baseline_panel_4wk": {
+   "value": 2.27,
+   "display": "2.27",
+   "kind": "rate2",
+   "source": "outputs/plan_check.csv | panel_base_4wk | AP_027"
+  },
+  "ap_027_target": {
+   "value": 2.72,
+   "display": "2.72",
+   "kind": "rate2",
+   "source": "data/raw/action_plans.csv | target_value | AP_027"
+  },
+  "ap_027_actual": {
+   "value": 2.28,
+   "display": "2.28",
+   "kind": "rate2",
+   "source": "outputs/plan_check.csv | actual | AP_027 | trailing 4 weeks to 2026-04-27"
+  },
+  "ap_027_last_week": {
+   "value": 2.29,
+   "display": "2.29",
+   "kind": "rate2",
+   "source": "data/raw/clinic_weekly.csv | appts_per_doctor_hour | Clinic 07 (CL_007) | 2026-04-27"
+  },
+  "ap_027_progress_pct": {
+   "value": -3.1,
+   "display": "minus 3",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress | AP_027",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_027_progress_abs_pct": {
+   "value": 3.1,
+   "display": "3",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | progress, absolute value | AP_027",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_027_window_elapsed_pct": {
+   "value": 49.3,
+   "display": "49",
+   "kind": "pct0",
+   "source": "outputs/plan_check.csv | window_elapsed | AP_027",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_027_last_update": {
+   "value": "2026-04-03",
+   "display": "2026-04-03",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | last_status_update | AP_027"
+  },
+  "ap_027_days_since_update": {
+   "value": 31,
+   "display": "31",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | days_since_update | AP_027"
+  },
+  "ap_027_due": {
+   "value": "2026-06-07",
+   "display": "2026-06-07",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | due_date | AP_027"
+  },
+  "ap_027_weeks_past_due": {
+   "value": null,
+   "display": "none",
+   "kind": "count",
+   "source": "outputs/plan_check.csv | weeks_past_due | AP_027 | whole weeks from due_date to 2026-05-04",
+   "note": "code built plan lines only, never a slot"
+  },
+  "ap_027_opened": {
+   "value": "2026-04-01",
+   "display": "2026-04-01",
+   "kind": "date",
+   "source": "data/raw/action_plans.csv | opened_date | AP_027"
+  },
+  "ap_027_robust": {
+   "value": true,
+   "display": "yes",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | robust | AP_027"
+  },
+  "ap_027_linked": {
+   "value": [
+    "none"
+   ],
+   "display": "none",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | linked_metrics | AP_027"
+  },
+  "ap_027_ramp_suppressed": {
+   "value": true,
+   "display": "yes",
+   "kind": "bool",
+   "source": "outputs/plan_check.csv | ramp_suppressed_in_ranking | AP_027"
+  },
+  "c11_rc_20260209": {
+   "value": 93.3,
+   "display": "93.3",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | record_completion_24h_pct | Clinic 11 (CL_011) | 2026-02-09"
+  },
+  "c11_rc_20260223": {
+   "value": 86.2,
+   "display": "86.2",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | record_completion_24h_pct | Clinic 11 (CL_011) | 2026-02-23"
+  },
+  "c11_rc_20260316": {
+   "value": 82.1,
+   "display": "82.1",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | record_completion_24h_pct | Clinic 11 (CL_011) | 2026-03-16"
+  },
+  "c11_rc_20260406": {
+   "value": 74.2,
+   "display": "74.2",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | record_completion_24h_pct | Clinic 11 (CL_011) | 2026-04-06"
+  },
+  "c11_rc_20260427": {
+   "value": 79.7,
+   "display": "79.7",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | record_completion_24h_pct | Clinic 11 (CL_011) | 2026-04-27"
+  },
+  "c11_rc_long_mean": {
+   "value": 92.102,
+   "display": "92.1",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | long_mean | Clinic 11 (CL_011) record_completion_24h_pct"
+  },
+  "c11_rc_avg8": {
+   "value": 79.163,
+   "display": "79.2",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | Clinic 11 (CL_011) record_completion_24h_pct"
+  },
+  "c11_rc_drift_sd": {
+   "value": 8.358,
+   "display": "8.36",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | drift_sd | Clinic 11 (CL_011) record_completion_24h_pct"
+  },
+  "c11_rc_spike_sd": {
+   "value": -0.347,
+   "display": "-0.35",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | spike_sd | Clinic 11 (CL_011) record_completion_24h_pct"
+  },
+  "c11_rc_run_weeks": {
+   "value": 11,
+   "display": "11",
+   "kind": "count",
+   "source": "outputs/ranked.csv | run_weeks_uncapped | Clinic 11 (CL_011) record_completion_24h_pct"
+  },
+  "c11_rc_run_start": {
+   "value": "2026-02-16",
+   "display": "2026-02-16",
+   "kind": "date",
+   "source": "outputs/ranked.csv | run_start_week | Clinic 11 (CL_011) record_completion_24h_pct"
+  },
+  "c11_rc_score": {
+   "value": 15.0,
+   "display": "15.00",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | score | Clinic 11 (CL_011) record_completion_24h_pct"
+  },
+  "c11_appts_last": {
+   "value": 441,
+   "display": "441",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | appts_completed | Clinic 11 (CL_011) | 2026-04-27"
+  },
+  "c11_records_late_last_week": {
+   "value": 90,
+   "display": "90",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | appts_completed times (100 minus record_completion_24h_pct) | Clinic 11 (CL_011) | 2026-04-27",
+   "note": "records not closed within 24 hours last week, computed"
+  },
+  "c11_throughput_last": {
+   "value": 2.98,
+   "display": "2.98",
+   "kind": "rate2",
+   "source": "data/raw/clinic_weekly.csv | appts_per_doctor_hour | Clinic 11 (CL_011) | 2026-04-27"
+  },
+  "c11_throughput_avg8": {
+   "value": 2.931,
+   "display": "2.93",
+   "kind": "rate2",
+   "source": "outputs/ranked.csv | avg8 | Clinic 11 (CL_011) appts_per_doctor_hour"
+  },
+  "c11_duration_before": {
+   "value": 27.264,
+   "display": "27.3 minutes",
+   "kind": "minutes1",
+   "source": "data/raw/provider_weekly.csv | avg_appt_duration_min hours weighted | Clinic 11 (CL_011) | 8 weeks before AP_009 opened, 2025-12-15 to 2026-02-02",
+   "unit": "minutes"
+  },
+  "c11_duration_after": {
+   "value": 26.952,
+   "display": "27.0 minutes",
+   "kind": "minutes1",
+   "source": "data/raw/provider_weekly.csv | avg_appt_duration_min hours weighted | Clinic 11 (CL_011) | last 8 weeks, 2026-03-09 to 2026-04-27",
+   "unit": "minutes"
+  },
+  "c11_duration_change": {
+   "value": -0.3,
+   "display": "0.3 minutes shorter",
+   "kind": "min_change",
+   "source": "data/raw/provider_weekly.csv | avg_appt_duration_min hours weighted | Clinic 11 (CL_011) | after minus before, each rounded to one decimal first",
+   "unit": "minutes"
+  },
+  "c11_visits_shorter": {
+   "value": false,
+   "display": "no",
+   "kind": "bool",
+   "source": "data/raw/provider_weekly.csv | computed | Clinic 11 (CL_011) | change below minus 1 minute"
+  },
+  "c11_doctors": {
+   "value": 4,
+   "display": "4",
+   "kind": "count",
+   "source": "data/raw/provider_weekly.csv | provider_id | Clinic 11 (CL_011) | distinct in last 8 weeks"
+  },
+  "c11_dvm_0046_early": {
+   "value": 92.987,
+   "display": "93.0",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | record_completion_24h_pct hours weighted | DVM_0046 | first 8 provider weeks 2025-11-03 to 2025-12-22"
+  },
+  "c11_dvm_0046_late": {
+   "value": 79.516,
+   "display": "79.5",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | record_completion_24h_pct hours weighted | DVM_0046 | last 8 weeks 2026-03-09 to 2026-04-27"
+  },
+  "c11_dvm_0047_early": {
+   "value": 91.263,
+   "display": "91.3",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | record_completion_24h_pct hours weighted | DVM_0047 | first 8 provider weeks 2025-11-03 to 2025-12-22"
+  },
+  "c11_dvm_0047_late": {
+   "value": 78.324,
+   "display": "78.3",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | record_completion_24h_pct hours weighted | DVM_0047 | last 8 weeks 2026-03-09 to 2026-04-27"
+  },
+  "c11_dvm_0048_early": {
+   "value": 90.633,
+   "display": "90.6",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | record_completion_24h_pct hours weighted | DVM_0048 | first 8 provider weeks 2025-11-03 to 2025-12-22"
+  },
+  "c11_dvm_0048_late": {
+   "value": 77.912,
+   "display": "77.9",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | record_completion_24h_pct hours weighted | DVM_0048 | last 8 weeks 2026-03-09 to 2026-04-27"
+  },
+  "c11_dvm_0049_early": {
+   "value": 92.946,
+   "display": "92.9",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | record_completion_24h_pct hours weighted | DVM_0049 | first 8 provider weeks 2025-11-03 to 2025-12-22"
+  },
+  "c11_dvm_0049_late": {
+   "value": 80.453,
+   "display": "80.5",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | record_completion_24h_pct hours weighted | DVM_0049 | last 8 weeks 2026-03-09 to 2026-04-27"
+  },
+  "c11_doctors_fell": {
+   "value": 4,
+   "display": "4",
+   "kind": "count",
+   "source": "data/raw/provider_weekly.csv | record_completion_24h_pct | Clinic 11 (CL_011) | doctors down more than 5 points, first 8 vs last 8 weeks"
+  },
+  "c05_recheck_last": {
+   "value": 66.5,
+   "display": "66.5",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | recheck_compliance_pct | Clinic 05 (CL_005) | 2026-04-27"
+  },
+  "c05_recheck_avg8": {
+   "value": 68.025,
+   "display": "68.0",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | Clinic 05 (CL_005) recheck_compliance_pct"
+  },
+  "c05_recheck_level_sd": {
+   "value": 3.291,
+   "display": "3.29",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | level_sd | Clinic 05 (CL_005) recheck_compliance_pct"
+  },
+  "c05_recheck_score": {
+   "value": 7.937,
+   "display": "7.94",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | score | Clinic 05 (CL_005) recheck_compliance_pct"
+  },
+  "recheck_peer_median_avg8": {
+   "value": 81.144,
+   "display": "81.1",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | recheck_compliance_pct | median of the other 10 centers"
+  },
+  "c05_gap_to_peer_median": {
+   "value": 13.1,
+   "display": "13.1",
+   "kind": "points1",
+   "source": "outputs/ranked.csv | avg8 | peer median minus Clinic 05 (CL_005) recheck_compliance_pct, each rounded to one decimal first",
+   "unit": "points"
+  },
+  "dvm0024_recheck_hw": {
+   "value": 41.6,
+   "display": "41.6",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct hours weighted | DVM_0024 | last 8 weeks"
+  },
+  "dvm0024_recheck_mean": {
+   "value": 41.6,
+   "display": "41.6",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct simple mean | DVM_0024 | last 8 weeks"
+  },
+  "dvm0024_peers_hw": {
+   "value": 72.7,
+   "display": "72.7",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct hours weighted | Clinic 05 (CL_005) other doctors | last 8 weeks"
+  },
+  "dvm0024_gap": {
+   "value": 31.1,
+   "display": "31.1",
+   "kind": "points1",
+   "source": "outputs/items.json | provider_outliers peers_hours_weighted minus rate_hours_weighted | DVM_0024 recheck",
+   "unit": "points"
+  },
+  "dvm0024_weeks": {
+   "value": 6,
+   "display": "6",
+   "kind": "count",
+   "source": "data/raw/provider_weekly.csv | week_start | DVM_0024 | weeks scheduled in last 8"
+  },
+  "dvm0024_hours": {
+   "value": 184.5,
+   "display": "184.5",
+   "kind": "hours1",
+   "source": "data/raw/provider_weekly.csv | scheduled_hours | DVM_0024 | last 8 weeks sum"
+  },
+  "dvm0024_tenure": {
+   "value": 89,
+   "display": "89",
+   "kind": "count",
+   "source": "data/raw/provider_weekly.csv | tenure_months | DVM_0024"
+  },
+  "dvm0024_employment": {
+   "value": "full time",
+   "display": "full time",
+   "kind": "text",
+   "source": "data/raw/provider_weekly.csv | employment_type | DVM_0024"
+  },
+  "dvm0024_record_hw": {
+   "value": 90.4,
+   "display": "90.4",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | record_completion_24h_pct hours weighted | DVM_0024 | last 8 weeks"
+  },
+  "dvm0024_record_mean": {
+   "value": 90.4,
+   "display": "90.4",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | record_completion_24h_pct simple mean | DVM_0024 | last 8 weeks"
+  },
+  "dvm0024_record_peers_hw": {
+   "value": 87.6,
+   "display": "87.6",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | record_completion_24h_pct hours weighted | Clinic 05 (CL_005) other doctors | last 8 weeks"
+  },
+  "c05_dvm_0024_recheck_hw": {
+   "value": 41.6,
+   "display": "41.6",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct hours weighted | DVM_0024 | last 8 weeks"
+  },
+  "c05_dvm_0024_recheck_mean": {
+   "value": 41.6,
+   "display": "41.6",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct simple mean | DVM_0024 | last 8 weeks"
+  },
+  "c05_dvm_0024_tenure": {
+   "value": 89,
+   "display": "89",
+   "kind": "count",
+   "source": "data/raw/provider_weekly.csv | tenure_months | DVM_0024"
+  },
+  "c05_dvm_0024_employment": {
+   "value": "full time",
+   "display": "full time",
+   "kind": "text",
+   "source": "data/raw/provider_weekly.csv | employment_type | DVM_0024"
+  },
+  "c05_dvm_0024_hours": {
+   "value": 184.5,
+   "display": "184.5",
+   "kind": "hours1",
+   "source": "data/raw/provider_weekly.csv | scheduled_hours | DVM_0024 | last 8 weeks sum"
+  },
+  "c05_dvm_0020_recheck_hw": {
+   "value": 64.3,
+   "display": "64.3",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct hours weighted | DVM_0020 | last 8 weeks"
+  },
+  "c05_dvm_0020_recheck_mean": {
+   "value": 64.5,
+   "display": "64.5",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct simple mean | DVM_0020 | last 8 weeks"
+  },
+  "c05_dvm_0020_tenure": {
+   "value": 33,
+   "display": "33",
+   "kind": "count",
+   "source": "data/raw/provider_weekly.csv | tenure_months | DVM_0020"
+  },
+  "c05_dvm_0020_employment": {
+   "value": "full time",
+   "display": "full time",
+   "kind": "text",
+   "source": "data/raw/provider_weekly.csv | employment_type | DVM_0020"
+  },
+  "c05_dvm_0020_hours": {
+   "value": 289.9,
+   "display": "289.9",
+   "kind": "hours1",
+   "source": "data/raw/provider_weekly.csv | scheduled_hours | DVM_0020 | last 8 weeks sum"
+  },
+  "c05_dvm_0021_recheck_hw": {
+   "value": 71.6,
+   "display": "71.6",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct hours weighted | DVM_0021 | last 8 weeks"
+  },
+  "c05_dvm_0021_recheck_mean": {
+   "value": 71.5,
+   "display": "71.5",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct simple mean | DVM_0021 | last 8 weeks"
+  },
+  "c05_dvm_0021_tenure": {
+   "value": 91,
+   "display": "91",
+   "kind": "count",
+   "source": "data/raw/provider_weekly.csv | tenure_months | DVM_0021"
+  },
+  "c05_dvm_0021_employment": {
+   "value": "full time",
+   "display": "full time",
+   "kind": "text",
+   "source": "data/raw/provider_weekly.csv | employment_type | DVM_0021"
+  },
+  "c05_dvm_0021_hours": {
+   "value": 225.9,
+   "display": "225.9",
+   "kind": "hours1",
+   "source": "data/raw/provider_weekly.csv | scheduled_hours | DVM_0021 | last 8 weeks sum"
+  },
+  "c05_dvm_0022_recheck_hw": {
+   "value": 75.3,
+   "display": "75.3",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct hours weighted | DVM_0022 | last 8 weeks"
+  },
+  "c05_dvm_0022_recheck_mean": {
+   "value": 75.2,
+   "display": "75.2",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct simple mean | DVM_0022 | last 8 weeks"
+  },
+  "c05_dvm_0022_tenure": {
+   "value": 80,
+   "display": "80",
+   "kind": "count",
+   "source": "data/raw/provider_weekly.csv | tenure_months | DVM_0022"
+  },
+  "c05_dvm_0022_employment": {
+   "value": "full time",
+   "display": "full time",
+   "kind": "text",
+   "source": "data/raw/provider_weekly.csv | employment_type | DVM_0022"
+  },
+  "c05_dvm_0022_hours": {
+   "value": 232.4,
+   "display": "232.4",
+   "kind": "hours1",
+   "source": "data/raw/provider_weekly.csv | scheduled_hours | DVM_0022 | last 8 weeks sum"
+  },
+  "c05_dvm_0023_recheck_hw": {
+   "value": 79.7,
+   "display": "79.7",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct hours weighted | DVM_0023 | last 8 weeks"
+  },
+  "c05_dvm_0023_recheck_mean": {
+   "value": 79.6,
+   "display": "79.6",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct simple mean | DVM_0023 | last 8 weeks"
+  },
+  "c05_dvm_0023_tenure": {
+   "value": 22,
+   "display": "22",
+   "kind": "count",
+   "source": "data/raw/provider_weekly.csv | tenure_months | DVM_0023"
+  },
+  "c05_dvm_0023_employment": {
+   "value": "full time",
+   "display": "full time",
+   "kind": "text",
+   "source": "data/raw/provider_weekly.csv | employment_type | DVM_0023"
+  },
+  "c05_dvm_0023_hours": {
+   "value": 295.8,
+   "display": "295.8",
+   "kind": "hours1",
+   "source": "data/raw/provider_weekly.csv | scheduled_hours | DVM_0023 | last 8 weeks sum"
+  },
+  "c05_clinic_recheck_8wk_hw": {
+   "value": 68.039,
+   "display": "68.0",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct hours weighted all doctors | Clinic 05 (CL_005) | last 8 weeks"
+  },
+  "c05_clinic_recheck_if_dvm0024_at_peers": {
+   "value": 72.706,
+   "display": "72.7",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct hours weighted with DVM_0024 set to peers' rate | Clinic 05 (CL_005) | last 8 weeks",
+   "note": "counterfactual"
+  },
+  "c05_counterfactual_lift": {
+   "value": 4.7,
+   "display": "4.7",
+   "kind": "points1",
+   "source": "data/raw/provider_weekly.csv | computed | Clinic 05 (CL_005) | counterfactual minus actual, each rounded to one decimal first",
+   "unit": "points"
+  },
+  "c05_gap_to_target_after": {
+   "value": 15.3,
+   "display": "15.3",
+   "kind": "points1",
+   "source": "data/raw/action_plans.csv target_value minus counterfactual, each rounded to one decimal first | AP_002",
+   "unit": "points"
+  },
+  "c05_hours_start": {
+   "value": 160.3,
+   "display": "160.3",
+   "kind": "hours1",
+   "source": "data/raw/clinic_weekly.csv | doctor_hours_scheduled | Clinic 05 (CL_005) | 2026-02-09"
+  },
+  "c05_hours_last": {
+   "value": 163.0,
+   "display": "163.0",
+   "kind": "hours1",
+   "source": "data/raw/clinic_weekly.csv | doctor_hours_scheduled | Clinic 05 (CL_005) | 2026-04-27"
+  },
+  "c09_cb_last": {
+   "value": 100.0,
+   "display": "100.0",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | callback_compliance_pct | Clinic 09 (CL_009) | 2026-04-27"
+  },
+  "c09_cb_avg8": {
+   "value": 99.8,
+   "display": "99.8",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | Clinic 09 (CL_009) callback_compliance_pct"
+  },
+  "c09_cb_weeks_at_ceiling_last10": {
+   "value": 9,
+   "display": "9",
+   "kind": "count",
+   "source": "outputs/ranked.csv | weeks_at_ceiling | Clinic 09 (CL_009) callback_compliance_pct | last 10 weeks at or above 99.5"
+  },
+  "c09_cb_weeks_at_ceiling_all": {
+   "value": 33,
+   "display": "33",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | callback_compliance_pct | Clinic 09 (CL_009) | weeks at or above 99.5, all history"
+  },
+  "c09_weeks_available": {
+   "value": 36,
+   "display": "36",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | week_start | Clinic 09 (CL_009) | count"
+  },
+  "c09_cb_score": {
+   "value": 6.0,
+   "display": "6.00",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | score | Clinic 09 (CL_009) callback_compliance_pct"
+  },
+  "c09_cb_required_count": {
+   "value": "not in the data",
+   "display": "not in the data",
+   "kind": "text",
+   "source": "data/README.md | callback_compliance_pct | a rate; the count of required callbacks is not given"
+  },
+  "c09_recheck_last": {
+   "value": 73.1,
+   "display": "73.1",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | recheck_compliance_pct | Clinic 09 (CL_009) | 2026-04-27"
+  },
+  "c09_recheck_avg8": {
+   "value": 73.262,
+   "display": "73.3",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | Clinic 09 (CL_009) recheck_compliance_pct"
+  },
+  "c09_recheck_level_sd": {
+   "value": 1.508,
+   "display": "1.51",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | level_sd | Clinic 09 (CL_009) recheck_compliance_pct"
+  },
+  "c09_recheck_score": {
+   "value": 2.261,
+   "display": "2.26",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | score | Clinic 09 (CL_009) recheck_compliance_pct"
+  },
+  "recheck_peer_median_avg8_c09": {
+   "value": 81.144,
+   "display": "81.1",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | recheck_compliance_pct | median of the other 10 centers"
+  },
+  "c09_recheck_gap_to_peers": {
+   "value": 7.8,
+   "display": "7.8",
+   "kind": "points1",
+   "source": "outputs/ranked.csv | avg8 | peer median vs Clinic 09 (CL_009) recheck_compliance_pct, adverse gap, each rounded as shown first",
+   "unit": "points"
+  },
+  "c09_record_last": {
+   "value": 86.3,
+   "display": "86.3",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | record_completion_24h_pct | Clinic 09 (CL_009) | 2026-04-27"
+  },
+  "c09_record_avg8": {
+   "value": 86.075,
+   "display": "86.1",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | Clinic 09 (CL_009) record_completion_24h_pct"
+  },
+  "c09_record_level_sd": {
+   "value": 1.012,
+   "display": "1.01",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | level_sd | Clinic 09 (CL_009) record_completion_24h_pct"
+  },
+  "c09_record_score": {
+   "value": 1.517,
+   "display": "1.52",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | score | Clinic 09 (CL_009) record_completion_24h_pct"
+  },
+  "record_peer_median_avg8_c09": {
+   "value": 89.719,
+   "display": "89.7",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | record_completion_24h_pct | median of the other 10 centers"
+  },
+  "c09_record_gap_to_peers": {
+   "value": 3.6,
+   "display": "3.6",
+   "kind": "points1",
+   "source": "outputs/ranked.csv | avg8 | peer median vs Clinic 09 (CL_009) record_completion_24h_pct, adverse gap, each rounded as shown first",
+   "unit": "points"
+  },
+  "c09_noshow_last": {
+   "value": 23.0,
+   "display": "23",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | appts_no_show | Clinic 09 (CL_009) | 2026-04-27"
+  },
+  "c09_noshow_avg8": {
+   "value": 22.5,
+   "display": "22.5",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | avg8 | Clinic 09 (CL_009) appts_no_show"
+  },
+  "c09_noshow_level_sd": {
+   "value": -0.63,
+   "display": "-0.63",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | level_sd | Clinic 09 (CL_009) appts_no_show"
+  },
+  "c09_noshow_score": {
+   "value": 0.073,
+   "display": "0.07",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | score | Clinic 09 (CL_009) appts_no_show"
+  },
+  "noshow_peer_median_avg8_c09": {
+   "value": 27.062,
+   "display": "27.1",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | avg8 | appts_no_show | median of the other 10 centers"
+  },
+  "c09_noshow_gap_to_peers": {
+   "value": -4.6,
+   "display": "-4.6",
+   "kind": "points1",
+   "source": "outputs/ranked.csv | avg8 | peer median vs Clinic 09 (CL_009) appts_no_show, adverse gap, each rounded as shown first",
+   "unit": "points"
+  },
+  "c07_opened": {
+   "value": "2025-12-05",
+   "display": "2025-12-05",
+   "kind": "date",
+   "source": "data/raw/locations.csv | opened_date | Clinic 07 (CL_007)"
+  },
+  "c07_weeks": {
+   "value": 22,
+   "display": "22",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | week_start | Clinic 07 (CL_007) | count"
+  },
+  "c07_callouts_last": {
+   "value": 5.0,
+   "display": "5",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | staff_call_outs | Clinic 07 (CL_007) | 2026-04-27"
+  },
+  "c07_callouts_prior": {
+   "value": 3,
+   "display": "3",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | staff_call_outs | Clinic 07 (CL_007) | 2026-04-20"
+  },
+  "c07_callouts_avg8": {
+   "value": 1.75,
+   "display": "1.8",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | avg8 | Clinic 07 (CL_007) staff_call_outs"
+  },
+  "c07_callouts_long_mean": {
+   "value": 1.0,
+   "display": "1.0",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | long_mean | Clinic 07 (CL_007) staff_call_outs"
+  },
+  "c07_callouts_run_weeks": {
+   "value": 2,
+   "display": "2",
+   "kind": "count",
+   "source": "outputs/ranked.csv | run_weeks_uncapped | Clinic 07 (CL_007) staff_call_outs"
+  },
+  "c07_callouts_spike_sd": {
+   "value": 5.278,
+   "display": "5.28",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | spike_sd | Clinic 07 (CL_007) staff_call_outs"
+  },
+  "c07_callouts_score": {
+   "value": 5.76,
+   "display": "5.76",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | score | Clinic 07 (CL_007) staff_call_outs"
+  },
+  "c07_callouts_suppressed": {
+   "value": "none",
+   "display": "none",
+   "kind": "text",
+   "source": "outputs/suppressed.json | reason | Clinic 07 (CL_007) staff_call_outs"
+  },
+  "c07_reqs_last": {
+   "value": 1.0,
+   "display": "1",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | open_dvm_requisitions | Clinic 07 (CL_007) | 2026-04-27"
+  },
+  "c07_reqs_avg8": {
+   "value": 1.25,
+   "display": "1.2",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | avg8 | Clinic 07 (CL_007) open_dvm_requisitions"
+  },
+  "c07_reqs_long_mean": {
+   "value": 1.0,
+   "display": "1.0",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | long_mean | Clinic 07 (CL_007) open_dvm_requisitions"
+  },
+  "c07_reqs_score": {
+   "value": 2.291,
+   "display": "2.29",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | score | Clinic 07 (CL_007) open_dvm_requisitions"
+  },
+  "c07_record_last": {
+   "value": 89.3,
+   "display": "89.3",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | record_completion_24h_pct | Clinic 07 (CL_007) | 2026-04-27"
+  },
+  "c07_record_avg8": {
+   "value": 89.7,
+   "display": "89.7",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | Clinic 07 (CL_007) record_completion_24h_pct"
+  },
+  "c07_record_long_mean": {
+   "value": 89.767,
+   "display": "89.8",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | long_mean | Clinic 07 (CL_007) record_completion_24h_pct"
+  },
+  "c07_record_score": {
+   "value": 0.48,
+   "display": "0.48",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | score | Clinic 07 (CL_007) record_completion_24h_pct"
+  },
+  "c07_hours_start": {
+   "value": 77.6,
+   "display": "77.6",
+   "kind": "hours1",
+   "source": "data/raw/clinic_weekly.csv | doctor_hours_scheduled | Clinic 07 (CL_007) | 2026-02-09"
+  },
+  "c07_hours_last": {
+   "value": 76.6,
+   "display": "76.6",
+   "kind": "hours1",
+   "source": "data/raw/clinic_weekly.csv | doctor_hours_scheduled | Clinic 07 (CL_007) | 2026-04-27"
+  },
+  "c07_appts_last": {
+   "value": 175,
+   "display": "175",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | appts_completed | Clinic 07 (CL_007) | 2026-04-27"
+  },
+  "c07_appts_avg8": {
+   "value": 178.875,
+   "display": "178.9",
+   "kind": "min1",
+   "source": "data/raw/clinic_weekly.csv | appts_completed | Clinic 07 (CL_007) | trailing 8 week mean"
+  },
+  "c07_wait_last": {
+   "value": 11.0,
+   "display": "11.0 minutes",
+   "kind": "minutes1",
+   "source": "data/raw/clinic_weekly.csv | avg_wait_time_min | Clinic 07 (CL_007) | 2026-04-27"
+  },
+  "c07_wait_avg8": {
+   "value": 10.625,
+   "display": "10.6 minutes",
+   "kind": "minutes1",
+   "source": "outputs/ranked.csv | avg8 | Clinic 07 (CL_007) avg_wait_time_min"
+  },
+  "c07_csat_last": {
+   "value": 3.54,
+   "display": "3.54",
+   "kind": "csat",
+   "source": "data/raw/clinic_weekly.csv | client_csat | Clinic 07 (CL_007) | 2026-04-27"
+  },
+  "c07_csat_responses_last": {
+   "value": 7,
+   "display": "7",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | csat_responses | Clinic 07 (CL_007) | 2026-04-27"
+  },
+  "c07_csat_responses_4wk": {
+   "value": 39,
+   "display": "39",
+   "kind": "count",
+   "source": "outputs/ranked.csv | denominator_4wk | Clinic 07 (CL_007) client_csat"
+  },
+  "c07_csat_4wk_weighted": {
+   "value": 4.308,
+   "display": "4.31",
+   "kind": "csat",
+   "source": "outputs/ranked.csv | csat_4wk_weighted | Clinic 07 (CL_007) client_csat"
+  },
+  "c07_csat_long_mean": {
+   "value": 4.456,
+   "display": "4.46",
+   "kind": "csat",
+   "source": "outputs/ranked.csv | long_mean | Clinic 07 (CL_007) client_csat"
+  },
+  "c07_csat_watch_4wk_score": {
+   "value": 3.464,
+   "display": "3.46",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | watch_4wk_score | Clinic 07 (CL_007) client_csat"
+  },
+  "opp_center": {
+   "value": "Clinic 01",
+   "display": "Clinic 01",
+   "kind": "text",
+   "source": "outputs/items.json | opportunity.center"
+  },
+  "opp_metric": {
+   "value": "recheck compliance",
+   "display": "recheck compliance",
+   "kind": "text",
+   "source": "outputs/items.json | opportunity.label"
+  },
+  "opp_last": {
+   "value": 88.9,
+   "display": "88.9",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | recheck_compliance_pct | Clinic 01 (CL_001) | 2026-04-27"
+  },
+  "opp_avg8": {
+   "value": 87.962,
+   "display": "88.0",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | Clinic 01 (CL_001) recheck_compliance_pct"
+  },
+  "opp_long_mean": {
+   "value": 83.84,
+   "display": "83.8",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | long_mean | Clinic 01 (CL_001) recheck_compliance_pct"
+  },
+  "opp_peer_median_avg8": {
+   "value": 80.231,
+   "display": "80.2",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | recheck_compliance_pct | median of the other 10 centers"
+  },
+  "opp_spike_sd": {
+   "value": -0.559,
+   "display": "-0.56",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | spike_sd | Clinic 01 (CL_001) recheck_compliance_pct"
+  },
+  "opp_level_sd": {
+   "value": -1.59,
+   "display": "-1.59",
+   "kind": "sd2",
+   "source": "outputs/ranked.csv | level_sd | Clinic 01 (CL_001) recheck_compliance_pct",
+   "note": "negative means above the peer median"
+  },
+  "opp_held_weeks": {
+   "value": 6,
+   "display": "6",
+   "kind": "count",
+   "source": "outputs/items.json | opportunity.held_weeks_of_6"
+  },
+  "opp_needed_by": {
+   "value": [
+    "Clinic 05",
+    "Clinic 09"
+   ],
+   "display": "Clinic 05, Clinic 09",
+   "kind": "list",
+   "source": "outputs/items.json | opportunity.needed_by"
+  },
+  "opp_gap_to_clinic_05": {
+   "value": 20.0,
+   "display": "20.0",
+   "kind": "points1",
+   "source": "outputs/ranked.csv | avg8 | Clinic 01 (CL_001) minus Clinic 05 (CL_005) recheck, each rounded as shown first",
+   "unit": "points"
+  },
+  "plans_total": {
+   "value": 28,
+   "display": "28",
+   "kind": "count",
+   "source": "outputs/plan_check_summary.json | plans"
+  },
+  "plans_mistargeted": {
+   "value": 10,
+   "display": "10",
+   "kind": "count",
+   "source": "outputs/plan_check_summary.json | mistargeted"
+  },
+  "plans_baseline_mismatch": {
+   "value": 14,
+   "display": "14",
+   "kind": "count",
+   "source": "outputs/plan_check_summary.json | baseline_mismatch_flags"
+  },
+  "plans_baseline_denominator": {
+   "value": 26,
+   "display": "26",
+   "kind": "count",
+   "source": "outputs/plan_check_summary.json | baseline_mismatch_denominator | plans with a panel row"
+  },
+  "plans_tracking_as_reported": {
+   "value": 3,
+   "display": "3",
+   "kind": "count",
+   "source": "outputs/plan_check_summary.json | plans_tracking_as_reported"
+  },
+  "plans_in_span": {
+   "value": 10,
+   "display": "10",
+   "kind": "count",
+   "source": "outputs/plan_check_summary.json | in_span"
+  },
+  "plans_met_at_open": {
+   "value": 10,
+   "display": "10",
+   "kind": "count",
+   "source": "outputs/plan_check_summary.json | met_at_open | src/plans.py HEADLINE, last_week_on_or_before_open"
+  },
+  "plans_at_open_denominator": {
+   "value": 26,
+   "display": "26",
+   "kind": "count",
+   "source": "outputs/plan_check_summary.json | at_open_denominator | plans with a panel row at open"
+  },
+  "plans_no_data_at_open": {
+   "value": [
+    "AP_016",
+    "AP_019"
+   ],
+   "display": "AP_016, AP_019",
+   "kind": "list",
+   "source": "outputs/plan_check_summary.json | no_data_at_open"
+  },
+  "plans_tracking_word": {
+   "value": "3",
+   "display": "3",
+   "kind": "text",
+   "source": "outputs/plan_check_summary.json | plans_tracking_as_reported | as a word when zero"
+  },
+  "noise_band_definition": {
+   "value": "1 sd of the center's weekly values in the 8 weeks before the plan opened",
+   "display": "1 sd of the center's weekly values in the 8 weeks before the plan opened",
+   "kind": "text",
+   "source": "src/plans.py | noise_band | BAND_WEEKS"
+  },
+  "plans_group_close": {
+   "value": [
+    "AP_019"
+   ],
+   "display": "AP_019",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | label | in span | grouped"
+  },
+  "plans_group_close_and_reset": {
+   "value": [
+    "AP_004",
+    "AP_007",
+    "AP_009",
+    "AP_024"
+   ],
+   "display": "AP_004, AP_007, AP_009, AP_024",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | label | in span | grouped"
+  },
+  "plans_group_challenge": {
+   "value": [
+    "AP_001",
+    "AP_002",
+    "AP_003"
+   ],
+   "display": "AP_001, AP_002, AP_003",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | label | in span | grouped"
+  },
+  "plans_group_too_early": {
+   "value": [
+    "AP_020",
+    "AP_027"
+   ],
+   "display": "AP_020, AP_027",
+   "kind": "list",
+   "source": "outputs/plan_check.csv | label | in span | grouped"
+  },
+  "membership_break_date": {
+   "value": "2026-02-09",
+   "display": "2026-02-09",
+   "kind": "date",
+   "source": "data/raw/clinic_weekly.csv | membership_conversion_pct | definition change date (data/README.md note 5)"
+  },
+  "membership_centers_suppressed": {
+   "value": 11,
+   "display": "11",
+   "kind": "count",
+   "source": "outputs/suppressed.json | reason starts with definition change | count"
+  },
+  "ramp_centers": {
+   "value": [
+    "Clinic 07",
+    "Clinic 10"
+   ],
+   "display": "Clinic 07, Clinic 10",
+   "kind": "list",
+   "source": "outputs/suppressed.json | reason starts with ramp | centers"
+  },
+  "ramp_metrics": {
+   "value": [
+    "no shows",
+    "revenue per appointment",
+    "throughput"
+   ],
+   "display": "no shows, revenue per appointment, throughput",
+   "kind": "list",
+   "source": "outputs/suppressed.json | reason starts with ramp | metrics"
+  },
+  "ramp_weeks_clinic_07": {
+   "value": 22,
+   "display": "22",
+   "kind": "count",
+   "source": "outputs/suppressed.json | weeks_available | Clinic 07 (CL_007)"
+  },
+  "ramp_weeks_clinic_10": {
+   "value": 18,
+   "display": "18",
+   "kind": "count",
+   "source": "outputs/suppressed.json | weeks_available | Clinic 10 (CL_010)"
+  },
+  "watching_rows": {
+   "value": [
+    "none"
+   ],
+   "display": "none",
+   "kind": "list",
+   "source": "outputs/suppressed.json | reason starts with watching"
+  },
+  "suppressed_pairs": {
+   "value": [
+    {
+     "center": "Clinic 01",
+     "metric_label": "Membership conversion"
+    },
+    {
+     "center": "Clinic 02",
+     "metric_label": "Membership conversion"
+    },
+    {
+     "center": "Clinic 03",
+     "metric_label": "Membership conversion"
+    },
+    {
+     "center": "Clinic 04",
+     "metric_label": "Membership conversion"
+    },
+    {
+     "center": "Clinic 05",
+     "metric_label": "Membership conversion"
+    },
+    {
+     "center": "Clinic 06",
+     "metric_label": "Membership conversion"
+    },
+    {
+     "center": "Clinic 07",
+     "metric_label": "Client satisfaction"
+    },
+    {
+     "center": "Clinic 07",
+     "metric_label": "Throughput per doctor hour"
+    },
+    {
+     "center": "Clinic 07",
+     "metric_label": "Revenue per appointment"
+    },
+    {
+     "center": "Clinic 07",
+     "metric_label": "No shows"
+    },
+    {
+     "center": "Clinic 07",
+     "metric_label": "Membership conversion"
+    },
+    {
+     "center": "Clinic 08",
+     "metric_label": "Membership conversion"
+    },
+    {
+     "center": "Clinic 09",
+     "metric_label": "Membership conversion"
+    },
+    {
+     "center": "Clinic 10",
+     "metric_label": "Throughput per doctor hour"
+    },
+    {
+     "center": "Clinic 10",
+     "metric_label": "Revenue per appointment"
+    },
+    {
+     "center": "Clinic 10",
+     "metric_label": "No shows"
+    },
+    {
+     "center": "Clinic 10",
+     "metric_label": "Membership conversion"
+    },
+    {
+     "center": "Clinic 11",
+     "metric_label": "Membership conversion"
+    }
+   ],
+   "display": "Clinic 01 Membership conversion; Clinic 02 Membership conversion; Clinic 03 Membership conversion; Clinic 04 Membership conversion; Clinic 05 Membership conversion; Clinic 06 Membership conversion; Clinic 07 Client satisfaction; Clinic 07 Throughput per doctor hour; Clinic 07 Revenue per appointment; Clinic 07 No shows; Clinic 07 Membership conversion; Clinic 08 Membership conversion; Clinic 09 Membership conversion; Clinic 10 Throughput per doctor hour; Clinic 10 Revenue per appointment; Clinic 10 No shows; Clinic 10 Membership conversion; Clinic 11 Membership conversion",
+   "kind": "list",
+   "source": "outputs/suppressed.json | center, metric | hard suppressions"
+  },
+  "suppressed_total_logged": {
+   "value": 106,
+   "display": "106",
+   "kind": "count",
+   "source": "outputs/suppressed.json | count"
+  },
+  "om_clinic_02_callback_compliance_pct_last": {
+   "value": 91.8,
+   "display": "91.8",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | callback_compliance_pct | Clinic 02 (CL_002) | 2026-04-27"
+  },
+  "om_clinic_02_callback_compliance_pct_avg8": {
+   "value": 86.762,
+   "display": "86.8",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | Clinic 02 (CL_002) callback_compliance_pct"
+  },
+  "om_clinic_02_callback_compliance_pct_long_mean": {
+   "value": 85.164,
+   "display": "85.2",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | long_mean | Clinic 02 (CL_002) callback_compliance_pct"
+  },
+  "om_clinic_04_recheck_compliance_pct_last": {
+   "value": 79.5,
+   "display": "79.5",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | recheck_compliance_pct | Clinic 04 (CL_004) | 2026-04-27"
+  },
+  "om_clinic_04_recheck_compliance_pct_avg8": {
+   "value": 81.412,
+   "display": "81.4",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | Clinic 04 (CL_004) recheck_compliance_pct"
+  },
+  "om_clinic_04_recheck_compliance_pct_long_mean": {
+   "value": 80.552,
+   "display": "80.6",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | long_mean | Clinic 04 (CL_004) recheck_compliance_pct"
+  },
+  "om_clinic_03_appts_no_show_last": {
+   "value": 52.0,
+   "display": "52",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | appts_no_show | Clinic 03 (CL_003) | 2026-04-27"
+  },
+  "om_clinic_03_appts_no_show_avg8": {
+   "value": 35.0,
+   "display": "35.0",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | avg8 | Clinic 03 (CL_003) appts_no_show"
+  },
+  "om_clinic_03_appts_no_show_long_mean": {
+   "value": 31.643,
+   "display": "31.6",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | long_mean | Clinic 03 (CL_003) appts_no_show"
+  },
+  "om_clinic_02_appts_per_doctor_hour_last": {
+   "value": 2.442,
+   "display": "2.44",
+   "kind": "rate2",
+   "source": "data/raw/clinic_weekly.csv | appts_per_doctor_hour | Clinic 02 (CL_002) | 2026-04-27"
+  },
+  "om_clinic_02_appts_per_doctor_hour_avg8": {
+   "value": 2.503,
+   "display": "2.50",
+   "kind": "rate2",
+   "source": "outputs/ranked.csv | avg8 | Clinic 02 (CL_002) appts_per_doctor_hour"
+  },
+  "om_clinic_02_appts_per_doctor_hour_long_mean": {
+   "value": 2.596,
+   "display": "2.60",
+   "kind": "rate2",
+   "source": "outputs/ranked.csv | long_mean | Clinic 02 (CL_002) appts_per_doctor_hour"
+  },
+  "dn_duplicates": {
+   "value": 9,
+   "display": "9",
+   "kind": "count",
+   "source": "outputs/data_notes.json | duplicate_rows_removed.count"
+  },
+  "dn_negative_waits": {
+   "value": 11,
+   "display": "11",
+   "kind": "count",
+   "source": "outputs/data_notes.json | negative_wait_set_missing.count"
+  },
+  "dn_tier_mismatches": {
+   "value": 7,
+   "display": "7",
+   "kind": "count",
+   "source": "outputs/data_notes.json | maturity_tier_mismatch.count"
+  },
+  "dn_tier_mismatch_centers": {
+   "value": [
+    "Clinic 02",
+    "Clinic 04",
+    "Clinic 05",
+    "Clinic 06",
+    "Clinic 08",
+    "Clinic 09",
+    "Clinic 10"
+   ],
+   "display": "Clinic 02, Clinic 04, Clinic 05, Clinic 06, Clinic 08, Clinic 09, Clinic 10",
+   "kind": "list",
+   "source": "outputs/data_notes.json | maturity_tier_mismatch.rows"
+  },
+  "dn_state_code_errors": {
+   "value": 7,
+   "display": "7",
+   "kind": "count",
+   "source": "outputs/data_notes.json | state_code_mismatch.count"
+  },
+  "dn_fte_oddities": {
+   "value": [
+    "Clinic 09: 4 rooms, 6.4 FTE (1.6 per room)",
+    "Clinic 11: 7 rooms, 2.7 FTE (0.39 per room)"
+   ],
+   "display": "Clinic 09: 4 rooms, 6.4 FTE (1.6 per room), Clinic 11: 7 rooms, 2.7 FTE (0.39 per room)",
+   "kind": "list",
+   "source": "outputs/data_notes.json | doctor_fte_target_oddity.rows | in span"
+  },
+  "item1_rank": {
+   "value": 1,
+   "display": "1",
+   "kind": "count",
+   "source": "outputs/items.json | items.rank"
+  },
+  "item1_center": {
+   "value": "Clinic 11",
+   "display": "Clinic 11",
+   "kind": "text",
+   "source": "outputs/items.json | items.center | rank 1"
+  },
+  "item1_score": {
+   "value": 15.0,
+   "display": "15.00",
+   "kind": "sd2",
+   "source": "outputs/items.json | items.score | rank 1"
+  },
+  "item1_signal": {
+   "value": "drift",
+   "display": "drift",
+   "kind": "text",
+   "source": "outputs/ranked.csv | spike_sd, drift_sd, level_sd, integrity | Clinic 11 (CL_011) record_completion_24h_pct | largest term"
+  },
+  "item1_owner": {
+   "value": "Medical Director, North",
+   "display": "You",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv owner_name or data/raw/locations.csv rop_name | item 1"
+  },
+  "item1_check_date": {
+   "value": "2026-05-11",
+   "display": "2026-05-11",
+   "kind": "date",
+   "source": "src/run.py | --date plus 7 or 14 days | item 1"
+  },
+  "item1_check_back": {
+   "value": "Monday May 11",
+   "display": "Monday May 11",
+   "kind": "text",
+   "source": "src/run.py | --date plus 7 or 14 days | item 1 | weekday month day"
+  },
+  "item1_check_back_short": {
+   "value": "May 11",
+   "display": "May 11",
+   "kind": "text",
+   "source": "src/run.py | --date plus 7 or 14 days | item 1 | month day"
+  },
+  "item1_run_weeks": {
+   "value": 11,
+   "display": "11",
+   "kind": "count",
+   "source": "outputs/ranked.csv | run_weeks_uncapped | Clinic 11 (CL_011) record_completion_24h_pct"
+  },
+  "item1_headline": {
+   "value": "Clinic 11: record completion below its norm 11 weeks running",
+   "display": "Clinic 11: record completion below its norm 11 weeks running",
+   "kind": "text",
+   "source": "outputs/items.json | items | templated in src/facts.py by signal type"
+  },
+  "item2_rank": {
+   "value": 2,
+   "display": "2",
+   "kind": "count",
+   "source": "outputs/items.json | items.rank"
+  },
+  "item2_center": {
+   "value": "Clinic 06",
+   "display": "Clinic 06",
+   "kind": "text",
+   "source": "outputs/items.json | items.center | rank 2"
+  },
+  "item2_score": {
+   "value": 8.64,
+   "display": "8.64",
+   "kind": "sd2",
+   "source": "outputs/items.json | items.score | rank 2"
+  },
+  "item2_signal": {
+   "value": "spike",
+   "display": "spike",
+   "kind": "text",
+   "source": "outputs/ranked.csv | spike_sd, drift_sd, level_sd, integrity | Clinic 06 (CL_006) staff_call_outs | largest term"
+  },
+  "item2_owner": {
+   "value": "Regional Ops Partner, North",
+   "display": "Regional Ops Partner, North",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv owner_name or data/raw/locations.csv rop_name | item 2"
+  },
+  "item2_check_date": {
+   "value": "2026-05-11",
+   "display": "2026-05-11",
+   "kind": "date",
+   "source": "src/run.py | --date plus 7 or 14 days | item 2"
+  },
+  "item2_check_back": {
+   "value": "Monday May 11",
+   "display": "Monday May 11",
+   "kind": "text",
+   "source": "src/run.py | --date plus 7 or 14 days | item 2 | weekday month day"
+  },
+  "item2_check_back_short": {
+   "value": "May 11",
+   "display": "May 11",
+   "kind": "text",
+   "source": "src/run.py | --date plus 7 or 14 days | item 2 | month day"
+  },
+  "item2_run_weeks": {
+   "value": 8,
+   "display": "8",
+   "kind": "count",
+   "source": "outputs/ranked.csv | run_weeks_uncapped | Clinic 06 (CL_006) staff_call_outs"
+  },
+  "item2_headline": {
+   "value": "Clinic 06: call outs at 9, up 8 weeks running",
+   "display": "Clinic 06: call outs at 9, up 8 weeks running",
+   "kind": "text",
+   "source": "outputs/items.json | items | templated in src/facts.py by signal type"
+  },
+  "item3_rank": {
+   "value": 3,
+   "display": "3",
+   "kind": "count",
+   "source": "outputs/items.json | items.rank"
+  },
+  "item3_center": {
+   "value": "Clinic 05",
+   "display": "Clinic 05",
+   "kind": "text",
+   "source": "outputs/items.json | items.center | rank 3"
+  },
+  "item3_score": {
+   "value": 7.937,
+   "display": "7.94",
+   "kind": "sd2",
+   "source": "outputs/items.json | items.score | rank 3"
+  },
+  "item3_signal": {
+   "value": "level",
+   "display": "level",
+   "kind": "text",
+   "source": "outputs/ranked.csv | spike_sd, drift_sd, level_sd, integrity | Clinic 05 (CL_005) recheck_compliance_pct | largest term"
+  },
+  "item3_owner": {
+   "value": "Medical Director, North",
+   "display": "You",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv owner_name or data/raw/locations.csv rop_name | item 3"
+  },
+  "item3_check_date": {
+   "value": "2026-05-18",
+   "display": "2026-05-18",
+   "kind": "date",
+   "source": "src/run.py | --date plus 7 or 14 days | item 3"
+  },
+  "item3_check_back": {
+   "value": "Monday May 18",
+   "display": "Monday May 18",
+   "kind": "text",
+   "source": "src/run.py | --date plus 7 or 14 days | item 3 | weekday month day"
+  },
+  "item3_check_back_short": {
+   "value": "May 18",
+   "display": "May 18",
+   "kind": "text",
+   "source": "src/run.py | --date plus 7 or 14 days | item 3 | month day"
+  },
+  "item3_run_weeks": {
+   "value": 0,
+   "display": "0",
+   "kind": "count",
+   "source": "outputs/ranked.csv | run_weeks_uncapped | Clinic 05 (CL_005) recheck_compliance_pct"
+  },
+  "item3_gap_to_peers": {
+   "value": 13.118,
+   "display": "13.1",
+   "kind": "points1",
+   "source": "outputs/ranked.csv | avg8 | peer median vs Clinic 05 (CL_005) recheck_compliance_pct",
+   "unit": "points"
+  },
+  "item3_one_doctor_rate": {
+   "value": 41.6,
+   "display": "41.6",
+   "kind": "pct",
+   "source": "data/raw/provider_weekly.csv | recheck_compliance_pct hours weighted | DVM_0024 | last 8 weeks"
+  },
+  "item3_headline": {
+   "value": "Clinic 05: recheck compliance 13.1 points below peers; one doctor at 41.6",
+   "display": "Clinic 05: recheck compliance 13.1 points below peers; one doctor at 41.6",
+   "kind": "text",
+   "source": "outputs/items.json | items | templated in src/facts.py by signal type"
+  },
+  "item4_rank": {
+   "value": 4,
+   "display": "4",
+   "kind": "count",
+   "source": "outputs/items.json | items.rank"
+  },
+  "item4_center": {
+   "value": "Clinic 09",
+   "display": "Clinic 09",
+   "kind": "text",
+   "source": "outputs/items.json | items.center | rank 4"
+  },
+  "item4_score": {
+   "value": 6.0,
+   "display": "6.00",
+   "kind": "sd2",
+   "source": "outputs/items.json | items.score | rank 4"
+  },
+  "item4_signal": {
+   "value": "integrity",
+   "display": "integrity",
+   "kind": "text",
+   "source": "outputs/ranked.csv | spike_sd, drift_sd, level_sd, integrity | Clinic 09 (CL_009) callback_compliance_pct | largest term"
+  },
+  "item4_owner": {
+   "value": "Regional Ops Partner, North",
+   "display": "Regional Ops Partner, North",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv owner_name or data/raw/locations.csv rop_name | item 4"
+  },
+  "item4_check_date": {
+   "value": "2026-05-11",
+   "display": "2026-05-11",
+   "kind": "date",
+   "source": "src/run.py | --date plus 7 or 14 days | item 4"
+  },
+  "item4_check_back": {
+   "value": "Monday May 11",
+   "display": "Monday May 11",
+   "kind": "text",
+   "source": "src/run.py | --date plus 7 or 14 days | item 4 | weekday month day"
+  },
+  "item4_check_back_short": {
+   "value": "May 11",
+   "display": "May 11",
+   "kind": "text",
+   "source": "src/run.py | --date plus 7 or 14 days | item 4 | month day"
+  },
+  "item4_run_weeks": {
+   "value": 0,
+   "display": "0",
+   "kind": "count",
+   "source": "outputs/ranked.csv | run_weeks_uncapped | Clinic 09 (CL_009) callback_compliance_pct"
+  },
+  "item4_headline": {
+   "value": "Clinic 09: callbacks at the ceiling, verify the logging",
+   "display": "Clinic 09: callbacks at the ceiling, verify the logging",
+   "kind": "text",
+   "source": "outputs/items.json | items | templated in src/facts.py by signal type"
+  },
+  "item4_also_recheck_compliance_pct_last": {
+   "value": 73.1,
+   "display": "73.1",
+   "kind": "pct",
+   "source": "data/raw/clinic_weekly.csv | recheck_compliance_pct | Clinic 09 (CL_009) | 2026-04-27"
+  },
+  "item4_also_recheck_compliance_pct_avg8": {
+   "value": 73.262,
+   "display": "73.3",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | Clinic 09 (CL_009) recheck_compliance_pct"
+  },
+  "item4_also_recheck_compliance_pct_long_mean": {
+   "value": 72.85,
+   "display": "72.8",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | long_mean | Clinic 09 (CL_009) recheck_compliance_pct"
+  },
+  "item4_also_recheck_compliance_pct_peer_median": {
+   "value": 81.144,
+   "display": "81.1",
+   "kind": "pct",
+   "source": "outputs/ranked.csv | avg8 | recheck_compliance_pct | median of the other 10 centers"
+  },
+  "item5_rank": {
+   "value": 5,
+   "display": "5",
+   "kind": "count",
+   "source": "outputs/items.json | items.rank"
+  },
+  "item5_center": {
+   "value": "Clinic 07",
+   "display": "Clinic 07",
+   "kind": "text",
+   "source": "outputs/items.json | items.center | rank 5"
+  },
+  "item5_score": {
+   "value": 5.76,
+   "display": "5.76",
+   "kind": "sd2",
+   "source": "outputs/items.json | items.score | rank 5"
+  },
+  "item5_signal": {
+   "value": "spike",
+   "display": "spike",
+   "kind": "text",
+   "source": "outputs/ranked.csv | spike_sd, drift_sd, level_sd, integrity | Clinic 07 (CL_007) staff_call_outs | largest term"
+  },
+  "item5_owner": {
+   "value": "Regional Ops Partner, North",
+   "display": "Regional Ops Partner, North",
+   "kind": "text",
+   "source": "data/raw/action_plans.csv owner_name or data/raw/locations.csv rop_name | item 5"
+  },
+  "item5_check_date": {
+   "value": "2026-05-11",
+   "display": "2026-05-11",
+   "kind": "date",
+   "source": "src/run.py | --date plus 7 or 14 days | item 5"
+  },
+  "item5_check_back": {
+   "value": "Monday May 11",
+   "display": "Monday May 11",
+   "kind": "text",
+   "source": "src/run.py | --date plus 7 or 14 days | item 5 | weekday month day"
+  },
+  "item5_check_back_short": {
+   "value": "May 11",
+   "display": "May 11",
+   "kind": "text",
+   "source": "src/run.py | --date plus 7 or 14 days | item 5 | month day"
+  },
+  "item5_run_weeks": {
+   "value": 2,
+   "display": "2",
+   "kind": "count",
+   "source": "outputs/ranked.csv | run_weeks_uncapped | Clinic 07 (CL_007) staff_call_outs"
+  },
+  "item5_headline": {
+   "value": "Clinic 07: call outs at 5, up 2 weeks running",
+   "display": "Clinic 07: call outs at 5, up 2 weeks running",
+   "kind": "text",
+   "source": "outputs/items.json | items | templated in src/facts.py by signal type"
+  },
+  "item5_also_open_dvm_requisitions_last": {
+   "value": 1.0,
+   "display": "1",
+   "kind": "count",
+   "source": "data/raw/clinic_weekly.csv | open_dvm_requisitions | Clinic 07 (CL_007) | 2026-04-27"
+  },
+  "item5_also_open_dvm_requisitions_avg8": {
+   "value": 1.25,
+   "display": "1.2",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | avg8 | Clinic 07 (CL_007) open_dvm_requisitions"
+  },
+  "item5_also_open_dvm_requisitions_long_mean": {
+   "value": 1.0,
+   "display": "1.0",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | long_mean | Clinic 07 (CL_007) open_dvm_requisitions"
+  },
+  "item5_also_open_dvm_requisitions_peer_median": {
+   "value": 0.25,
+   "display": "0.2",
+   "kind": "min1",
+   "source": "outputs/ranked.csv | avg8 | open_dvm_requisitions | median of the other 10 centers"
+  },
+  "item1_first_surfaced": {
+   "value": "2026-02-16",
+   "display": "2026-02-16",
+   "kind": "date",
+   "source": "outputs/first_surfaced.csv | first_monday | item 1 | src/surface.py, ranking as of each prior Monday"
+  },
+  "item1_mondays_before_latest_week": {
+   "value": 10,
+   "display": "10",
+   "kind": "count",
+   "source": "outputs/first_surfaced.csv | mondays_before_latest_week | item 1 | Mondays from first_monday to the latest complete week"
+  },
+  "item2_first_surfaced": {
+   "value": "2026-03-23",
+   "display": "2026-03-23",
+   "kind": "date",
+   "source": "outputs/first_surfaced.csv | first_monday | item 2 | src/surface.py, ranking as of each prior Monday"
+  },
+  "item2_mondays_before_latest_week": {
+   "value": 5,
+   "display": "5",
+   "kind": "count",
+   "source": "outputs/first_surfaced.csv | mondays_before_latest_week | item 2 | Mondays from first_monday to the latest complete week"
+  },
+  "item3_first_surfaced": {
+   "value": "2025-12-22",
+   "display": "2025-12-22",
+   "kind": "date",
+   "source": "outputs/first_surfaced.csv | first_monday | item 3 | src/surface.py, ranking as of each prior Monday"
+  },
+  "item3_mondays_before_latest_week": {
+   "value": 18,
+   "display": "18",
+   "kind": "count",
+   "source": "outputs/first_surfaced.csv | mondays_before_latest_week | item 3 | Mondays from first_monday to the latest complete week"
+  },
+  "item4_first_surfaced": {
+   "value": "2025-11-10",
+   "display": "2025-11-10",
+   "kind": "date",
+   "source": "outputs/first_surfaced.csv | first_monday | item 4 | src/surface.py, ranking as of each prior Monday"
+  },
+  "item4_mondays_before_latest_week": {
+   "value": 24,
+   "display": "24",
+   "kind": "count",
+   "source": "outputs/first_surfaced.csv | mondays_before_latest_week | item 4 | Mondays from first_monday to the latest complete week"
+  },
+  "item5_first_surfaced": {
+   "value": "this week",
+   "display": "this week",
+   "kind": "text",
+   "source": "outputs/first_surfaced.csv | first_monday | item 5 | src/surface.py, ranking as of each prior Monday"
+  },
+  "item5_mondays_before_latest_week": {
+   "value": 0,
+   "display": "0",
+   "kind": "count",
+   "source": "outputs/first_surfaced.csv | mondays_before_latest_week | item 5 | Mondays from first_monday to the latest complete week"
+  },
+  "one_thing_item_rank": {
+   "value": 2,
+   "display": "2",
+   "kind": "count",
+   "source": "outputs/items.json | items.rank | selected by ONE_THING_RULE"
+  },
+  "one_thing_center": {
+   "value": "Clinic 06",
+   "display": "Clinic 06",
+   "kind": "text",
+   "source": "outputs/items.json | items.center | selected by ONE_THING_RULE"
+  }
+ },
+ "digest": {
+  "header": {
+   "leader": "leader",
+   "date": "digest_date",
+   "centers": "n_centers",
+   "latest_week": "latest_week",
+   "rop": "rop_name"
+  },
+  "at_a_glance": [
+   {
+    "rank": 1,
+    "headline": "item1_headline",
+    "owner": "item1_owner",
+    "check_date": "item1_check_date",
+    "check_back_short": "item1_check_back_short"
+   },
+   {
+    "rank": 2,
+    "headline": "item2_headline",
+    "owner": "item2_owner",
+    "check_date": "item2_check_date",
+    "check_back_short": "item2_check_back_short"
+   },
+   {
+    "rank": 3,
+    "headline": "item3_headline",
+    "owner": "item3_owner",
+    "check_date": "item3_check_date",
+    "check_back_short": "item3_check_back_short"
+   },
+   {
+    "rank": 4,
+    "headline": "item4_headline",
+    "owner": "item4_owner",
+    "check_date": "item4_check_date",
+    "check_back_short": "item4_check_back_short"
+   },
+   {
+    "rank": 5,
+    "headline": "item5_headline",
+    "owner": "item5_owner",
+    "check_date": "item5_check_date",
+    "check_back_short": "item5_check_back_short"
+   }
+  ],
+  "one_thing_today": {
+   "center": "one_thing_center",
+   "item_rank": "one_thing_item_rank",
+   "who_to_call": "rop_name",
+   "check_date": "next_digest_date",
+   "check_back": "one_thing_check_back",
+   "slot": "one_thing_today_why",
+   "rule": "The highest ranked item in the ops lane whose lead signal is a spike of 3 sd or more with a run of at least 2 weeks. A staffing spike needs a same day call because this week's schedule is set on Monday. If no item qualifies, item 1."
+  },
+  "items": [
+   {
+    "rank": 1,
+    "center": "Clinic 11",
+    "location_id": "CL_011",
+    "lane": "medical",
+    "lead_metric": "record_completion_24h_pct",
+    "lead_label": "Record completion within 24h",
+    "signal": "drift",
+    "headline": "item1_headline",
+    "owner": "item1_owner",
+    "check_date": "item1_check_date",
+    "check_back": "item1_check_back",
+    "check_back_short": "item1_check_back_short",
+    "slots": [
+     "item1_what_happened",
+     "item1_why_it_matters",
+     "item1_what_to_do"
+    ],
+    "code_why": null,
+    "also_moving": [],
+    "plans": [
+     "AP_001",
+     "AP_009"
+    ],
+    "tables": {
+     "weeks": true,
+     "doctors": [
+      {
+       "provider_id": "DVM_0046",
+       "early": "c11_dvm_0046_early",
+       "late": "c11_dvm_0046_late"
+      },
+      {
+       "provider_id": "DVM_0047",
+       "early": "c11_dvm_0047_early",
+       "late": "c11_dvm_0047_late"
+      },
+      {
+       "provider_id": "DVM_0048",
+       "early": "c11_dvm_0048_early",
+       "late": "c11_dvm_0048_late"
+      },
+      {
+       "provider_id": "DVM_0049",
+       "early": "c11_dvm_0049_early",
+       "late": "c11_dvm_0049_late"
+      }
+     ]
+    }
+   },
+   {
+    "rank": 2,
+    "center": "Clinic 06",
+    "location_id": "CL_006",
+    "lane": "ops",
+    "lead_metric": "staff_call_outs",
+    "lead_label": "Staff call outs",
+    "signal": "spike",
+    "headline": "item2_headline",
+    "owner": "item2_owner",
+    "check_date": "item2_check_date",
+    "check_back": "item2_check_back",
+    "check_back_short": "item2_check_back_short",
+    "slots": [
+     "item2_what_happened",
+     "item2_why_it_matters",
+     "item2_what_to_do"
+    ],
+    "code_why": null,
+    "also_moving": [],
+    "plans": [
+     "AP_003",
+     "AP_024"
+    ],
+    "tables": {}
+   },
+   {
+    "rank": 3,
+    "center": "Clinic 05",
+    "location_id": "CL_005",
+    "lane": "medical",
+    "lead_metric": "recheck_compliance_pct",
+    "lead_label": "Recheck compliance",
+    "signal": "level",
+    "headline": "item3_headline",
+    "owner": "item3_owner",
+    "check_date": "item3_check_date",
+    "check_back": "item3_check_back",
+    "check_back_short": "item3_check_back_short",
+    "slots": [
+     "item3_what_happened",
+     "item3_what_to_do"
+    ],
+    "code_why": {
+     "template": "If DVM_0024 matched the other Clinic 05 doctors, the clinic would reach {c05_clinic_recheck_if_dvm0024_at_peers}, still {c05_gap_to_target_after} points short of the {ap_002_target} target.",
+     "facts": [
+      "c05_clinic_recheck_if_dvm0024_at_peers",
+      "c05_gap_to_target_after",
+      "ap_002_target"
+     ]
+    },
+    "also_moving": [],
+    "plans": [
+     "AP_002"
+    ],
+    "tables": {
+     "peers": [
+      {
+       "provider_id": "DVM_0024",
+       "employment": "c05_dvm_0024_employment",
+       "tenure": "c05_dvm_0024_tenure",
+       "hours": "c05_dvm_0024_hours",
+       "recheck_hw": "c05_dvm_0024_recheck_hw",
+       "recheck_mean": "c05_dvm_0024_recheck_mean"
+      },
+      {
+       "provider_id": "DVM_0020",
+       "employment": "c05_dvm_0020_employment",
+       "tenure": "c05_dvm_0020_tenure",
+       "hours": "c05_dvm_0020_hours",
+       "recheck_hw": "c05_dvm_0020_recheck_hw",
+       "recheck_mean": "c05_dvm_0020_recheck_mean"
+      },
+      {
+       "provider_id": "DVM_0021",
+       "employment": "c05_dvm_0021_employment",
+       "tenure": "c05_dvm_0021_tenure",
+       "hours": "c05_dvm_0021_hours",
+       "recheck_hw": "c05_dvm_0021_recheck_hw",
+       "recheck_mean": "c05_dvm_0021_recheck_mean"
+      },
+      {
+       "provider_id": "DVM_0022",
+       "employment": "c05_dvm_0022_employment",
+       "tenure": "c05_dvm_0022_tenure",
+       "hours": "c05_dvm_0022_hours",
+       "recheck_hw": "c05_dvm_0022_recheck_hw",
+       "recheck_mean": "c05_dvm_0022_recheck_mean"
+      },
+      {
+       "provider_id": "DVM_0023",
+       "employment": "c05_dvm_0023_employment",
+       "tenure": "c05_dvm_0023_tenure",
+       "hours": "c05_dvm_0023_hours",
+       "recheck_hw": "c05_dvm_0023_recheck_hw",
+       "recheck_mean": "c05_dvm_0023_recheck_mean"
+      }
+     ]
+    }
+   },
+   {
+    "rank": 4,
+    "center": "Clinic 09",
+    "location_id": "CL_009",
+    "lane": "medical",
+    "lead_metric": "callback_compliance_pct",
+    "lead_label": "Callback compliance",
+    "signal": "integrity",
+    "headline": "item4_headline",
+    "owner": "item4_owner",
+    "check_date": "item4_check_date",
+    "check_back": "item4_check_back",
+    "check_back_short": "item4_check_back_short",
+    "slots": [
+     "item4_what_happened",
+     "item4_why_it_matters",
+     "item4_what_to_do"
+    ],
+    "code_why": null,
+    "also_moving": [
+     {
+      "metric_label": "recheck compliance",
+      "driver": "level",
+      "last": "item4_also_recheck_compliance_pct_last",
+      "avg8": "item4_also_recheck_compliance_pct_avg8",
+      "long_mean": "item4_also_recheck_compliance_pct_long_mean",
+      "peer_median": "item4_also_recheck_compliance_pct_peer_median"
+     }
+    ],
+    "plans": [],
+    "tables": {}
+   },
+   {
+    "rank": 5,
+    "center": "Clinic 07",
+    "location_id": "CL_007",
+    "lane": "ops",
+    "lead_metric": "staff_call_outs",
+    "lead_label": "Staff call outs",
+    "signal": "spike",
+    "headline": "item5_headline",
+    "owner": "item5_owner",
+    "check_date": "item5_check_date",
+    "check_back": "item5_check_back",
+    "check_back_short": "item5_check_back_short",
+    "slots": [
+     "item5_what_happened",
+     "item5_why_it_matters",
+     "item5_what_to_do"
+    ],
+    "code_why": null,
+    "also_moving": [
+     {
+      "metric_label": "open doctor requisitions",
+      "driver": "level",
+      "last": "item5_also_open_dvm_requisitions_last",
+      "avg8": "item5_also_open_dvm_requisitions_avg8",
+      "long_mean": "item5_also_open_dvm_requisitions_long_mean",
+      "peer_median": "item5_also_open_dvm_requisitions_peer_median"
+     }
+    ],
+    "plans": [],
+    "tables": {}
+   }
+  ],
+  "plan_check": {
+   "plans": [
+    "AP_001",
+    "AP_002",
+    "AP_003",
+    "AP_004",
+    "AP_007",
+    "AP_009",
+    "AP_019",
+    "AP_020",
+    "AP_024",
+    "AP_027"
+   ],
+   "cross_region": [
+    "plans_total",
+    "plans_mistargeted",
+    "plans_tracking_word"
+   ],
+   "appendix_note": [
+    "plans_baseline_mismatch",
+    "plans_baseline_denominator"
+   ],
+   "groups": {
+    "close": "plans_group_close",
+    "close_and_reset": "plans_group_close_and_reset",
+    "challenge": "plans_group_challenge",
+    "too_early": "plans_group_too_early"
+   }
+  },
+  "opportunity": {
+   "slot": "opportunity",
+   "held_test": "weeks in the last 6 above the center's own long run mean",
+   "good_center_test": "8 week average at or above the median of the other 10 centers"
+  },
+  "suppressed": [
+   {
+    "id": "suppressed_membership",
+    "what": "Membership conversion, every center",
+    "lead": "Membership conversion, all 11 centers: definition changed 2026-02-09, not ranked.",
+    "allowed": [
+     "membership_centers_suppressed",
+     "membership_break_date"
+    ]
+   },
+   {
+    "id": "suppressed_clinic_07_csat",
+    "what": "Clinic 07 client satisfaction",
+    "lead": "Clinic 07 client satisfaction: watch. 3.54 on 7 responses last week, 4.31 on 39 over 4 weeks.",
+    "allowed": [
+     "c07_csat_last",
+     "c07_csat_responses_last",
+     "c07_csat_responses_4wk",
+     "c07_csat_4wk_weighted",
+     "c07_csat_long_mean",
+     "min_csat_responses",
+     "next_digest_date",
+     "c07_weeks",
+     "window_4wk"
+    ]
+   },
+   {
+    "id": "suppressed_ramp",
+    "what": "Throughput, revenue and no shows at Clinic 10 and Clinic 07",
+    "lead": "Throughput, revenue and no shows at Clinic 10 (18 weeks) and Clinic 07 (22 weeks): ramp, under 26 weeks of history.",
+    "allowed": [
+     "ramp_centers",
+     "ramp_metrics",
+     "ramp_weeks_clinic_10",
+     "ramp_weeks_clinic_07",
+     "ramp_weeks",
+     "ap_019_label",
+     "ap_027_label"
+    ]
+   }
+  ],
+  "other_movements": [
+   {
+    "center": "Clinic 02",
+    "metric_label": "callbacks",
+    "direction": "favorable",
+    "driver": "improving",
+    "last": "om_clinic_02_callback_compliance_pct_last",
+    "avg8": "om_clinic_02_callback_compliance_pct_avg8",
+    "long_mean": "om_clinic_02_callback_compliance_pct_long_mean"
+   },
+   {
+    "center": "Clinic 04",
+    "metric_label": "recheck compliance",
+    "direction": "adverse",
+    "driver": "last week",
+    "last": "om_clinic_04_recheck_compliance_pct_last",
+    "avg8": "om_clinic_04_recheck_compliance_pct_avg8",
+    "long_mean": "om_clinic_04_recheck_compliance_pct_long_mean"
+   },
+   {
+    "center": "Clinic 03",
+    "metric_label": "no shows",
+    "direction": "adverse",
+    "driver": "last week",
+    "last": "om_clinic_03_appts_no_show_last",
+    "avg8": "om_clinic_03_appts_no_show_avg8",
+    "long_mean": "om_clinic_03_appts_no_show_long_mean"
+   },
+   {
+    "center": "Clinic 02",
+    "metric_label": "throughput",
+    "direction": "adverse",
+    "driver": "slow drift",
+    "last": "om_clinic_02_appts_per_doctor_hour_last",
+    "avg8": "om_clinic_02_appts_per_doctor_hour_avg8",
+    "long_mean": "om_clinic_02_appts_per_doctor_hour_long_mean"
+   }
+  ],
+  "data_notes": [
+   "dn_duplicates",
+   "dn_negative_waits",
+   "dn_tier_mismatches",
+   "dn_tier_mismatch_centers",
+   "dn_state_code_errors",
+   "dn_fte_oddities",
+   "c09_cb_weeks_at_ceiling_last10"
+  ],
+  "feedback": {
+   "file": "feedback/feedback.csv",
+   "columns": [
+    "digest_date",
+    "item_id",
+    "verdict",
+    "note"
+   ],
+   "verdicts": [
+    "useful",
+    "not_useful",
+    "already_handled"
+   ],
+   "items": [
+    "item1",
+    "item2",
+    "item3",
+    "item4",
+    "item5",
+    "one_thing_today",
+    "opportunity"
+   ],
+   "free_text_row": "Anything we missed? (free text)"
+  },
+  "slots": {
+   "item1_what_happened": {
+    "cap": 40,
+    "section": "item1",
+    "allowed_facts": [
+     "item1_headline",
+     "item1_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "record_window_hours",
+     "c11_rc_20260209",
+     "c11_rc_20260223",
+     "c11_rc_20260316",
+     "c11_rc_20260406",
+     "c11_rc_20260427",
+     "c11_rc_long_mean",
+     "c11_rc_avg8",
+     "c11_rc_run_weeks",
+     "c11_rc_run_start",
+     "c11_doctors",
+     "c11_doctors_fell",
+     "c11_throughput_last",
+     "c11_throughput_avg8",
+     "ap_009_baseline_panel",
+     "ap_009_target",
+     "ap_009_status",
+     "ap_009_label",
+     "c11_duration_before",
+     "c11_duration_after",
+     "c11_duration_change",
+     "ap_001_status",
+     "ap_001_label",
+     "ap_001_actual",
+     "ap_001_target",
+     "ap_001_baseline_panel"
+    ]
+   },
+   "item1_why_it_matters": {
+    "cap": 20,
+    "section": "item1",
+    "allowed_facts": [
+     "item1_headline",
+     "item1_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "record_window_hours",
+     "c11_records_late_last_week",
+     "c11_appts_last",
+     "c11_rc_20260427"
+    ]
+   },
+   "item1_what_to_do": {
+    "cap": 15,
+    "section": "item1",
+    "allowed_facts": [
+     "item1_headline",
+     "item1_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "record_window_hours",
+     "ap_001_owner",
+     "next_digest_date",
+     "c11_doctors",
+     "item1_owner",
+     "item1_check_date"
+    ]
+   },
+   "item2_what_happened": {
+    "cap": 40,
+    "section": "item2",
+    "allowed_facts": [
+     "item2_headline",
+     "item2_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "c06_callouts_last4",
+     "c06_callouts_last",
+     "c06_callouts_prior",
+     "c06_callouts_weeks_at_latest",
+     "c06_callouts_before_march_median",
+     "c06_callouts_before_march_p75",
+     "c06_callouts_long_mean",
+     "c06_hours_start",
+     "c06_hours_last",
+     "c06_hours_change_pct",
+     "c06_open_reqs_last",
+     "c06_open_reqs_avg8",
+     "c06_wait_last",
+     "c06_wait_avg8",
+     "ap_003_status",
+     "ap_003_label",
+     "ap_024_label"
+    ]
+   },
+   "item2_why_it_matters": {
+    "cap": 20,
+    "section": "item2",
+    "allowed_facts": [
+     "item2_headline",
+     "item2_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "c06_appts_start",
+     "c06_appts_last",
+     "c06_appts_change_pct",
+     "c06_weeks_7_or_more"
+    ]
+   },
+   "item2_what_to_do": {
+    "cap": 15,
+    "section": "item2",
+    "allowed_facts": [
+     "item2_headline",
+     "item2_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "rop_name",
+     "next_digest_date",
+     "item2_owner",
+     "item2_check_date"
+    ]
+   },
+   "item3_what_happened": {
+    "cap": 40,
+    "section": "item3",
+    "allowed_facts": [
+     "item3_headline",
+     "item3_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "c05_recheck_last",
+     "c05_recheck_avg8",
+     "recheck_peer_median_avg8",
+     "c05_gap_to_peer_median",
+     "dvm0024_recheck_hw",
+     "dvm0024_recheck_mean",
+     "dvm0024_peers_hw",
+     "dvm0024_gap",
+     "dvm0024_weeks",
+     "dvm0024_tenure",
+     "dvm0024_employment",
+     "dvm0024_record_hw",
+     "dvm0024_record_peers_hw",
+     "ap_002_status",
+     "ap_002_label",
+     "ap_002_actual",
+     "ap_002_target"
+    ]
+   },
+   "item3_what_to_do": {
+    "cap": 15,
+    "section": "item3",
+    "allowed_facts": [
+     "item3_headline",
+     "item3_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "ap_002_owner",
+     "two_week_check_date",
+     "item3_owner",
+     "item3_check_date"
+    ]
+   },
+   "item4_what_happened": {
+    "cap": 40,
+    "section": "item4",
+    "allowed_facts": [
+     "item4_headline",
+     "item4_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "c09_cb_last",
+     "c09_cb_avg8",
+     "c09_cb_weeks_at_ceiling_last10",
+     "window_10wk",
+     "integrity_level",
+     "c09_cb_weeks_at_ceiling_all",
+     "c09_weeks_available",
+     "c09_cb_required_count",
+     "c09_recheck_avg8",
+     "recheck_peer_median_avg8_c09",
+     "c09_record_avg8",
+     "record_peer_median_avg8_c09",
+     "c09_noshow_last",
+     "c09_noshow_avg8",
+     "item4_also_recheck_compliance_pct_last",
+     "item4_also_recheck_compliance_pct_avg8",
+     "item4_also_recheck_compliance_pct_long_mean",
+     "item4_also_recheck_compliance_pct_peer_median"
+    ]
+   },
+   "item4_why_it_matters": {
+    "cap": 20,
+    "section": "item4",
+    "allowed_facts": [
+     "item4_headline",
+     "item4_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "c09_cb_required_count",
+     "c09_recheck_gap_to_peers",
+     "c09_record_gap_to_peers",
+     "c09_recheck_avg8",
+     "c09_record_avg8",
+     "item4_also_recheck_compliance_pct_last",
+     "item4_also_recheck_compliance_pct_avg8",
+     "item4_also_recheck_compliance_pct_long_mean",
+     "item4_also_recheck_compliance_pct_peer_median"
+    ]
+   },
+   "item4_what_to_do": {
+    "cap": 15,
+    "section": "item4",
+    "allowed_facts": [
+     "item4_headline",
+     "item4_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "rop_name",
+     "next_digest_date",
+     "c09_cb_required_count",
+     "item4_owner",
+     "item4_check_date",
+     "item4_also_recheck_compliance_pct_last",
+     "item4_also_recheck_compliance_pct_avg8",
+     "item4_also_recheck_compliance_pct_long_mean",
+     "item4_also_recheck_compliance_pct_peer_median"
+    ]
+   },
+   "item5_what_happened": {
+    "cap": 40,
+    "section": "item5",
+    "allowed_facts": [
+     "item5_headline",
+     "item5_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "c07_opened",
+     "c07_weeks",
+     "c07_callouts_last",
+     "c07_callouts_prior",
+     "c07_callouts_avg8",
+     "c07_callouts_long_mean",
+     "c07_callouts_run_weeks",
+     "c07_reqs_last",
+     "c07_reqs_avg8",
+     "c07_record_last",
+     "c07_record_avg8",
+     "c07_record_long_mean",
+     "c07_hours_start",
+     "c07_hours_last",
+     "item5_also_open_dvm_requisitions_last",
+     "item5_also_open_dvm_requisitions_avg8",
+     "item5_also_open_dvm_requisitions_long_mean",
+     "item5_also_open_dvm_requisitions_peer_median"
+    ]
+   },
+   "item5_why_it_matters": {
+    "cap": 20,
+    "section": "item5",
+    "allowed_facts": [
+     "item5_headline",
+     "item5_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "c07_weeks",
+     "c07_hours_start",
+     "c07_hours_last",
+     "c07_appts_last",
+     "c07_appts_avg8",
+     "c07_wait_last",
+     "c07_wait_avg8",
+     "item5_also_open_dvm_requisitions_last",
+     "item5_also_open_dvm_requisitions_avg8",
+     "item5_also_open_dvm_requisitions_long_mean",
+     "item5_also_open_dvm_requisitions_peer_median"
+    ]
+   },
+   "item5_what_to_do": {
+    "cap": 15,
+    "section": "item5",
+    "allowed_facts": [
+     "item5_headline",
+     "item5_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "rop_name",
+     "next_digest_date",
+     "item5_owner",
+     "item5_check_date",
+     "item5_also_open_dvm_requisitions_last",
+     "item5_also_open_dvm_requisitions_avg8",
+     "item5_also_open_dvm_requisitions_long_mean",
+     "item5_also_open_dvm_requisitions_peer_median"
+    ]
+   },
+   "one_thing_today_why": {
+    "cap": 20,
+    "section": "one_thing_today",
+    "allowed_facts": [
+     "one_thing_center",
+     "one_thing_item_rank",
+     "rop_name",
+     "next_digest_date",
+     "c06_callouts_last",
+     "c06_callouts_prior",
+     "c06_callouts_weeks_at_latest",
+     "c06_weeks_7_or_more",
+     "c06_hours_change_pct",
+     "c06_appts_change_pct",
+     "c06_hours_last"
+    ]
+   },
+   "opportunity": {
+    "cap": 25,
+    "section": "opportunity",
+    "allowed_facts": [
+     "opp_center",
+     "opp_metric",
+     "opp_last",
+     "opp_avg8",
+     "opp_held_weeks",
+     "window_6wk",
+     "opp_needed_by",
+     "opp_gap_to_clinic_05",
+     "c05_recheck_avg8",
+     "metric_def_recheck",
+     "item2_center"
+    ]
+   }
+  },
+  "evidence_index": {
+   "one_thing_center": "E1",
+   "one_thing_item_rank": "E2",
+   "rop_name": "E3",
+   "next_digest_date": "E4",
+   "c06_callouts_last": "E5",
+   "c06_callouts_prior": "E6",
+   "c06_callouts_weeks_at_latest": "E7",
+   "c06_weeks_7_or_more": "E8",
+   "c06_hours_change_pct": "E9",
+   "c06_appts_change_pct": "E10",
+   "c06_hours_last": "E11",
+   "item1_headline": "E12",
+   "item1_center": "E13",
+   "latest_week": "E14",
+   "window_8wk": "E15",
+   "window_4wk": "E16",
+   "record_window_hours": "E17",
+   "c11_rc_20260209": "E18",
+   "c11_rc_20260223": "E19",
+   "c11_rc_20260316": "E20",
+   "c11_rc_20260406": "E21",
+   "c11_rc_20260427": "E22",
+   "c11_rc_long_mean": "E23",
+   "c11_rc_avg8": "E24",
+   "c11_rc_run_weeks": "E25",
+   "c11_rc_run_start": "E26",
+   "c11_doctors": "E27",
+   "c11_doctors_fell": "E28",
+   "c11_throughput_last": "E29",
+   "c11_throughput_avg8": "E30",
+   "ap_009_baseline_panel": "E31",
+   "ap_009_target": "E32",
+   "ap_009_status": "E33",
+   "ap_009_label": "E34",
+   "c11_duration_before": "E35",
+   "c11_duration_after": "E36",
+   "c11_duration_change": "E37",
+   "ap_001_status": "E38",
+   "ap_001_label": "E39",
+   "ap_001_actual": "E40",
+   "ap_001_target": "E41",
+   "ap_001_baseline_panel": "E42",
+   "c11_records_late_last_week": "E43",
+   "c11_appts_last": "E44",
+   "ap_001_owner": "E45",
+   "item1_owner": "E46",
+   "item1_check_date": "E47",
+   "c11_dvm_0046_early": "E48",
+   "c11_dvm_0046_late": "E49",
+   "c11_dvm_0047_early": "E50",
+   "c11_dvm_0047_late": "E51",
+   "c11_dvm_0048_early": "E52",
+   "c11_dvm_0048_late": "E53",
+   "c11_dvm_0049_early": "E54",
+   "c11_dvm_0049_late": "E55",
+   "item2_headline": "E56",
+   "item2_center": "E57",
+   "c06_callouts_last4": "E58",
+   "c06_callouts_before_march_median": "E59",
+   "c06_callouts_before_march_p75": "E60",
+   "c06_callouts_long_mean": "E61",
+   "c06_hours_start": "E62",
+   "c06_open_reqs_last": "E63",
+   "c06_open_reqs_avg8": "E64",
+   "c06_wait_last": "E65",
+   "c06_wait_avg8": "E66",
+   "ap_003_status": "E67",
+   "ap_003_label": "E68",
+   "ap_024_label": "E69",
+   "c06_appts_start": "E70",
+   "c06_appts_last": "E71",
+   "item2_owner": "E72",
+   "item2_check_date": "E73",
+   "item3_headline": "E74",
+   "item3_center": "E75",
+   "c05_recheck_last": "E76",
+   "c05_recheck_avg8": "E77",
+   "recheck_peer_median_avg8": "E78",
+   "c05_gap_to_peer_median": "E79",
+   "dvm0024_recheck_hw": "E80",
+   "dvm0024_recheck_mean": "E81",
+   "dvm0024_peers_hw": "E82",
+   "dvm0024_gap": "E83",
+   "dvm0024_weeks": "E84",
+   "dvm0024_tenure": "E85",
+   "dvm0024_employment": "E86",
+   "dvm0024_record_hw": "E87",
+   "dvm0024_record_peers_hw": "E88",
+   "ap_002_status": "E89",
+   "ap_002_label": "E90",
+   "ap_002_actual": "E91",
+   "ap_002_target": "E92",
+   "ap_002_owner": "E93",
+   "two_week_check_date": "E94",
+   "item3_owner": "E95",
+   "item3_check_date": "E96",
+   "c05_clinic_recheck_if_dvm0024_at_peers": "E97",
+   "c05_gap_to_target_after": "E98",
+   "c05_dvm_0024_employment": "E99",
+   "c05_dvm_0024_tenure": "E100",
+   "c05_dvm_0024_hours": "E101",
+   "c05_dvm_0024_recheck_hw": "E102",
+   "c05_dvm_0024_recheck_mean": "E103",
+   "c05_dvm_0020_employment": "E104",
+   "c05_dvm_0020_tenure": "E105",
+   "c05_dvm_0020_hours": "E106",
+   "c05_dvm_0020_recheck_hw": "E107",
+   "c05_dvm_0020_recheck_mean": "E108",
+   "c05_dvm_0021_employment": "E109",
+   "c05_dvm_0021_tenure": "E110",
+   "c05_dvm_0021_hours": "E111",
+   "c05_dvm_0021_recheck_hw": "E112",
+   "c05_dvm_0021_recheck_mean": "E113",
+   "c05_dvm_0022_employment": "E114",
+   "c05_dvm_0022_tenure": "E115",
+   "c05_dvm_0022_hours": "E116",
+   "c05_dvm_0022_recheck_hw": "E117",
+   "c05_dvm_0022_recheck_mean": "E118",
+   "c05_dvm_0023_employment": "E119",
+   "c05_dvm_0023_tenure": "E120",
+   "c05_dvm_0023_hours": "E121",
+   "c05_dvm_0023_recheck_hw": "E122",
+   "c05_dvm_0023_recheck_mean": "E123",
+   "item4_headline": "E124",
+   "item4_center": "E125",
+   "c09_cb_last": "E126",
+   "c09_cb_avg8": "E127",
+   "c09_cb_weeks_at_ceiling_last10": "E128",
+   "window_10wk": "E129",
+   "integrity_level": "E130",
+   "c09_cb_weeks_at_ceiling_all": "E131",
+   "c09_weeks_available": "E132",
+   "c09_cb_required_count": "E133",
+   "c09_recheck_avg8": "E134",
+   "recheck_peer_median_avg8_c09": "E135",
+   "c09_record_avg8": "E136",
+   "record_peer_median_avg8_c09": "E137",
+   "c09_noshow_last": "E138",
+   "c09_noshow_avg8": "E139",
+   "item4_also_recheck_compliance_pct_last": "E140",
+   "item4_also_recheck_compliance_pct_avg8": "E141",
+   "item4_also_recheck_compliance_pct_long_mean": "E142",
+   "item4_also_recheck_compliance_pct_peer_median": "E143",
+   "c09_recheck_gap_to_peers": "E144",
+   "c09_record_gap_to_peers": "E145",
+   "item4_owner": "E146",
+   "item4_check_date": "E147",
+   "item5_headline": "E148",
+   "item5_center": "E149",
+   "c07_opened": "E150",
+   "c07_weeks": "E151",
+   "c07_callouts_last": "E152",
+   "c07_callouts_prior": "E153",
+   "c07_callouts_avg8": "E154",
+   "c07_callouts_long_mean": "E155",
+   "c07_callouts_run_weeks": "E156",
+   "c07_reqs_last": "E157",
+   "c07_reqs_avg8": "E158",
+   "c07_record_last": "E159",
+   "c07_record_avg8": "E160",
+   "c07_record_long_mean": "E161",
+   "c07_hours_start": "E162",
+   "c07_hours_last": "E163",
+   "item5_also_open_dvm_requisitions_last": "E164",
+   "item5_also_open_dvm_requisitions_avg8": "E165",
+   "item5_also_open_dvm_requisitions_long_mean": "E166",
+   "item5_also_open_dvm_requisitions_peer_median": "E167",
+   "c07_appts_last": "E168",
+   "c07_appts_avg8": "E169",
+   "c07_wait_last": "E170",
+   "c07_wait_avg8": "E171",
+   "item5_owner": "E172",
+   "item5_check_date": "E173",
+   "plans_in_span": "E174",
+   "plans_total": "E175",
+   "plans_met_at_open": "E176",
+   "plans_at_open_denominator": "E177",
+   "plans_no_data_at_open": "E178",
+   "plans_mistargeted": "E179",
+   "plans_tracking_word": "E180",
+   "plans_group_close": "E181",
+   "plans_group_close_and_reset": "E182",
+   "plans_group_challenge": "E183",
+   "plans_group_too_early": "E184",
+   "opp_center": "E185",
+   "opp_metric": "E186",
+   "opp_last": "E187",
+   "opp_avg8": "E188",
+   "opp_held_weeks": "E189",
+   "window_6wk": "E190",
+   "opp_needed_by": "E191",
+   "opp_gap_to_clinic_05": "E192",
+   "metric_def_recheck": "E193",
+   "membership_centers_suppressed": "E194",
+   "membership_break_date": "E195",
+   "c07_csat_last": "E196",
+   "c07_csat_responses_last": "E197",
+   "c07_csat_responses_4wk": "E198",
+   "c07_csat_4wk_weighted": "E199",
+   "c07_csat_long_mean": "E200",
+   "min_csat_responses": "E201",
+   "ramp_centers": "E202",
+   "ramp_metrics": "E203",
+   "ramp_weeks_clinic_10": "E204",
+   "ramp_weeks_clinic_07": "E205",
+   "ramp_weeks": "E206",
+   "ap_019_label": "E207",
+   "ap_027_label": "E208"
+  },
+  "evidence_tables": [
+   {
+    "title": "One thing today",
+    "facts": [
+     "one_thing_center",
+     "one_thing_item_rank",
+     "rop_name",
+     "next_digest_date",
+     "c06_callouts_last",
+     "c06_callouts_prior",
+     "c06_callouts_weeks_at_latest",
+     "c06_weeks_7_or_more",
+     "c06_hours_change_pct",
+     "c06_appts_change_pct",
+     "c06_hours_last"
+    ]
+   },
+   {
+    "title": "Item 1: Clinic 11",
+    "facts": [
+     "item1_headline",
+     "item1_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "record_window_hours",
+     "c11_rc_20260209",
+     "c11_rc_20260223",
+     "c11_rc_20260316",
+     "c11_rc_20260406",
+     "c11_rc_20260427",
+     "c11_rc_long_mean",
+     "c11_rc_avg8",
+     "c11_rc_run_weeks",
+     "c11_rc_run_start",
+     "c11_doctors",
+     "c11_doctors_fell",
+     "c11_throughput_last",
+     "c11_throughput_avg8",
+     "ap_009_baseline_panel",
+     "ap_009_target",
+     "ap_009_status",
+     "ap_009_label",
+     "c11_duration_before",
+     "c11_duration_after",
+     "c11_duration_change",
+     "ap_001_status",
+     "ap_001_label",
+     "ap_001_actual",
+     "ap_001_target",
+     "ap_001_baseline_panel",
+     "c11_records_late_last_week",
+     "c11_appts_last",
+     "ap_001_owner",
+     "next_digest_date",
+     "item1_owner",
+     "item1_check_date",
+     "c11_dvm_0046_early",
+     "c11_dvm_0046_late",
+     "c11_dvm_0047_early",
+     "c11_dvm_0047_late",
+     "c11_dvm_0048_early",
+     "c11_dvm_0048_late",
+     "c11_dvm_0049_early",
+     "c11_dvm_0049_late"
+    ]
+   },
+   {
+    "title": "Item 2: Clinic 06",
+    "facts": [
+     "item2_headline",
+     "item2_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "c06_callouts_last4",
+     "c06_callouts_last",
+     "c06_callouts_prior",
+     "c06_callouts_weeks_at_latest",
+     "c06_callouts_before_march_median",
+     "c06_callouts_before_march_p75",
+     "c06_callouts_long_mean",
+     "c06_hours_start",
+     "c06_hours_last",
+     "c06_hours_change_pct",
+     "c06_open_reqs_last",
+     "c06_open_reqs_avg8",
+     "c06_wait_last",
+     "c06_wait_avg8",
+     "ap_003_status",
+     "ap_003_label",
+     "ap_024_label",
+     "c06_appts_start",
+     "c06_appts_last",
+     "c06_appts_change_pct",
+     "c06_weeks_7_or_more",
+     "rop_name",
+     "next_digest_date",
+     "item2_owner",
+     "item2_check_date"
+    ]
+   },
+   {
+    "title": "Item 3: Clinic 05",
+    "facts": [
+     "item3_headline",
+     "item3_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "c05_recheck_last",
+     "c05_recheck_avg8",
+     "recheck_peer_median_avg8",
+     "c05_gap_to_peer_median",
+     "dvm0024_recheck_hw",
+     "dvm0024_recheck_mean",
+     "dvm0024_peers_hw",
+     "dvm0024_gap",
+     "dvm0024_weeks",
+     "dvm0024_tenure",
+     "dvm0024_employment",
+     "dvm0024_record_hw",
+     "dvm0024_record_peers_hw",
+     "ap_002_status",
+     "ap_002_label",
+     "ap_002_actual",
+     "ap_002_target",
+     "ap_002_owner",
+     "two_week_check_date",
+     "item3_owner",
+     "item3_check_date",
+     "c05_clinic_recheck_if_dvm0024_at_peers",
+     "c05_gap_to_target_after",
+     "c05_dvm_0024_employment",
+     "c05_dvm_0024_tenure",
+     "c05_dvm_0024_hours",
+     "c05_dvm_0024_recheck_hw",
+     "c05_dvm_0024_recheck_mean",
+     "c05_dvm_0020_employment",
+     "c05_dvm_0020_tenure",
+     "c05_dvm_0020_hours",
+     "c05_dvm_0020_recheck_hw",
+     "c05_dvm_0020_recheck_mean",
+     "c05_dvm_0021_employment",
+     "c05_dvm_0021_tenure",
+     "c05_dvm_0021_hours",
+     "c05_dvm_0021_recheck_hw",
+     "c05_dvm_0021_recheck_mean",
+     "c05_dvm_0022_employment",
+     "c05_dvm_0022_tenure",
+     "c05_dvm_0022_hours",
+     "c05_dvm_0022_recheck_hw",
+     "c05_dvm_0022_recheck_mean",
+     "c05_dvm_0023_employment",
+     "c05_dvm_0023_tenure",
+     "c05_dvm_0023_hours",
+     "c05_dvm_0023_recheck_hw",
+     "c05_dvm_0023_recheck_mean"
+    ]
+   },
+   {
+    "title": "Item 4: Clinic 09",
+    "facts": [
+     "item4_headline",
+     "item4_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "c09_cb_last",
+     "c09_cb_avg8",
+     "c09_cb_weeks_at_ceiling_last10",
+     "window_10wk",
+     "integrity_level",
+     "c09_cb_weeks_at_ceiling_all",
+     "c09_weeks_available",
+     "c09_cb_required_count",
+     "c09_recheck_avg8",
+     "recheck_peer_median_avg8_c09",
+     "c09_record_avg8",
+     "record_peer_median_avg8_c09",
+     "c09_noshow_last",
+     "c09_noshow_avg8",
+     "item4_also_recheck_compliance_pct_last",
+     "item4_also_recheck_compliance_pct_avg8",
+     "item4_also_recheck_compliance_pct_long_mean",
+     "item4_also_recheck_compliance_pct_peer_median",
+     "c09_recheck_gap_to_peers",
+     "c09_record_gap_to_peers",
+     "rop_name",
+     "next_digest_date",
+     "item4_owner",
+     "item4_check_date"
+    ]
+   },
+   {
+    "title": "Item 5: Clinic 07",
+    "facts": [
+     "item5_headline",
+     "item5_center",
+     "latest_week",
+     "window_8wk",
+     "window_4wk",
+     "c07_opened",
+     "c07_weeks",
+     "c07_callouts_last",
+     "c07_callouts_prior",
+     "c07_callouts_avg8",
+     "c07_callouts_long_mean",
+     "c07_callouts_run_weeks",
+     "c07_reqs_last",
+     "c07_reqs_avg8",
+     "c07_record_last",
+     "c07_record_avg8",
+     "c07_record_long_mean",
+     "c07_hours_start",
+     "c07_hours_last",
+     "item5_also_open_dvm_requisitions_last",
+     "item5_also_open_dvm_requisitions_avg8",
+     "item5_also_open_dvm_requisitions_long_mean",
+     "item5_also_open_dvm_requisitions_peer_median",
+     "c07_appts_last",
+     "c07_appts_avg8",
+     "c07_wait_last",
+     "c07_wait_avg8",
+     "rop_name",
+     "next_digest_date",
+     "item5_owner",
+     "item5_check_date"
+    ]
+   },
+   {
+    "title": "Plan check",
+    "facts": [
+     "plans_in_span",
+     "plans_total",
+     "plans_met_at_open",
+     "plans_at_open_denominator",
+     "plans_no_data_at_open",
+     "plans_mistargeted",
+     "plans_tracking_word",
+     "plans_group_close",
+     "plans_group_close_and_reset",
+     "plans_group_challenge",
+     "plans_group_too_early"
+    ]
+   },
+   {
+    "title": "Opportunity",
+    "facts": [
+     "opp_center",
+     "opp_metric",
+     "opp_last",
+     "opp_avg8",
+     "opp_held_weeks",
+     "window_6wk",
+     "opp_needed_by",
+     "opp_gap_to_clinic_05",
+     "c05_recheck_avg8",
+     "metric_def_recheck",
+     "item2_center"
+    ]
+   },
+   {
+    "title": "Membership conversion, every center",
+    "facts": [
+     "membership_centers_suppressed",
+     "membership_break_date"
+    ]
+   },
+   {
+    "title": "Clinic 07 client satisfaction",
+    "facts": [
+     "c07_csat_last",
+     "c07_csat_responses_last",
+     "c07_csat_responses_4wk",
+     "c07_csat_4wk_weighted",
+     "c07_csat_long_mean",
+     "min_csat_responses",
+     "next_digest_date",
+     "c07_weeks",
+     "window_4wk"
+    ]
+   },
+   {
+    "title": "Throughput, revenue and no shows at Clinic 10 and Clinic 07",
+    "facts": [
+     "ramp_centers",
+     "ramp_metrics",
+     "ramp_weeks_clinic_10",
+     "ramp_weeks_clinic_07",
+     "ramp_weeks",
+     "ap_019_label",
+     "ap_027_label"
+    ]
+   }
+  ],
+  "body_cap": 1100,
+  "top_cap": 150
+ }
+}

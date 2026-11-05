@@ -1,0 +1,25 @@
+location_id,location_name,metro_area,state,region,rmp_name,rop_name,opened_date,maturity_tier,exam_rooms,doctor_fte_target
+CL_001,Clinic 01,Northgate,NG,North,"Medical Director, North","Regional Ops Partner, North",2022-11-30,mature,7,5.5
+CL_002,Clinic 02,Northgate,RB,North,"Medical Director, North","Regional Ops Partner, North",2024-11-23,mature,6,5.7
+CL_003,Clinic 03,Riverbend,NG,North,"Medical Director, North","Regional Ops Partner, North",2024-02-15,mature,8,5.6
+CL_004,Clinic 04,Northgate,RB,North,"Medical Director, North","Regional Ops Partner, North",2024-12-27,mature,4,3.5
+CL_005,Clinic 05,Riverbend,RB,North,"Medical Director, North","Regional Ops Partner, North",2025-10-07,mature,8,4.8
+CL_006,Clinic 06,Riverbend,NG,North,"Medical Director, North","Regional Ops Partner, North",2024-08-09,mature,5,4.2
+CL_007,Clinic 07,Northgate,NG,North,"Medical Director, North","Regional Ops Partner, North",2025-12-05,new,4,2.4
+CL_008,Clinic 08,Riverbend,NG,North,"Medical Director, North","Regional Ops Partner, North",2021-11-15,ramping,5,4.5
+CL_009,Clinic 09,Northgate,RB,North,"Medical Director, North","Regional Ops Partner, North",2025-08-27,ramping,4,6.4
+CL_010,Clinic 10,Riverbend,NG,North,"Medical Director, North","Regional Ops Partner, North",2026-01-03,mature,5,5.5
+CL_011,Clinic 11,Northgate,NG,North,"Medical Director, North","Regional Ops Partner, North",2023-03-23,mature,7,2.7
+CL_012,Clinic 12,Lakeside,LK,South,"Medical Director, South","Regional Ops Partner, South",2022-07-10,mature,8,4.0
+CL_013,Clinic 13,Fairmont,FM,South,"Medical Director, South","Regional Ops Partner, South",2024-07-02,ramping,7,4.6
+CL_014,Clinic 14,Lakeside,LK,South,"Medical Director, South","Regional Ops Partner, South",2022-08-30,mature,8,5.4
+CL_015,Clinic 15,Fairmont,FM,South,"Medical Director, South","Regional Ops Partner, South",2025-10-15,new,8,3.6
+CL_016,Clinic 16,Lakeside,LK,South,"Medical Director, South","Regional Ops Partner, South",2023-11-03,mature,7,6.1
+CL_017,Clinic 17,Harborview,HV,East,"Medical Director, East","Regional Ops Partner, East",2022-05-21,mature,4,2.8
+CL_018,Clinic 18,Stonebridge,SB,East,"Medical Director, East","Regional Ops Partner, East",2025-06-11,new,8,5.2
+CL_019,Clinic 19,Harborview,HV,East,"Medical Director, East","Regional Ops Partner, East",2025-11-24,new,7,4.0
+CL_020,Clinic 20,Stonebridge,SB,East,"Medical Director, East","Regional Ops Partner, East",2023-06-14,mature,5,5.4
+CL_021,Clinic 21,Westfield,WF,West,"Medical Director, West","Regional Ops Partner, West",2020-10-21,mature,8,3.5
+CL_022,Clinic 22,Hillcrest,HC,West,"Medical Director, West","Regional Ops Partner, West",2022-05-06,mature,7,3.4
+CL_023,Clinic 23,Westfield,WF,West,"Medical Director, West","Regional Ops Partner, West",2023-07-16,mature,7,3.6
+CL_024,Clinic 24,Hillcrest,HC,West,"Medical Director, West","Regional Ops Partner, West",2025-09-21,new,8,3.5

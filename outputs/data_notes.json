@@ -1,0 +1,195 @@
+{
+  "today": "2026-05-04",
+  "latest_week": "2026-04-27",
+  "leader": "Medical Director, North",
+  "notes": [
+    {
+      "note": "duplicate_rows_removed",
+      "source": "clinic_weekly.csv",
+      "count": 9,
+      "detail": "Exact duplicate rows from a double-run of the weekly load. First copy kept.",
+      "rows": [
+        {
+          "location_id": "CL_015",
+          "week_start": "2025-10-20"
+        },
+        {
+          "location_id": "CL_017",
+          "week_start": "2025-09-29"
+        },
+        {
+          "location_id": "CL_008",
+          "week_start": "2025-10-13"
+        },
+        {
+          "location_id": "CL_001",
+          "week_start": "2025-11-17"
+        },
+        {
+          "location_id": "CL_003",
+          "week_start": "2025-09-29"
+        },
+        {
+          "location_id": "CL_010",
+          "week_start": "2026-04-06"
+        },
+        {
+          "location_id": "CL_001",
+          "week_start": "2025-06-09"
+        },
+        {
+          "location_id": "CL_005",
+          "week_start": "2026-03-23"
+        },
+        {
+          "location_id": "CL_012",
+          "week_start": "2025-08-11"
+        }
+      ]
+    },
+    {
+      "note": "negative_wait_set_missing",
+      "source": "clinic_weekly.csv, avg_wait_time_min",
+      "count": 11,
+      "detail": "Known clock-sync bug. Treated as missing, never as zero.",
+      "rows": [
+        {
+          "location_id": "CL_002",
+          "week_start": "2025-06-30"
+        },
+        {
+          "location_id": "CL_003",
+          "week_start": "2025-09-08"
+        },
+        {
+          "location_id": "CL_004",
+          "week_start": "2025-09-08"
+        },
+        {
+          "location_id": "CL_011",
+          "week_start": "2025-08-11"
+        },
+        {
+          "location_id": "CL_013",
+          "week_start": "2025-12-22"
+        },
+        {
+          "location_id": "CL_014",
+          "week_start": "2025-06-02"
+        },
+        {
+          "location_id": "CL_014",
+          "week_start": "2025-09-15"
+        },
+        {
+          "location_id": "CL_021",
+          "week_start": "2025-05-26"
+        },
+        {
+          "location_id": "CL_021",
+          "week_start": "2026-04-06"
+        },
+        {
+          "location_id": "CL_022",
+          "week_start": "2025-05-26"
+        },
+        {
+          "location_id": "CL_023",
+          "week_start": "2025-11-10"
+        }
+      ]
+    },
+    {
+      "note": "employment_type_lowercased",
+      "source": "provider_weekly.csv, employment_type",
+      "count": 102,
+      "detail": "Values now: ['full_time', 'part_time', 'relief']."
+    },
+    {
+      "note": "panel_shape",
+      "source": "clinic_weekly.csv, provider_weekly.csv",
+      "count": 52,
+      "detail": "52 clinic weeks from 2025-05-05 to 2026-04-27, all Mondays. Provider data covers the latest 26 weeks only (from 2025-11-03)."
+    },
+    {
+      "note": "maturity_tier_mismatch",
+      "source": "locations.csv, maturity_tier vs opened_date",
+      "count": 7,
+      "detail": "Tier recomputed against today. Reported tier kept as maturity_tier_reported.",
+      "rows": [
+        "Clinic 02: reported mature, recomputed ramping (17.3 months)",
+        "Clinic 04: reported mature, recomputed ramping (16.2 months)",
+        "Clinic 05: reported mature, recomputed new (6.9 months)",
+        "Clinic 06: reported mature, recomputed ramping (20.8 months)",
+        "Clinic 08: reported ramping, recomputed mature (53.6 months)",
+        "Clinic 09: reported ramping, recomputed new (8.2 months)",
+        "Clinic 10: reported mature, recomputed new (4.0 months)"
+      ]
+    },
+    {
+      "note": "partial_history",
+      "source": "clinic_weekly.csv",
+      "count": 8,
+      "detail": "Centers with fewer than 52 weeks. Trend windows use the weeks that exist.",
+      "rows": [
+        "Clinic 05: 30 weeks",
+        "Clinic 07: 22 weeks",
+        "Clinic 09: 36 weeks",
+        "Clinic 10: 18 weeks",
+        "Clinic 15: 29 weeks",
+        "Clinic 18: 47 weeks",
+        "Clinic 19: 23 weeks",
+        "Clinic 24: 33 weeks"
+      ]
+    },
+    {
+      "note": "state_code_mismatch",
+      "source": "locations.csv, state vs metro_area",
+      "count": 7,
+      "detail": "State does not match the metro. Not used by any metric. Left as is.",
+      "rows": [
+        "Clinic 02: RB recorded, metro Northgate is in NG",
+        "Clinic 03: NG recorded, metro Riverbend is in RB",
+        "Clinic 04: RB recorded, metro Northgate is in NG",
+        "Clinic 06: NG recorded, metro Riverbend is in RB",
+        "Clinic 08: NG recorded, metro Riverbend is in RB",
+        "Clinic 09: RB recorded, metro Northgate is in NG",
+        "Clinic 10: NG recorded, metro Riverbend is in RB"
+      ]
+    },
+    {
+      "note": "doctor_fte_target_oddity",
+      "source": "locations.csv, doctor_fte_target vs exam_rooms",
+      "count": 2,
+      "detail": "Budgeted FTE per exam room outside 0.4 to 1.2. Flagged for a human, not changed.",
+      "rows": [
+        "Clinic 09: 4 rooms, 6.4 FTE (1.6 per room)",
+        "Clinic 11: 7 rooms, 2.7 FTE (0.39 per room)"
+      ]
+    },
+    {
+      "note": "membership_conversion_definition_change",
+      "source": "clinic_weekly.csv, membership_conversion_pct",
+      "count": 288,
+      "detail": "Denominator widened on 2026-02-09 to include urgent care visits. Values before and after are not comparable. Never ranked."
+    },
+    {
+      "note": "missing_values",
+      "source": "clinic_weekly.csv, provider_weekly.csv",
+      "count": 188,
+      "detail": "Left missing. Rates are computed on the weeks that have a value.",
+      "rows": [
+        "client_csat: 46",
+        "revenue_per_appt: 30",
+        "avg_wait_time_min: 11",
+        "avg_appt_duration_min: 101"
+      ]
+    },
+    {
+      "note": "clinic_hours_exceed_provider_hours",
+      "source": "clinic_weekly.doctor_hours_scheduled vs sum of provider_weekly.scheduled_hours",
+      "count": 609,
+      "detail": "On overlapping weeks the clinic total is a median 15 hours above the sum of listed providers. Quality rates still match the hours-weighted provider average within 0.06 on every row, so the provider table is complete for quality but not for hours."
+    }
+  ]
+}

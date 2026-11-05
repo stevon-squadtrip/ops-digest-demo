@@ -1,0 +1,353 @@
+{
+  "_source": "Built from the synthetic data by scripts/prove_planted_cases.py. The tests are the spec for behaviour, not for exact values. Rebuild after any change to scripts/make_synthetic_data.py.",
+  "digest_date": "2026-05-04",
+  "latest_week": "2026-04-27",
+  "top_five": {
+    "_rule": "one item per center; items 2 and 3 may appear in either order",
+    "first": {
+      "center": "Clinic 11",
+      "metric": "record_completion_24h_pct"
+    },
+    "tie_2_3": [
+      {
+        "center": "Clinic 06",
+        "metric": "staff_call_outs"
+      },
+      {
+        "center": "Clinic 05",
+        "metric": "recheck_compliance_pct"
+      }
+    ],
+    "fourth": {
+      "center": "Clinic 09",
+      "metric": "callback_compliance_pct",
+      "integrity": true
+    },
+    "fifth": {
+      "center": "Clinic 07",
+      "metric": "staff_call_outs"
+    }
+  },
+  "clinic_11": {
+    "record_completion": {
+      "2026-02-09": 93.3,
+      "2026-02-23": 86.2,
+      "2026-03-16": 82.1,
+      "2026-04-06": 74.2,
+      "2026-04-27": 79.7
+    },
+    "throughput_latest": 2.98,
+    "ap009": {
+      "status": "complete",
+      "target_value": 2.52
+    },
+    "ap001": {
+      "status": "on_track",
+      "label": "contradicted"
+    },
+    "doctors_slid": 4
+  },
+  "clinic_06": {
+    "call_outs_last_4": [
+      4,
+      7,
+      9,
+      9
+    ],
+    "call_outs_before_march_median_max": 2,
+    "doctor_hours_12_weeks_ago": 171.1,
+    "doctor_hours_latest": 140.0,
+    "recheck_last_4": [
+      81.4,
+      82.3,
+      82.6,
+      82.4
+    ],
+    "recheck_below_supporting_line": true
+  },
+  "clinic_05": {
+    "provider_id": "DVM_0024",
+    "employment_type": "full_time",
+    "tenure_months": 89,
+    "recheck_8w_simple_mean": 41.6,
+    "recheck_8w_hours_weighted": 41.6,
+    "record_8w_simple_mean": 90.4,
+    "record_8w_hours_weighted": 90.4,
+    "peers_hours_weighted_min": 64.3,
+    "peers_hours_weighted_max": 79.7,
+    "recheck_latest": 66.5,
+    "ap002": {
+      "baseline_value": 74.0,
+      "label": "stalled"
+    }
+  },
+  "clinic_09": {
+    "callback_weeks_at_100_of_last_10_min": 6,
+    "recheck_8w_approx": 73.3,
+    "record_8w_approx": 86.1,
+    "label": "integrity"
+  },
+  "suppressed": {
+    "clinic_07_csat": {
+      "center": "Clinic 07",
+      "metric": "client_csat",
+      "latest": 3.54,
+      "responses": 7,
+      "reason_prefix": "watch"
+    },
+    "membership_all_centers": {
+      "metric": "membership_conversion_pct",
+      "reason_prefix": "definition change"
+    },
+    "ramp": {
+      "centers": [
+        "Clinic 07",
+        "Clinic 10"
+      ],
+      "metrics": [
+        "appts_per_doctor_hour",
+        "revenue_per_appt",
+        "appts_no_show"
+      ],
+      "reason_prefix": "ramp"
+    }
+  },
+  "not_suppressed": [
+    {
+      "center": "Clinic 05",
+      "metric": "recheck_compliance_pct"
+    },
+    {
+      "center": "Clinic 09",
+      "metric": "callback_compliance_pct"
+    },
+    {
+      "center": "Clinic 06",
+      "metric": "staff_call_outs"
+    }
+  ],
+  "plan_labels": {
+    "AP_001": {
+      "label": "contradicted",
+      "flags": []
+    },
+    "AP_002": {
+      "label": "stalled",
+      "flags": [
+        "baseline mismatch"
+      ]
+    },
+    "AP_003": {
+      "label": "stalled",
+      "flags": [
+        "stale",
+        "past due"
+      ]
+    },
+    "AP_004": {
+      "label": "mistargeted",
+      "flags": [
+        "baseline mismatch"
+      ]
+    },
+    "AP_007": {
+      "label": "mistargeted",
+      "flags": [
+        "stale",
+        "past due",
+        "baseline mismatch",
+        "linked metric slipped"
+      ]
+    },
+    "AP_009": {
+      "label": "mistargeted",
+      "flags": [
+        "baseline mismatch",
+        "linked metric slipped"
+      ]
+    },
+    "AP_019": {
+      "label": "achieved",
+      "flags": [
+        "stale",
+        "past due",
+        "no panel row"
+      ]
+    },
+    "AP_020": {
+      "label": "early",
+      "flags": [
+        "baseline mismatch"
+      ]
+    },
+    "AP_024": {
+      "label": "mistargeted",
+      "flags": [
+        "past due",
+        "baseline mismatch"
+      ]
+    },
+    "AP_027": {
+      "label": "early",
+      "flags": [
+        "stale",
+        "baseline mismatch"
+      ]
+    }
+  },
+  "plan_labels_not_flags": {
+    "AP_024": [
+      "stale",
+      "linked metric slipped"
+    ],
+    "AP_004": [
+      "linked metric slipped"
+    ],
+    "AP_019": [
+      "linked metric slipped"
+    ]
+  },
+  "plan_summary": {
+    "plans": 28,
+    "mistargeted": 10,
+    "met_at_open": 10,
+    "at_open_denominator": 26,
+    "no_data_at_open": [
+      "AP_016",
+      "AP_019"
+    ],
+    "baseline_mismatch_flags": 14,
+    "baseline_mismatch_denominator": 26,
+    "plans_tracking_as_reported": 3,
+    "plans_tracking_as_reported_ids": [
+      "AP_012",
+      "AP_018",
+      "AP_025"
+    ]
+  },
+  "sensitivity": {
+    "last_week_on_or_before_open": [
+      10,
+      26
+    ],
+    "first_week_on_or_after_open": [
+      11,
+      28
+    ],
+    "trailing_4_week_mean": [
+      9,
+      26
+    ],
+    "trailing_8_week_mean": [
+      9,
+      26
+    ]
+  },
+  "met_at_open_direction": {
+    "AP_008": "yes",
+    "AP_003": "no"
+  },
+  "noise_band_regression": {
+    "plan_id": "AP_024",
+    "move_vs_prior_points": 0.15,
+    "note": "a move inside the band never fires contradicted"
+  },
+  "plans_reported_despite_ramp": [
+    "AP_027",
+    "AP_019"
+  ],
+  "other_movements": {
+    "clinic_03_no_shows": {
+      "center": "Clinic 03",
+      "metric": "appts_no_show",
+      "latest": 52,
+      "avg8": 35
+    },
+    "clinic_08_no_shows": {
+      "center": "Clinic 08",
+      "metric": "appts_no_show",
+      "latest": 36,
+      "avg8": 22
+    },
+    "clinic_02_callbacks": {
+      "center": "Clinic 02",
+      "metric": "callback_compliance_pct",
+      "latest": 91.8
+    },
+    "clinic_08_wait_improved": {
+      "center": "Clinic 08",
+      "metric": "avg_wait_time_min"
+    }
+  },
+  "opportunity_expected": {
+    "center": "Clinic 01",
+    "metric": "recheck_compliance_pct",
+    "needed_by": "Clinic 05"
+  },
+  "opportunity_never_source": {
+    "center": "Clinic 09",
+    "metric": "callback_compliance_pct"
+  },
+  "clinic_06_appts_context": {
+    "metric": "appts_completed",
+    "direction": "down"
+  },
+  "display": {
+    "c06_hours_change_pct": "down 18 percent",
+    "c06_appts_change_pct": "down 17 percent",
+    "c06_open_reqs_last": "1",
+    "c06_callouts_before_march_median": "1",
+    "c07_csat_4wk_weighted": "4.31",
+    "c11_throughput_last": "2.98",
+    "ap_001_target": "94.0",
+    "c06_callouts_last4": "4, 7, 9, 9",
+    "ap_009_flags": "baseline mismatch, linked metric slipped",
+    "c11_duration_change": "0.3 minutes shorter",
+    "item1_headline": "Clinic 11: record completion below its norm 11 weeks running",
+    "item2_headline": "Clinic 06: call outs at 9, up 8 weeks running",
+    "item3_headline": "Clinic 05: recheck compliance 13.1 points below peers; one doctor at 41.6",
+    "item4_headline": "Clinic 09: callbacks at the ceiling, verify the logging",
+    "item5_headline": "Clinic 07: call outs at 5, up 2 weeks running",
+    "one_thing_center": "Clinic 06",
+    "one_thing_item_rank": "2"
+  },
+  "data_notes": {
+    "locations": 24,
+    "plans": 28,
+    "duplicates": 9,
+    "negative_waits": 11,
+    "tier_mismatch_centers": [
+      "Clinic 02",
+      "Clinic 04",
+      "Clinic 05",
+      "Clinic 06",
+      "Clinic 08",
+      "Clinic 09",
+      "Clinic 10"
+    ],
+    "partial_history": {
+      "Clinic 10": 18,
+      "Clinic 07": 22,
+      "Clinic 05": 30,
+      "Clinic 09": 36,
+      "Clinic 11": 52
+    },
+    "fte_oddity_centers": [
+      "Clinic 09",
+      "Clinic 11"
+    ],
+    "north_centers": [
+      "Clinic 01",
+      "Clinic 02",
+      "Clinic 03",
+      "Clinic 04",
+      "Clinic 05",
+      "Clinic 06",
+      "Clinic 07",
+      "Clinic 08",
+      "Clinic 09",
+      "Clinic 10",
+      "Clinic 11"
+    ]
+  }
+}
