@@ -109,7 +109,9 @@ def test_site_shows_the_plan_lead_and_the_mondays_label(page_text):
 
 
 def test_read_time_line_has_a_print_only_twin(page_html):
-    """The print stylesheet swaps the read time line for one that points at the live page. Each appears once."""
+    """The print stylesheet swaps the read time line for one that points at the live page. Each appears once, and the
+    print twin carries the hidden attribute so a normal browser, a screen reader and a text extractor see one line."""
+    assert "<p class='readtime print' hidden>" in page_html
     screen = re.findall(r"About \d+ minutes to read\. Sources and hidden items are one click away\.", page_html)
     printed = re.findall(r"About \d+ minutes to read\. Sources and hidden items are on the live page\.", page_html)
     assert len(screen) == 1, screen

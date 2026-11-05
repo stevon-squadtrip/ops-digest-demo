@@ -543,7 +543,7 @@ def build(out_path: Path = SITE_DIR / "index.html") -> Path:
     minutes = read_minutes(main_html)
     readtime = (f"<p class='readtime screen'>About {minutes} minutes to read. Sources and hidden items are one click away. "
                 f"<button class='btn small' id='detail-all' aria-expanded='false'>Show all the detail</button></p>"
-                f"<p class='readtime print'>About {minutes} minutes to read. Sources and hidden items are on the live page.</p>")
+                f"<p class='readtime print' hidden>About {minutes} minutes to read. Sources and hidden items are on the live page.</p>")
     main_html = main_html.replace("</header>", readtime + "</header>" + jump_bar(items), 1)
     main_html = main_html.replace("<header id='top'>", "<header id='top'>" + banner, 1)
     page = (f"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'>"
@@ -571,8 +571,8 @@ li{margin:4px 0}
 table{border-collapse:collapse;font-size:15px;min-width:100%}
 th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
 th{background:#f4f4f4;font-weight:600}
-sup.cite{display:none;font-size:12px;color:var(--accent);cursor:pointer;margin-left:4px;padding:0 2px;border-radius:3px;font-family:Arial,sans-serif}
-section.numbers-open sup.cite,body.sources-open sup.cite,body.detail-open sup.cite{display:inline}
+sup.cite{display:none;font-size:11px;line-height:1;color:var(--accent);cursor:pointer;margin-left:6px;padding:1px 5px;border:1px solid var(--accent);border-radius:9px;font-family:Arial,sans-serif;vertical-align:super;white-space:nowrap}
+section.numbers-open sup.cite,body.sources-open sup.cite,body.detail-open sup.cite{display:inline-block}
 .panel.numbers,.panel.plantable{background:none;border-color:var(--line)}
 .panel.numbers .itemtools{margin-bottom:8px}
 #detail-all{margin-left:6px;vertical-align:middle}
@@ -613,7 +613,7 @@ tr.detail td{background:#fafafa;font-family:Arial,sans-serif;font-size:14px;colo
  body{font-size:12pt}main{max-width:none;padding:0}
  .btn,.feedback,.missed,.surfaced button,.jump,.readtime.screen{display:none !important}
  .banner{background:none;border:none;padding:0}
- .readtime.print{display:block !important}
+ .readtime.print[hidden]{display:block !important}
  .panel{display:none !important}
  .panel.numbers[hidden],.panel.plantable[hidden]{display:block !important;border:none;padding:0}
  sup.cite{display:none !important}

@@ -12,11 +12,11 @@ Monday 2026-05-04. 11 clinics. Latest complete week starts 2026-04-27. Ops partn
 
 ## One thing today
 
-Call Regional Ops Partner, North about Clinic 06 staffing. Scheduled doctor hours are down 18 percent {c06_hours_change_pct}. [c06_hours_change_pct E9] Completed appointments are down 17 percent {c06_appts_change_pct}. [c06_appts_change_pct E10] See item 2. Check back Monday May 11.
+Call Regional Ops Partner, North about Clinic 06 staffing. Call outs were 9 {c06_callouts_last} for 2 {c06_callouts_weeks_at_latest} weeks running [c06_callouts_weeks_at_latest E7]. Scheduled doctor hours went down 18 percent {c06_hours_change_pct} [c06_hours_change_pct E9]. See item 2. Check back Monday May 11.
 
 ## Item 1: Clinic 11: record completion below its norm 11 weeks running
 
-**What happened.** Record completion fell from 93.3 {c11_rc_20260209} to 79.7 {c11_rc_20260427}. [c11_rc_20260209 E18] [c11_rc_20260427 E22] Its long run average is 92.1 {c11_rc_long_mean}. [c11_rc_long_mean E23] At the same time, throughput rose from 2.66 {ap_009_baseline_panel} to 2.98 {c11_throughput_last}. [ap_009_baseline_panel E31] [c11_throughput_last E29] Visits did not get shorter: 27.3 minutes {c11_duration_before} before the plan, 27.0 minutes {c11_duration_after} in the last 8 {window_8wk} weeks, 0.3 minutes shorter {c11_duration_change}. [c11_duration_before E35] [c11_duration_after E36] [window_8wk E15] [c11_duration_change E37] All 4 {c11_doctors_fell} of 4 {c11_doctors} doctors fell. [c11_doctors_fell E28] [c11_doctors E27]
+**What happened.** Record completion was 93.3 {c11_rc_20260209} in February and 79.7 {c11_rc_20260427} last week [c11_rc_20260209 E18] [c11_rc_20260427 E22]. Its long run average is 92.1 {c11_rc_long_mean} [c11_rc_long_mean E23]. At the same time, throughput rose from 2.66 {ap_009_baseline_panel} to 2.98 {c11_throughput_last} [ap_009_baseline_panel E31] [c11_throughput_last E29]. All 4 {c11_doctors_fell} of 4 {c11_doctors} doctors fell [c11_doctors_fell E28] [c11_doctors E27]. Visits did not get meaningfully shorter: 27.3 minutes {c11_duration_before} in the 8 weeks before plan AP_009 opened, 27.0 minutes {c11_duration_after} over the last 8 weeks, a change of 0.3 minutes shorter {c11_duration_change}. [c11_duration_before E45] [c11_duration_after E46] [c11_duration_change E47]
 
 | Week | Record completion within 24h |
 |---|---|
@@ -36,24 +36,24 @@ Call Regional Ops Partner, North about Clinic 06 staffing. Scheduled doctor hour
 Plan AP_001 (data disagrees): marked on track; data shows 77.3 against a target of 94.0, and falling.
 Plan AP_009 (target met at open): marked complete; the target of 2.52 was already met when it opened (2.66).
 
-**Why it matters.** Last week, 90 {c11_records_late_last_week} of 441 {c11_appts_last} records were not closed within 24 {record_window_hours} hours. [c11_records_late_last_week E43] [c11_appts_last E44] [record_window_hours E17]
+**Why it matters.** 90 {c11_records_late_last_week} of 441 {c11_appts_last} records were not closed within 24 {record_window_hours} hours last week [c11_records_late_last_week E40] [c11_appts_last E41].
 
-**What to do.** Hold one conversation with Clinic 11 {item1_center} about what changed, not per doctor reviews. [item1_center E13] This one is yours (medical). Check back Monday May 11.
+**What to do.** Hold one center conversation on changes since February, not per doctor. This one is yours (medical). Check back Monday May 11.
 
 ## Item 2: Clinic 06: call outs at 9, up 8 weeks running
 
-**What happened.** Call outs over the last 4 {window_4wk} weeks ran 4, 7, 9, 9 {c06_callouts_last4}. [window_4wk E16] [c06_callouts_last4 E58] Before March, the median week had 1 {c06_callouts_before_march_median}. [c06_callouts_before_march_median E59] Scheduled doctor hours went from 171.1 {c06_hours_start} to 140.0 {c06_hours_last}, down 18 percent {c06_hours_change_pct}. [c06_hours_start E62] [c06_hours_last E11] [c06_hours_change_pct E9] Open doctor requisitions stood at 1 {c06_open_reqs_last}. [c06_open_reqs_last E63]
+**What happened.** Call outs over the last 4 {window_4wk} weeks were 4, 7, 9, 9 {c06_callouts_last4} [c06_callouts_last4 E58]. Before March, the median was 1 {c06_callouts_before_march_median} [c06_callouts_before_march_median E59]. Scheduled doctor hours went down 18 percent {c06_hours_change_pct}, from 171.1 {c06_hours_start} to 140.0 {c06_hours_last} [c06_hours_change_pct E9] [c06_hours_start E62] [c06_hours_last E11].
 
 Plan AP_003 (stalled): marked at risk. Due 2026-04-19, 2 weeks ago. The gap to target is 9 percent wider than when the plan opened.
 Plan AP_024 (target met at open): marked on track; the target of 74.6 was already met when it opened (81.6).
 
-**Why it matters.** Completed appointments went from 419 {c06_appts_start} to 348 {c06_appts_last}, down 17 percent {c06_appts_change_pct}. [c06_appts_start E70] [c06_appts_last E71] [c06_appts_change_pct E10]
+**Why it matters.** Completed appointments went down 17 percent {c06_appts_change_pct}, from 419 {c06_appts_start} to 348 {c06_appts_last} [c06_appts_change_pct E10] [c06_appts_start E70] [c06_appts_last E71].
 
-**What to do.** Get a revised staffing plan for Clinic 06 {item2_center} with a new due date. [item2_center E57] This one is Regional Ops Partner, North's (ops). Check back Monday May 11.
+**What to do.** Ask for a cover plan for Clinic 06 call outs. This one is Regional Ops Partner, North's (ops). Check back Monday May 11.
 
 ## Item 3: Clinic 05: recheck compliance 13.1 points below peers; one doctor at 41.6
 
-**What happened.** DVM_0024 sits 31.1 {dvm0024_gap} points below the other Clinic 05 {item3_center} doctors on recheck. [dvm0024_gap E83] [item3_center E75] Record completion for DVM_0024 is 90.4 {dvm0024_record_hw}, above the other doctors at 87.6 {dvm0024_record_peers_hw}. [dvm0024_record_hw E87] [dvm0024_record_peers_hw E88] Only recheck is low. [dvm0024_gap E83] DVM_0024 was scheduled in 6 {dvm0024_weeks} of the last 8 {window_8wk} weeks. [dvm0024_weeks E84] [window_8wk E15]
+**What happened.** DVM_0024's record completion is 90.4 {dvm0024_record_hw}, above peers at 87.6 {dvm0024_record_peers_hw} [dvm0024_record_hw E87] [dvm0024_record_peers_hw E88]. Recheck is the gap: 41.6 {dvm0024_recheck_hw} against 72.7 {dvm0024_peers_hw} for the other doctors [dvm0024_recheck_hw E80] [dvm0024_peers_hw E82].
 
 | Doctor | Type | Tenure months | Hours, 8 weeks | Recheck, hours weighted | Recheck, simple mean |
 |---|---|---|---|---|---|
@@ -71,27 +71,27 @@ Plan AP_002 (stalled): marked on track; 10 percent of the gap closed with 65 per
 
 ## Item 4: Clinic 09: callbacks at the ceiling, verify the logging
 
-**What happened.** Callback compliance was 100.0 {c09_cb_last} last week. [c09_cb_last E126] It sat at or above 99.5 {integrity_level} in 33 {c09_cb_weeks_at_ceiling_all} of 36 {c09_weeks_available} weeks. [integrity_level E130] [c09_cb_weeks_at_ceiling_all E131] [c09_weeks_available E132] Treat this as a number to verify. The count of required callbacks is not in the data {c09_cb_required_count}. [c09_cb_required_count E133]
+**What happened.** Callback compliance was 100.0 {c09_cb_last} last week [c09_cb_last E126]. It sat at or above 99.5 {integrity_level} in 9 {c09_cb_weeks_at_ceiling_last10} of 10 {window_10wk} weeks [c09_cb_weeks_at_ceiling_last10 E128]. Treat it as a number to verify.
 
 Also moving here: recheck compliance 73.3 on the 8 week average, peer median 81.1.
 
-**Why it matters.** A ceiling rate cannot be checked from the panel, and a small center can reach it. [c09_cb_required_count E133]
+**Why it matters.** Required callback count is not in the data {c09_cb_required_count}, so the panel cannot check a ceiling rate [c09_cb_required_count E133]. Small centers can reach it.
 
-**What to do.** Pull one week of the Clinic 09 {item4_center} callback log. [item4_center E125] This one is Regional Ops Partner, North's. The metric is medical; the task is operations. Check back Monday May 11.
+**What to do.** Pull the Clinic 09 callback log for one week. This one is Regional Ops Partner, North's. The metric is medical; the task is operations. Check back Monday May 11.
 
 ## Item 5: Clinic 07: call outs at 5, up 2 weeks running
 
-**What happened.** Clinic 07 {item5_center} opened on 2025-12-05 {c07_opened} and has 22 {c07_weeks} weeks of data. [c07_opened E150] [c07_weeks E151] Call outs were 3 {c07_callouts_prior} the week before. [c07_callouts_prior E153] Their long run average is 1.0 {c07_callouts_long_mean}. [c07_callouts_long_mean E155] Record completion was 89.3 {c07_record_last} last week, with a long run average of 89.8 {c07_record_long_mean}. [c07_record_last E159] [c07_record_long_mean E161] Scheduled doctor hours went from 77.6 {c07_hours_start} to 76.6 {c07_hours_last}. [c07_hours_start E162] [c07_hours_last E163]
+**What happened.** Call outs went from 3 {c07_callouts_prior} to 5 {c07_callouts_last} [c07_callouts_prior E153] [c07_callouts_last E152]. The long run average is 1.0 {c07_callouts_long_mean} [c07_callouts_long_mean E155]. Clinic 07 opened on 2025-12-05 {c07_opened}, with 22 {c07_weeks} weeks of data [c07_opened E150] [c07_weeks E151].
 
 Also moving here: open doctor requisitions 1.2 on the 8 week average, peer median 0.2.
 
-**Why it matters.** Nothing downstream has moved yet: appointments were 175 {c07_appts_last} against 178.9 {c07_appts_avg8}, wait time 11.0 minutes {c07_wait_last} against 10.6 minutes {c07_wait_avg8}. [c07_appts_last E168] [c07_appts_avg8 E169] [c07_wait_last E170] [c07_wait_avg8 E171]
+**Why it matters.** Appointments were 175 {c07_appts_last} against a 8 {window_8wk} week average of 178.9 {c07_appts_avg8} [c07_appts_last E168] [c07_appts_avg8 E169]. Wait was 11.0 minutes {c07_wait_last} against 10.6 minutes {c07_wait_avg8} [c07_wait_last E170] [c07_wait_avg8 E171]. Nothing downstream has moved yet.
 
-**What to do.** Ask Clinic 07 {item5_center} to explain last week's call outs. [item5_center E149] This one is Regional Ops Partner, North's (ops). Check back Monday May 11.
+**What to do.** Ask Clinic 07 what is driving the rise in call outs. This one is Regional Ops Partner, North's (ops). Check back Monday May 11.
 
 ## Plan check
 
-Across Northside, 10 of the 26 plans with data at open had already met their target when they opened, and 3 of the 28 tracks as reported without a flag.
+Across Northside Clinic Network, 10 of the 26 plans with data at open had already met their target when they opened, and 3 of the 28 plans track as reported without a flag.
 
 | Plan | Center | Metric | Status | Label | Flags | 4 week actual vs target | Holds on 4 week baseline | Action |
 |---|---|---|---|---|---|---|---|---|
@@ -112,7 +112,7 @@ Close: AP_019. Close and re-set: AP_004, AP_007, AP_009, AP_024. Challenge: AP_0
 
 Clinic 01 recheck compliance: 88.9 last week, 88.0 over 8 weeks, 20.0 points above Clinic 05's 68.0. Held 6 of 6 weeks above its own long run average, and above the median of the other 10 centers. Needed by Clinic 05, Clinic 09.
 
-Propose one peer session between the Clinic 05 and Clinic 01 {opp_center} medical leads. [opp_center E185] The topic is how rechecks get booked, meaning a recheck scheduled before the client left {metric_def_recheck}. [metric_def_recheck E193]
+Set one peer session: Clinic 05's medical lead with Clinic 01's, on how rechecks get booked before the client leaves (recheck scheduled before the client left {metric_def_recheck}) [metric_def_recheck E193].
 
 ## Watching and suppressed
 
@@ -182,20 +182,20 @@ Evidence rows are numbered. Citations in the text point at these rows.
 | E32 | ap_009_target | 2.52 | data/raw/action_plans.csv / target_value / AP_009 |
 | E33 | ap_009_status | complete | data/raw/action_plans.csv / status / AP_009 |
 | E34 | ap_009_label | target met at open | outputs/plan_check.csv / label / AP_009 / shown as label_display |
-| E35 | c11_duration_before | 27.3 minutes | data/raw/provider_weekly.csv / avg_appt_duration_min hours weighted / Clinic 11 (CL_011) / 8 weeks before AP_009 opened, 2025-12-15 to 2026-02-02 |
-| E36 | c11_duration_after | 27.0 minutes | data/raw/provider_weekly.csv / avg_appt_duration_min hours weighted / Clinic 11 (CL_011) / last 8 weeks, 2026-03-09 to 2026-04-27 |
-| E37 | c11_duration_change | 0.3 minutes shorter | data/raw/provider_weekly.csv / avg_appt_duration_min hours weighted / Clinic 11 (CL_011) / after minus before, each rounded to one decimal first |
-| E38 | ap_001_status | on track | data/raw/action_plans.csv / status / AP_001 |
-| E39 | ap_001_label | data disagrees | outputs/plan_check.csv / label / AP_001 / shown as label_display |
-| E40 | ap_001_actual | 77.3 | outputs/plan_check.csv / actual / AP_001 / trailing 4 weeks to 2026-04-27 |
-| E41 | ap_001_target | 94.0 | data/raw/action_plans.csv / target_value / AP_001 |
-| E42 | ap_001_baseline_panel | 92.5 | outputs/plan_check.csv / panel_base_1wk / AP_001 / week 2026-01-26 |
-| E43 | c11_records_late_last_week | 90 | data/raw/clinic_weekly.csv / appts_completed times (100 minus record_completion_24h_pct) / Clinic 11 (CL_011) / 2026-04-27 |
-| E44 | c11_appts_last | 441 | data/raw/clinic_weekly.csv / appts_completed / Clinic 11 (CL_011) / 2026-04-27 |
-| E45 | ap_001_owner | You | data/raw/action_plans.csv / owner_name / AP_001 |
+| E35 | ap_001_status | on track | data/raw/action_plans.csv / status / AP_001 |
+| E36 | ap_001_label | data disagrees | outputs/plan_check.csv / label / AP_001 / shown as label_display |
+| E37 | ap_001_actual | 77.3 | outputs/plan_check.csv / actual / AP_001 / trailing 4 weeks to 2026-04-27 |
+| E38 | ap_001_target | 94.0 | data/raw/action_plans.csv / target_value / AP_001 |
+| E39 | ap_001_baseline_panel | 92.5 | outputs/plan_check.csv / panel_base_1wk / AP_001 / week 2026-01-26 |
+| E40 | c11_records_late_last_week | 90 | data/raw/clinic_weekly.csv / appts_completed times (100 minus record_completion_24h_pct) / Clinic 11 (CL_011) / 2026-04-27 |
+| E41 | c11_appts_last | 441 | data/raw/clinic_weekly.csv / appts_completed / Clinic 11 (CL_011) / 2026-04-27 |
+| E42 | ap_001_owner | You | data/raw/action_plans.csv / owner_name / AP_001 |
 | E4 | next_digest_date | 2026-05-11 | src/run.py / --date plus 7 days |
-| E46 | item1_owner | You | data/raw/action_plans.csv owner_name or data/raw/locations.csv rop_name / item 1 |
-| E47 | item1_check_date | 2026-05-11 | src/run.py / --date plus 7 or 14 days / item 1 |
+| E43 | item1_owner | You | data/raw/action_plans.csv owner_name or data/raw/locations.csv rop_name / item 1 |
+| E44 | item1_check_date | 2026-05-11 | src/run.py / --date plus 7 or 14 days / item 1 |
+| E45 | c11_duration_before | 27.3 minutes | data/raw/provider_weekly.csv / avg_appt_duration_min hours weighted / Clinic 11 (CL_011) / 8 weeks before AP_009 opened, 2025-12-15 to 2026-02-02 |
+| E46 | c11_duration_after | 27.0 minutes | data/raw/provider_weekly.csv / avg_appt_duration_min hours weighted / Clinic 11 (CL_011) / last 8 weeks, 2026-03-09 to 2026-04-27 |
+| E47 | c11_duration_change | 0.3 minutes shorter | data/raw/provider_weekly.csv / avg_appt_duration_min hours weighted / Clinic 11 (CL_011) / after minus before, each rounded to one decimal first |
 | E48 | c11_dvm_0046_early | 93.0 | data/raw/provider_weekly.csv / record_completion_24h_pct hours weighted / DVM_0046 / first 8 provider weeks 2025-11-03 to 2025-12-22 |
 | E49 | c11_dvm_0046_late | 79.5 | data/raw/provider_weekly.csv / record_completion_24h_pct hours weighted / DVM_0046 / last 8 weeks 2026-03-09 to 2026-04-27 |
 | E50 | c11_dvm_0047_early | 91.3 | data/raw/provider_weekly.csv / record_completion_24h_pct hours weighted / DVM_0047 / first 8 provider weeks 2025-11-03 to 2025-12-22 |

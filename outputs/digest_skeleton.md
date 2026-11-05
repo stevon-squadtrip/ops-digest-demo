@@ -16,7 +16,7 @@ Call Regional Ops Partner, North about Clinic 06 staffing. [one_thing_today_why:
 
 ## Item 1: Clinic 11: record completion below its norm 11 weeks running
 
-**What happened.** [item1_what_happened: up to 40 words]
+**What happened.** [item1_what_happened: up to 40 words] Visits did not get meaningfully shorter: 27.3 minutes in the 8 weeks before plan AP_009 opened, 27.0 minutes over the last 8 weeks, a change of 0.3 minutes shorter. [E45] [E46] [E47]
 
 | Week | Record completion within 24h |
 |---|---|
@@ -91,7 +91,7 @@ Also moving here: open doctor requisitions 1.2 on the 8 week average, peer media
 
 ## Plan check
 
-Across Northside, 10 of the 26 plans with data at open had already met their target when they opened, and 3 of the 28 tracks as reported without a flag.
+Across Northside Clinic Network, 10 of the 26 plans with data at open had already met their target when they opened, and 3 of the 28 plans track as reported without a flag.
 
 | Plan | Center | Metric | Status | Label | Flags | 4 week actual vs target | Holds on 4 week baseline | Action |
 |---|---|---|---|---|---|---|---|---|
@@ -182,20 +182,20 @@ Evidence rows are numbered. Citations in the text point at these rows.
 | E32 | ap_009_target | 2.52 | data/raw/action_plans.csv / target_value / AP_009 |
 | E33 | ap_009_status | complete | data/raw/action_plans.csv / status / AP_009 |
 | E34 | ap_009_label | target met at open | outputs/plan_check.csv / label / AP_009 / shown as label_display |
-| E35 | c11_duration_before | 27.3 minutes | data/raw/provider_weekly.csv / avg_appt_duration_min hours weighted / Clinic 11 (CL_011) / 8 weeks before AP_009 opened, 2025-12-15 to 2026-02-02 |
-| E36 | c11_duration_after | 27.0 minutes | data/raw/provider_weekly.csv / avg_appt_duration_min hours weighted / Clinic 11 (CL_011) / last 8 weeks, 2026-03-09 to 2026-04-27 |
-| E37 | c11_duration_change | 0.3 minutes shorter | data/raw/provider_weekly.csv / avg_appt_duration_min hours weighted / Clinic 11 (CL_011) / after minus before, each rounded to one decimal first |
-| E38 | ap_001_status | on track | data/raw/action_plans.csv / status / AP_001 |
-| E39 | ap_001_label | data disagrees | outputs/plan_check.csv / label / AP_001 / shown as label_display |
-| E40 | ap_001_actual | 77.3 | outputs/plan_check.csv / actual / AP_001 / trailing 4 weeks to 2026-04-27 |
-| E41 | ap_001_target | 94.0 | data/raw/action_plans.csv / target_value / AP_001 |
-| E42 | ap_001_baseline_panel | 92.5 | outputs/plan_check.csv / panel_base_1wk / AP_001 / week 2026-01-26 |
-| E43 | c11_records_late_last_week | 90 | data/raw/clinic_weekly.csv / appts_completed times (100 minus record_completion_24h_pct) / Clinic 11 (CL_011) / 2026-04-27 |
-| E44 | c11_appts_last | 441 | data/raw/clinic_weekly.csv / appts_completed / Clinic 11 (CL_011) / 2026-04-27 |
-| E45 | ap_001_owner | You | data/raw/action_plans.csv / owner_name / AP_001 |
+| E35 | ap_001_status | on track | data/raw/action_plans.csv / status / AP_001 |
+| E36 | ap_001_label | data disagrees | outputs/plan_check.csv / label / AP_001 / shown as label_display |
+| E37 | ap_001_actual | 77.3 | outputs/plan_check.csv / actual / AP_001 / trailing 4 weeks to 2026-04-27 |
+| E38 | ap_001_target | 94.0 | data/raw/action_plans.csv / target_value / AP_001 |
+| E39 | ap_001_baseline_panel | 92.5 | outputs/plan_check.csv / panel_base_1wk / AP_001 / week 2026-01-26 |
+| E40 | c11_records_late_last_week | 90 | data/raw/clinic_weekly.csv / appts_completed times (100 minus record_completion_24h_pct) / Clinic 11 (CL_011) / 2026-04-27 |
+| E41 | c11_appts_last | 441 | data/raw/clinic_weekly.csv / appts_completed / Clinic 11 (CL_011) / 2026-04-27 |
+| E42 | ap_001_owner | You | data/raw/action_plans.csv / owner_name / AP_001 |
 | E4 | next_digest_date | 2026-05-11 | src/run.py / --date plus 7 days |
-| E46 | item1_owner | You | data/raw/action_plans.csv owner_name or data/raw/locations.csv rop_name / item 1 |
-| E47 | item1_check_date | 2026-05-11 | src/run.py / --date plus 7 or 14 days / item 1 |
+| E43 | item1_owner | You | data/raw/action_plans.csv owner_name or data/raw/locations.csv rop_name / item 1 |
+| E44 | item1_check_date | 2026-05-11 | src/run.py / --date plus 7 or 14 days / item 1 |
+| E45 | c11_duration_before | 27.3 minutes | data/raw/provider_weekly.csv / avg_appt_duration_min hours weighted / Clinic 11 (CL_011) / 8 weeks before AP_009 opened, 2025-12-15 to 2026-02-02 |
+| E46 | c11_duration_after | 27.0 minutes | data/raw/provider_weekly.csv / avg_appt_duration_min hours weighted / Clinic 11 (CL_011) / last 8 weeks, 2026-03-09 to 2026-04-27 |
+| E47 | c11_duration_change | 0.3 minutes shorter | data/raw/provider_weekly.csv / avg_appt_duration_min hours weighted / Clinic 11 (CL_011) / after minus before, each rounded to one decimal first |
 | E48 | c11_dvm_0046_early | 93.0 | data/raw/provider_weekly.csv / record_completion_24h_pct hours weighted / DVM_0046 / first 8 provider weeks 2025-11-03 to 2025-12-22 |
 | E49 | c11_dvm_0046_late | 79.5 | data/raw/provider_weekly.csv / record_completion_24h_pct hours weighted / DVM_0046 / last 8 weeks 2026-03-09 to 2026-04-27 |
 | E50 | c11_dvm_0047_early | 91.3 | data/raw/provider_weekly.csv / record_completion_24h_pct hours weighted / DVM_0047 / first 8 provider weeks 2025-11-03 to 2025-12-22 |

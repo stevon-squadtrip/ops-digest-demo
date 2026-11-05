@@ -145,6 +145,21 @@ def test_clinic_05_why_is_code(built):
     assert re.search(r"\| AP_019 \|.*\| no panel row \|", b)
 
 
+def test_clinic_11_visit_length_line_is_code(built):
+    # The visit length wording follows the one minute rule in code; the model may not mention visit length at all.
+    fx, text, _ = built
+    F = fx["facts"]
+    it = _item(fx, "Clinic 11")
+    assert it["code_what"] and set(it["code_what"]["facts"]) == {"c11_duration_before", "c11_duration_after", "c11_duration_change"}
+    for fid in it["code_what"]["facts"]:
+        assert fid not in fx["digest"]["slots"]["item1_what_happened"]["allowed_facts"]
+    lead = "Visits got shorter" if F["c11_visits_shorter"]["value"] else "Visits did not get meaningfully shorter"
+    assert f"{lead}: {F['c11_duration_before']['display']} in the 8 weeks before plan AP_009 opened" in write.body(text)
+    assert any(line.startswith("Visits ") for line in write.already_stated(fx)["item1_what_happened"])
+    p = (ROOT / "prompts" / "digest_prompt.txt").read_text(encoding="utf-8")
+    assert "never mention visit length" in p
+
+
 def test_clinic_07_consequence_facts_and_duration_units(built):
     fx, _, _ = built
     n = _item(fx, "Clinic 07")["rank"]
@@ -222,8 +237,8 @@ def test_plan_check_lead_holds_at_every_tolerance(built):
     S = EXPECTED["plan_summary"]
     b = write.body(text)
     tracking = "none" if S["plans_tracking_as_reported"] == 0 else str(S["plans_tracking_as_reported"])
-    lead = (f"Across Northside, {S['met_at_open']} of the {S['at_open_denominator']} plans with data at open had already met their "
-            f"target when they opened, and {tracking} of the {S['plans']} tracks as reported without a flag.")
+    lead = (f"Across Northside Clinic Network, {S['met_at_open']} of the {S['at_open_denominator']} plans with data at open had already met their "
+            f"target when they opened, and {tracking} of the {S['plans']} plans track as reported without a flag.")
     assert lead in b
     mismatch = f"{S['baseline_mismatch_flags']} of {S['baseline_mismatch_denominator']}"
     assert mismatch not in b

@@ -39,6 +39,8 @@ def already_stated(fx: dict) -> dict:
         if it["also_moving"]:
             lines.append(_also_moving_line(fx, it))
         lines += [_plan_line(fx, pid) for pid in it["plans"]]
+        if it.get("code_what"):
+            lines.append(code_sentence(fx, it["code_what"]["template"], it["code_what"]["facts"]))
         if it["code_why"]:
             lines.append(code_sentence(fx, it["code_why"]["template"], it["code_why"]["facts"]))
         lines.append(_tail(fx, it))
@@ -161,7 +163,10 @@ def render(fx: dict, slots: dict = None, audit: bool = False) -> str:
     for it in D["items"]:
         n = it["rank"]
         L += [f"## Item {n}: {v(it['headline'])}", ""]
-        L.append(f"**What happened.** {slot(f'item{n}_what_happened')}")
+        what = slot(f"item{n}_what_happened")
+        if it.get("code_what"):
+            what += " " + code_sentence(fx, it["code_what"]["template"], it["code_what"]["facts"], audit)
+        L.append(f"**What happened.** {what}")
         L.append("")
         if it["tables"].get("weeks"):
             L += ["| Week | Record completion within 24h |", "|---|---|"]
@@ -195,8 +200,8 @@ def render(fx: dict, slots: dict = None, audit: bool = False) -> str:
 
     pc = D["plan_check"]
     L += ["## Plan check", "",
-          f"Across Northside, {v('plans_met_at_open')} of the {v('plans_at_open_denominator')} plans with data at open had already met "
-          f"their target when they opened, and {v('plans_tracking_word')} of the {v('plans_total')} tracks as reported without a flag.", "",
+          f"Across Northside Clinic Network, {v('plans_met_at_open')} of the {v('plans_at_open_denominator')} plans with data at open had already met "
+          f"their target when they opened, and {v('plans_tracking_word')} of the {v('plans_total')} plans track as reported without a flag.", "",
           "| Plan | Center | Metric | Status | Label | Flags | 4 week actual vs target | Holds on 4 week baseline | Action |",
           "|---|---|---|---|---|---|---|---|---|"]
     for pid in pc["plans"]:

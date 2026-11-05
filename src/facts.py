@@ -556,8 +556,7 @@ def build_facts(panel: Panel, result: dict) -> dict:
             what_happened=["c11_rc_20260209", "c11_rc_20260223", "c11_rc_20260316", "c11_rc_20260406", "c11_rc_20260427", "c11_rc_long_mean",
                            "c11_rc_avg8", "c11_rc_run_weeks", "c11_rc_run_start", "c11_doctors", "c11_doctors_fell", "c11_throughput_last",
                            "c11_throughput_avg8", "ap_009_baseline_panel", "ap_009_target", "ap_009_status", "ap_009_label",
-                           "c11_duration_before", "c11_duration_after", "c11_duration_change", "ap_001_status", "ap_001_label",
-                           "ap_001_actual", "ap_001_target", "ap_001_baseline_panel"],
+                           "ap_001_status", "ap_001_label", "ap_001_actual", "ap_001_target", "ap_001_baseline_panel"],
             why_it_matters=["c11_records_late_last_week", "c11_appts_last", "c11_rc_20260427"],
             what_to_do=["ap_001_owner", "next_digest_date", "c11_doctors"],
             plans=["AP_001", "AP_009"], owner="ap_001_owner", check="next_digest_date",
@@ -604,6 +603,13 @@ def build_facts(panel: Panel, result: dict) -> dict:
     CODE_WHY = {"Clinic 05": ("If DVM_0024 matched the other Clinic 05 doctors, the clinic would reach "
                                 "{c05_clinic_recheck_if_dvm0024_at_peers}, still {c05_gap_to_target_after} points short of the "
                                 "{ap_002_target} target.", ITEM2_WHY_FACTS)}
+    # The visit length line in the Clinic 11 item is written by code, so its wording follows the rule (a change of
+    # more than one minute is "shorter"; anything inside that is "not meaningfully shorter") and the model cannot
+    # reintroduce a contradiction. Rendered right after the What happened slot and listed in already_stated.
+    VISITS_FACTS = ["c11_duration_before", "c11_duration_after", "c11_duration_change"]
+    visits_lead = "Visits got shorter" if F["c11_visits_shorter"] else "Visits did not get meaningfully shorter"
+    CODE_WHAT = {"Clinic 11": (visits_lead + ": {c11_duration_before} in the 8 weeks before plan AP_009 opened, "
+                               "{c11_duration_after} over the last 8 weeks, a change of {c11_duration_change}.", VISITS_FACTS)}
     slots = {}
     digest_items = []
     for it in items:
@@ -664,6 +670,7 @@ def build_facts(panel: Panel, result: dict) -> dict:
         if lead["metric"] == "record_completion_24h_pct" or any(s_["metric"] == "record_completion_24h_pct" for s_ in it["supporting"]):
             base_allowed.append("record_window_hours")
         code_why = CODE_WHY.get(it["center"])
+        code_what = CODE_WHAT.get(it["center"])
         item_slots = []
         for part in ("what_happened", "why_it_matters", "what_to_do"):
             if part == "why_it_matters" and code_why:
@@ -679,6 +686,7 @@ def build_facts(panel: Panel, result: dict) -> dict:
             "headline": f"item{n}_headline", "owner": f"item{n}_owner", "check_date": f"item{n}_check_date",
             "check_back": f"item{n}_check_back", "check_back_short": f"item{n}_check_back_short",
             "slots": item_slots, "code_why": None if not code_why else {"template": code_why[0], "facts": code_why[1]},
+            "code_what": None if not code_what else {"template": code_what[0], "facts": code_what[1]},
             "also_moving": support, "plans": spec["plans"], "tables": spec["tables"],
         })
 
@@ -743,6 +751,8 @@ def build_facts(panel: Panel, result: dict) -> dict:
             fids += slots[sid]["allowed_facts"]
         if di_["code_why"]:
             fids += di_["code_why"]["facts"]
+        if di_.get("code_what"):
+            fids += di_["code_what"]["facts"]
         for t in di_["tables"].values():
             if isinstance(t, list):
                 for rowd in t:

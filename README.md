@@ -1,6 +1,6 @@
 # Ops digest demo
 
-A Monday digest for the medical director of a multi site clinic network. It decides which of their eleven clinics
+A Monday digest for the medical director of Northside Clinic Network, 24 clinics. It decides which of their eleven clinics
 earn attention this week, says what to do about each one, and checks whether the action plans their teams
 committed to are actually on track. Built for thirty minutes on a Monday.
 

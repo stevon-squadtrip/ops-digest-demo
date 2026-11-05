@@ -3709,6 +3709,14 @@
      "item1_what_to_do"
     ],
     "code_why": null,
+    "code_what": {
+     "template": "Visits did not get meaningfully shorter: {c11_duration_before} in the 8 weeks before plan AP_009 opened, {c11_duration_after} over the last 8 weeks, a change of {c11_duration_change}.",
+     "facts": [
+      "c11_duration_before",
+      "c11_duration_after",
+      "c11_duration_change"
+     ]
+    },
     "also_moving": [],
     "plans": [
      "AP_001",
@@ -3759,6 +3767,7 @@
      "item2_what_to_do"
     ],
     "code_why": null,
+    "code_what": null,
     "also_moving": [],
     "plans": [
      "AP_003",
@@ -3791,6 +3800,7 @@
       "ap_002_target"
      ]
     },
+    "code_what": null,
     "also_moving": [],
     "plans": [
      "AP_002"
@@ -3859,6 +3869,7 @@
      "item4_what_to_do"
     ],
     "code_why": null,
+    "code_what": null,
     "also_moving": [
      {
       "metric_label": "recheck compliance",
@@ -3891,6 +3902,7 @@
      "item5_what_to_do"
     ],
     "code_why": null,
+    "code_what": null,
     "also_moving": [
      {
       "metric_label": "open doctor requisitions",
@@ -4079,9 +4091,6 @@
      "ap_009_target",
      "ap_009_status",
      "ap_009_label",
-     "c11_duration_before",
-     "c11_duration_after",
-     "c11_duration_change",
      "ap_001_status",
      "ap_001_label",
      "ap_001_actual",
@@ -4431,19 +4440,19 @@
    "ap_009_target": "E32",
    "ap_009_status": "E33",
    "ap_009_label": "E34",
-   "c11_duration_before": "E35",
-   "c11_duration_after": "E36",
-   "c11_duration_change": "E37",
-   "ap_001_status": "E38",
-   "ap_001_label": "E39",
-   "ap_001_actual": "E40",
-   "ap_001_target": "E41",
-   "ap_001_baseline_panel": "E42",
-   "c11_records_late_last_week": "E43",
-   "c11_appts_last": "E44",
-   "ap_001_owner": "E45",
-   "item1_owner": "E46",
-   "item1_check_date": "E47",
+   "ap_001_status": "E35",
+   "ap_001_label": "E36",
+   "ap_001_actual": "E37",
+   "ap_001_target": "E38",
+   "ap_001_baseline_panel": "E39",
+   "c11_records_late_last_week": "E40",
+   "c11_appts_last": "E41",
+   "ap_001_owner": "E42",
+   "item1_owner": "E43",
+   "item1_check_date": "E44",
+   "c11_duration_before": "E45",
+   "c11_duration_after": "E46",
+   "c11_duration_change": "E47",
    "c11_dvm_0046_early": "E48",
    "c11_dvm_0046_late": "E49",
    "c11_dvm_0047_early": "E50",
@@ -4649,9 +4658,6 @@
      "ap_009_target",
      "ap_009_status",
      "ap_009_label",
-     "c11_duration_before",
-     "c11_duration_after",
-     "c11_duration_change",
      "ap_001_status",
      "ap_001_label",
      "ap_001_actual",
@@ -4663,6 +4669,9 @@
      "next_digest_date",
      "item1_owner",
      "item1_check_date",
+     "c11_duration_before",
+     "c11_duration_after",
+     "c11_duration_change",
      "c11_dvm_0046_early",
      "c11_dvm_0046_late",
      "c11_dvm_0047_early",
